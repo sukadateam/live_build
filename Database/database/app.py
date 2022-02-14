@@ -171,7 +171,7 @@ class options:
     def show_students():
         clear()
         e1 = Label(tk, text='Check Collections Folder For Info', bg=button_color, foreground=text_color)
-        e1.config(height=button_height, width=button_width+8)
+        e1.config(height=button_height, width=button_width+10)
         e1.pack()
         e2 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
         e2.config(height=button_height, width=button_width)
@@ -187,7 +187,7 @@ class options:
     def show_logged_items():
         clear()
         e1 = Label(tk, text='Check Collections Folder For Info', bg=button_color, foreground=text_color)
-        e1.config(height=button_height, width=button_width+8)
+        e1.config(height=button_height, width=button_width+10)
         e1.pack()
         e2 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
         e2.config(height=button_height, width=button_width)
@@ -259,7 +259,7 @@ class options:
     def show_tools():
         clear()
         e1 = Label(tk, text='Check Collections Folder For Info', bg=button_color, foreground=text_color)
-        e1.config(height=button_height, width=button_width+8)
+        e1.config(height=button_height, width=button_width+10)
         e1.pack()
         e2 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
         e2.config(height=button_height, width=button_width)
