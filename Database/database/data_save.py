@@ -2,7 +2,7 @@ students=[]
 active_users=[True, True]
 denied_inputs=['', ' ', None]
 data_bases=[['tools', True, 'all', 'column_row', ['name', 'id']], ['logs', True, 'all', 'list']]
-row=[['tools', ['23tgerf23t', '12t34gf']]]
+row=[['tools', ['Saw1', 'iir34fvif2t', 'E12W2451', '2/22', 'N/A']]]
 lists=[]
 known_users=['admin', 'teacher']
 passwords=['admin', 'teacher']
@@ -14,4 +14,4 @@ debug=True
 opto_data=[]
 opto_row=[]
 opto_lists=[]
-side_tilt=200
+

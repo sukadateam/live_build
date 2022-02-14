@@ -141,3 +141,4 @@ entry_background_color='White'
 entry_text_color='Black'
 OnlyAllowKnownStudents=False
 secretsAllowed=False
+side_tilt=200

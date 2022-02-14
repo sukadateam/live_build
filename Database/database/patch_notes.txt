@@ -1,1 +1,5 @@
 1. Added Message on (create user). Gives notice if a password is invalid.
+2. You can now add purchase date, model number and loaned to meta data into a tool.
+
+Please Note: 
+    This version of app.py is not backwards compadible.

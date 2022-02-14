@@ -209,8 +209,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         serial=(((lists[i])[1])[x])[0]
                         student=(((lists[i])[1])[x])[1]
                         tool_name=get.tool_name(serial)
-                        file.write('Item: '+display.space(tool_name, max_length=25, hide=True)+' Serial: '+display.space(serial, max_length=25, hide=True)+' Student: '+display.space(student, max_length=25, hide=True)+'\n')
-                file.write('\n\n#'+str(25)+' character max length.')
+                        file.write('Item: '+display.space(tool_name, max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
+                file.write('\n\n#'+str(35)+' character max length.')
                     #Save Item name, Serial, And student name.
                     #Search tools with serial to find item name.
             file.close()
@@ -232,12 +232,16 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file=open('tools.txt','w')
             for i in range(len(row)):
                 if (row[i])[0]=="tools":
-                    part, part1=display.space(str(((row[i])[1])[1]), hide=True, max_length=25, return_ShortenNotice=True)
-                    part2, part3=display.space(str(((row[i])[1])[0]), hide=True, max_length=25, return_ShortenNotice=True)
-                    if part3==True:
+                    #Item Returned, True/False
+                    part, part1=display.space(str(((row[i])[1])[1]), hide=True, max_length=35, return_ShortenNotice=True)
+                    part2, part3=display.space(str(((row[i])[1])[0]), hide=True, max_length=35, return_ShortenNotice=True)
+                    part4, part5=display.space(str(((row[i])[1])[2]), hide=True, max_length=35, return_ShortenNotice=True)
+                    part6, part7=display.space(str(((row[i])[1])[3]), hide=True, max_length=35, return_ShortenNotice=True)
+                    part8, part9=display.space(str(((row[i])[1])[4]), hide=True, max_length=35, return_ShortenNotice=True)
+                    if part3==True or part5==True or part7==True or part9==True:
                         part1=True
-                    file.write('Item: '+part2+'  Serial: '+str(part)+'Shorted: '+str(part1)+'\n')
-            file.write('\n\n#'+str(25)+' character max length.')
+                    file.write('Item: '+part2+'  Serial: '+str(part)+'Model Number: '+str(part4)+'Purchase Date: '+str(part6)+'Loaned To: '+str(part8)+'Shortened: '+str(part1)+'\n')
+            file.write('\n\n#'+str(35)+' character max length.')
             file.close()
             os.chdir(path)
     class display:
@@ -1219,10 +1223,6 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 file=open('data_save.py','w')
                 for i in range(len(list)):
                     file.write(list[i]+'='+str(globals()[list[i]])+'\n')
-                if side_tiltForce != None:
-                    file.write('side_tilt='+str(side_tiltForce))
-                else:
-                    file.write('side_tilt=200')
                 file.write('\n')
                 file.close()
                 if advanced_history==True:
@@ -2331,3 +2331,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
+    save_in_txtFile.tools()
