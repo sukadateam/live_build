@@ -129,7 +129,7 @@ class options:
     def center_buttons(notInteger=False):
         global other2
         clear()
-        e1=Label(tk, text='Change Settings file to permanently change.\nCurrent Value: '+str(side_tilt))
+        e1=Label(tk, text='Change data_save file to permanently change.\nCurrent Value: '+str(side_tilt))
         e1.pack()
         other2=Entry(tk)
         other2.config(background=entry_background_color, fg=entry_text_color, width=button_width)
@@ -422,7 +422,7 @@ class options:
         users.logout()
         clear()
         login()
-    def create_user(user_exists=False, unknownPermission=False, PasswordDoesNotMeetReq=False, NoUsernameEntered=False):
+    def create_user(user_exists=False, unknownPermission=False, PasswordDoesNotMeetReq=False, NoUsernameEntered=False, InvalidPassword=False):
         clear()
         global other, other1, other2
         e1 = Label(tk, text='New user', bg=button_color, foreground=text_color)
@@ -456,6 +456,9 @@ class options:
         if NoUsernameEntered==True:
             e9=Label(tk, text='Give the user a name', bg=button_color, foreground=text_color)
             e9.pack()
+        if InvalidPassword==True:
+            e10=Label(tk, text='Invalid Password', bg=button_color, foreground=text_color)
+            e10.pack()
         Tk.update_idletasks(tk)
     def create_user_next():
         global other, other1, other2
@@ -464,6 +467,8 @@ class options:
         permission=other2.get()
         if name in [None, '', ' ', '  ']:
             options.create_user(NoUsernameEntered=True)
+        if password in [None, '', ' ', '  ']:
+            options.create_user(InvalidPassword=True)
         else:
             if profanityFilter.filter(name)==0 and profanityFilter.filter(password)==0 and profanityFilter.filter(permission)==0:
                 if users.create(new_user=name.lower(), new_password=password, new_permission=permission.lower())==False:

@@ -2,6 +2,8 @@
 #Add logic Gates.
 #After that Bug Fixes!
 #Make Entry Fields bigger in app.py
+#Tool names needs to have a limit.
+#Add a setting to limit it. MaxToolNameLength=20
 from dis import show_code
 from email.encoders import encode_7or8bit
 import sys, os
