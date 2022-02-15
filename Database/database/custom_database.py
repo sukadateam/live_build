@@ -6,7 +6,9 @@
 #Add a setting to limit it. MaxToolNameLength=20
 from dis import show_code
 from email.encoders import encode_7or8bit
+from ftplib import error_reply
 from json import tool
+from re import L
 import sys, os
 from os import stat
 from os import remove, walk
@@ -15,6 +17,7 @@ from xmlrpc.client import FastMarshaller
 import zipfile
 from pandas import *
 import time
+import math
 startupCount=time.time()
 ex=False
 memory_hash=''
@@ -98,25 +101,25 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         import pyAesCrypt
     except:
         print("Couldn't import pyAesCrypt")
-    def report():
-        pass
     class setupDatabaseWithSpreadSheet:
         def run():
             toolType, toolName, serialNumber, modelNumber, purchaseDate, loanedTo = setupDatabaseWithSpreadSheet.getAll()
-            print(len(toolType))
-            print(len(toolName))
-            print(len(serialNumber))
             for i in range(len(toolType)):
-                data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(toolName),str(serialNumber), str(modelNumber), str(purchaseDate), str(loanedTo)], split=False)
+                list3=[toolType[i], toolName[i], serialNumber[i], modelNumber[i], purchaseDate[i], loanedTo[i]]
+                for x in range(len(list3)):
+                    if type(list3[x]) == float:
+                        list3[x]="N/A"
+                        print(list3[x])
+                data_base.edit.add_row(data_base='tools', new_row=[str(list3[0]), str(list3[1]),str(list3[2]), str(list3[3]), str(list3[4]), str(list3[5])], split=False)
         def getAll():
             data=read_csv("tools.csv")
             toolType=data['Tool Type'].tolist()
             toolName=data['Tool Name'].tolist()
             serialNumber=data['Serial Number'].tolist()
-            modelNumbel=data['Model NUmber'].tolist()
+            modelNumber=data['Model Number'].tolist()
             purchaseDate=data['Purchase Date'].tolist()
             loandedTo=data['Loaned out to'].tolist()
-            return toolType, toolName, serialNumber, modelNumbel, purchaseDate, loandedTo
+            return toolType, toolName, serialNumber, modelNumber, purchaseDate, loandedTo
     class logic:
         class gate:
             def help():
@@ -331,7 +334,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     print(settings1[i]+'='+str(globals()[settings1[i]]))
                 except:
                     print(settings1[i]+'='+'N/A')
-    class math:
+    class math1:
         def pi(accuracy=1000000):
             # Initialize denominator
             k = 1
@@ -1657,7 +1660,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                                         break
                 if num1 == True or num2 == True:
                     print(errors.cannot_call_func('data_base.edit.remove_item()'))
-            def add_row(data_base=None, new_row=None, split=True, database=None):
+            def add_row(data_base=None, new_row=None, split=True, database=None, hide=False):
                 if data_base == None:
                     data_base=database
                 if isinstance(new_row, str)==True:
@@ -1677,7 +1680,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         print(errors.not_list())
                 if num1 == True or num2 == True:
                     print(errors.cannot_call_func('data_base.edit.add_row()'))
-            def remove_row(data_base=None, database=None):
+            def remove_row(data_base=None, database=None, hide=False):
                 if data_base == None:
                     data_base=database
                 num1=check_input(data_base)
@@ -1728,7 +1731,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if num1 == True:
                     print(errors.cannot_call_func('data_base.edit.remove_row()'))
                 #Must be column_row
-            def add_column(data_base=None, column_name=None, database=None):
+            def add_column(data_base=None, column_name=None, database=None, hide=False):
                 if data_base == None:
                     data_base=database
                 history.create_history(column_name, 'Add column', hide=hide)
@@ -1756,7 +1759,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                                     (data_bases[i+letter_spot])[4].append(column_name.lower())
                     if num1 == True or num2 == True:
                         print(errors.cannot_call_func('data_base.edit.add_column()'))
-            def remove_column(data_base=None, column=None, remove_row=False, database=None):
+            def remove_column(data_base=None, column=None, remove_row=False, database=None, hide=False):
                 if data_base == None:
                     data_base=database
                 try:
@@ -2357,3 +2360,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #Test bench
     #<--Indent to here
     setupDatabaseWithSpreadSheet.run()
+    save.all()

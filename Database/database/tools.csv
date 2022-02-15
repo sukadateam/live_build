@@ -1,7 +1,7 @@
 Tool Type,Tool Name,,Serial Number,Model Number,Purchase Date,Loaned out to,,
 Circular Saw,Makita 1,FALSE,*0021864,5007FA,,,,Barcodes - Brother Label Maker
 Circular Saw,Makita 2,FALSE,*0017792,5007FA,,,,Scan barcode to checkboxes
-Circular Saw,Makita 4,FALSE,21614,,,missing(I think #9 and #4 are the same saw,,Barcodes for toolbelts? - scan to check out?
+Circular Saw,Makita 4,FALSE,21614,,,,,Barcodes for toolbelts? - scan to check out?
 Circular Saw,Makita 5,FALSE,*0021604,5007FA,,,,
 Circular Saw,Makita 6,FALSE,*0021863,5007FA,,,,
 Circular Saw,Makita 7,FALSE,54079,5077B /Wormdrive,,,,
@@ -26,8 +26,6 @@ Corded Drill,Dewalt 4,,408931,,,,,
 Corded Drill,Dewalt 5,,438543,,,,,
 Corded Drill,Dewalt 6,,736664,,,,,
 Corded Drill,Dewalt 8 DW130,,81661,,,,,
-,,,,,,,,
-,,,,,,,,
 Corded Drill,Craftsman 6,,33954,,,,,
 Sawzall,Dewalt 4,,83295 9948E,,,,,
 Sawzall,Milwaukee 1,,326A301067098,,,Broken tool cabinet,,
@@ -76,8 +74,6 @@ Nail gun,Bostitch N89C,,09250-0082,,,,,
 Nail gun,Bostitch brad nailer,,1071660,,,,,
 Nail gun,Senco roofing nail gun,,,,,,,
 Nail gun,Bostitch 18g Flooring Stapler,,19089058 J2 47,EHF 1838K,10-17-19,,,
-,,,,,,,,
-,,,,,,,,
 Electric staple gun,Powershot pro T-50,,NA,,,,,
 Power plane,Makita,,,,,,,
 Drywall sanding vac,Porta Cable,,,,,,,
