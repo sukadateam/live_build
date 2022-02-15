@@ -233,15 +233,16 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             for i in range(len(row)):
                 if (row[i])[0]=="tools":
                     #Item Returned, True/False
-                    part, part1=display.space(str(((row[i])[1])[1]), hide=True, max_length=35, return_ShortenNotice=True)
-                    part2, part3=display.space(str(((row[i])[1])[0]), hide=True, max_length=35, return_ShortenNotice=True)
-                    part4, part5=display.space(str(((row[i])[1])[2]), hide=True, max_length=35, return_ShortenNotice=True)
-                    part6, part7=display.space(str(((row[i])[1])[3]), hide=True, max_length=35, return_ShortenNotice=True)
-                    part8, part9=display.space(str(((row[i])[1])[4]), hide=True, max_length=35, return_ShortenNotice=True)
-                    if part3==True or part5==True or part7==True or part9==True:
+                    part, part1=display.space(str(((row[i])[1])[2]), hide=True, max_length=25, return_ShortenNotice=True)
+                    part2, part3=display.space(str(((row[i])[1])[1]), hide=True, max_length=25, return_ShortenNotice=True)
+                    part4, part5=display.space(str(((row[i])[1])[3]), hide=True, max_length=25, return_ShortenNotice=True)
+                    part6, part7=display.space(str(((row[i])[1])[4]), hide=True, max_length=25, return_ShortenNotice=True)
+                    part8, part9=display.space(str(((row[i])[1])[5]), hide=True, max_length=25, return_ShortenNotice=True)
+                    part10, part11=display.space(str(((row[i])[1])[0]), hide=True, max_length=25, return_ShortenNotice=True)
+                    if part3==True or part5==True or part7==True or part9==True or part11==True:
                         part1=True
-                    file.write('Item: '+part2+'  Serial: '+str(part)+'Model Number: '+str(part4)+'Purchase Date: '+str(part6)+'Loaned To: '+str(part8)+'Shortened: '+str(part1)+'\n')
-            file.write('\n\n#'+str(35)+' character max length.')
+                    file.write('Tool Type: '+str(part10)+'Item: '+part2+'  Serial: '+str(part)+'Model Number: '+str(part4)+'Purchase Date: '+str(part6)+'Loaned To: '+str(part8)+'Shortened: '+str(part1)+'\n')
+            file.write('\n\n#'+str(25)+' character max length.')
             file.close()
             os.chdir(path)
     class display:

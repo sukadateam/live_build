@@ -1,3 +1,5 @@
+#Give a report of items not signed out, and items signed out. Not signed out on top. Signed out on bottom.
+#Will be used to help the teacher see what may be missing.
 from email.utils import parseaddr
 from operator import truediv
 from platform import python_version
@@ -19,6 +21,7 @@ startup=True
 other4=None
 other5=None
 other6=None
+other7=None
 other=None
 other1=None
 other2=None
@@ -373,8 +376,13 @@ class options:
                 options.remove_tool(toolDoesNotExist=True)
     def add_tool(id_exists=False):
         clear()
-        global other, other1, other4, other5, other6
-        e1 = Label(tk, text='Item name', bg=button_color, foreground=text_color)
+        global other, other1, other4, other5, other6, other7
+        e10 = Label(tk, text='Tool Type', bg=button_color, foreground=text_color)
+        e10.pack()
+        other7 = Entry(tk)
+        other7.config(background=entry_background_color, fg=entry_text_color)
+        other7.pack()
+        e1 = Label(tk, text='Tool Name', bg=button_color, foreground=text_color)
         e1.pack()
         other = Entry(tk)
         other.config(background=entry_background_color, fg=entry_text_color)
@@ -408,21 +416,24 @@ class options:
             e6.pack()
         Tk.update_idletasks(tk)
     def add_tool_next():
-        global other, other1, other4, other5, other6
+        global other, other1, other4, other5, other6, other7
         name = other.get()
         id = other1.get()
         modelNumber=other4.get()
         purchaseDate=other5.get()
         loandedTo=other6.get()
+        toolType=other7.get()
         if modelNumber in [None, '', ' ', '  ']:
             modelNumber="N/A"
         if purchaseDate in [None, '', ' ', '  ']:
             purchaseDate='N/A'
         if loandedTo in [None, '', ' ', '  ']:
             loandedTo='N/A'
+        if toolType in [None, '', ' ', '  ']:
+            toolType='N/A'
         if check.barcode(id)==True:
             if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
-                data_base.edit.add_row(data_base='tools', new_row=[str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)
+                data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)
             clear()
             send()
         else:
