@@ -1,5 +1,9 @@
 1. Added Message on (create user). Gives notice if a password is invalid.
 2. You can now add purchase date, model number and loaned to meta data into a tool.
+3. custom_database can now import tools.csv.
+4. Fixed several bugs involving database.edit.
+5. Updated save_in_txtFile.logs()
+6. Minor Tweaks to Performance.
 
 Please Note: 
-    This version of app.py is not backwards compadible.
+    This version of app.py is not backwards compatible.
