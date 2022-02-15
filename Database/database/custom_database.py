@@ -6,12 +6,14 @@
 #Add a setting to limit it. MaxToolNameLength=20
 from dis import show_code
 from email.encoders import encode_7or8bit
+from json import tool
 import sys, os
 from os import stat
 from os import remove, walk
 from venv import create
 from xmlrpc.client import FastMarshaller
 import zipfile
+from pandas import *
 import time
 startupCount=time.time()
 ex=False
@@ -96,6 +98,25 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         import pyAesCrypt
     except:
         print("Couldn't import pyAesCrypt")
+    def report():
+        pass
+    class setupDatabaseWithSpreadSheet:
+        def run():
+            toolType, toolName, serialNumber, modelNumber, purchaseDate, loanedTo = setupDatabaseWithSpreadSheet.getAll()
+            print(len(toolType))
+            print(len(toolName))
+            print(len(serialNumber))
+            for i in range(len(toolType)):
+                data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(toolName),str(serialNumber), str(modelNumber), str(purchaseDate), str(loanedTo)], split=False)
+        def getAll():
+            data=read_csv("tools.csv")
+            toolType=data['Tool Type'].tolist()
+            toolName=data['Tool Name'].tolist()
+            serialNumber=data['Serial Number'].tolist()
+            modelNumbel=data['Model NUmber'].tolist()
+            purchaseDate=data['Purchase Date'].tolist()
+            loandedTo=data['Loaned out to'].tolist()
+            return toolType, toolName, serialNumber, modelNumbel, purchaseDate, loandedTo
     class logic:
         class gate:
             def help():
@@ -192,6 +213,9 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             else:
                 if hide==False:
                     print('Folder does not exist.')
+        def itemsNotSignedOut():
+            notSignedOutItem=[]
+            check.signed_out_item()
         def students():
             os.chdir('collections')
             file=open('student.txt','w')
@@ -2332,4 +2356,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    save_in_txtFile.tools()
+    setupDatabaseWithSpreadSheet.run()

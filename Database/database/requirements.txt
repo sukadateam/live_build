@@ -1,3 +1,4 @@
 pyAesCrypt
 pillow
 pynput
+pandas
