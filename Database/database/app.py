@@ -281,7 +281,7 @@ class options:
     def signout_item(no_name=False, no_barcode=False, already_signed=False):
         global other, other1
         clear()
-        e1 = Label(tk, text='Barcode', bg=button_color, foreground=text_color)
+        e1 = Label(tk, text='Barcode/Serial', bg=button_color, foreground=text_color)
         e1.config(height=button_height, width=button_width)
         e1.pack()
         other = Entry(tk)
@@ -301,7 +301,7 @@ class options:
             e6=Label(tk, text='Unknown Student', bg=button_color, foreground=text_color)
             e6.pack()
         if no_barcode==True:
-            e7=Label(tk, text='Unknown Barcode', bg=button_color, foreground=text_color)
+            e7=Label(tk, text='Unknown Barcode/Serial', bg=button_color, foreground=text_color)
             e7.pack()
         if already_signed==True:
             e8=Label(tk, text='Item already signed out', bg=button_color, foreground=text_color)
@@ -327,7 +327,7 @@ class options:
         global other
         clear()
         #Remove item by barcode Not name.
-        e1 = Label(tk, text='Barcode', bg=button_color, foreground=text_color)
+        e1 = Label(tk, text='Barcode/Serial', bg=button_color, foreground=text_color)
         e1.config(height=button_height, width=button_width)
         e1.pack()
         other = Entry(tk)
@@ -387,7 +387,7 @@ class options:
         other = Entry(tk)
         other.config(background=entry_background_color, fg=entry_text_color)
         other.pack()
-        e2 = Label(tk, text='Barcode', bg=button_color, foreground=text_color)
+        e2 = Label(tk, text='Barcode/Serial', bg=button_color, foreground=text_color)
         e2.pack()
         other1 = Entry(tk)
         other1.config(background=entry_background_color, fg=entry_text_color)
@@ -412,7 +412,7 @@ class options:
         e5 = Button(tk, text='Back', command=send)
         e5.pack()
         if id_exists==True:
-            e6=Label(tk, text='Barcode Exists', bg=button_color, foreground=text_color)
+            e6=Label(tk, text='Barcode/Serial Exists', bg=button_color, foreground=text_color)
             e6.pack()
         Tk.update_idletasks(tk)
     def add_tool_next():

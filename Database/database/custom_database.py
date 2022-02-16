@@ -1823,7 +1823,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     pass
                 #Goes through all lists for the column and changes it to equal None.
                 #Must be column_row
-            #Used for my auto_motive app.
+            #Used for my carpentry app.
             class app:
                 def remove_row(data_base=None, name=None, database=None, hide=False):
                     if data_base == None:
@@ -2360,11 +2360,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             ex=True
     except:
         pass
+    if dontCloseAfterEmptyStart==True:
+        input('Hit enter to Close: ')
     #You must set a Normal level password
     #You can set a global password if need be. Basically a backup.
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    #setupDatabaseWithSpreadSheet.run()
-    #save.all()
-    save_in_txtFile.tools()
