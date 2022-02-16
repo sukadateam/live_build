@@ -352,7 +352,7 @@ class options:
     def remove_tool(toolDoesNotExist=False):
         global other
         clear()
-        e1 = Label(tk, text='Barcode', bg=button_color, foreground=text_color)
+        e1 = Label(tk, text='Barcode/Serial', bg=button_color, foreground=text_color)
         e1.pack()
         other = Entry(tk)
         other.config(background=entry_background_color, fg=entry_text_color)
