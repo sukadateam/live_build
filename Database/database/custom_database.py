@@ -236,7 +236,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         serial=(((lists[i])[1])[x])[0]
                         student=(((lists[i])[1])[x])[1]
                         tool_name=get.tool_name(serial)
-                        file.write('Item: '+display.space(tool_name, max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
+                        file.write('Item: '+display.space(str(tool_name), max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
                 file.write('\n\n#'+str(35)+' character max length.')
                     #Save Item name, Serial, And student name.
                     #Search tools with serial to find item name.
@@ -999,8 +999,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def tool_name(serial):
             for i in range(len(row)):
                 if (row[i])[0]=="tools":
-                    if ((row[i])[1])[1]==serial:
-                        return ((row[i])[1])[0]
+                    if ((row[i])[1])[2]==serial:
+                        return ((row[i])[1])[1]
         def try_password(password):
             if system=='windows':
                 global drive_letter
@@ -1271,13 +1271,13 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             for i in range(100):
                 print('')
     class check:
-        def signed_out_item(barcode):
+        def signed_out_item(barcode, hide=False):
             #Check to see if item has been signed out already.
             for i in range(len(lists)):
                 #Find the database logs
                 if (lists[i])[0]=='logs':
                     for x in range(len((lists[i])[1])):
-                        if debug==True:
+                        if hide==True:
                             print((((lists[i])[1])[x])[0])
                         if (((lists[i])[1])[x])[0]==barcode:
                             #If found
@@ -1290,7 +1290,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 #Find the database tools
                 if (row[i])[0]=="tools":
                     try:
-                        if ((row[i])[1])[1]==barcode:
+                        if ((row[i])[1])[2]==barcode:
                             #If found
                             return False
                     except:
@@ -2361,7 +2361,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     except:
         pass
     if dontCloseAfterEmptyStart==True:
-        input('Hit enter to Close: ')
+        input('Hit enter to Continue: ')
     #You must set a Normal level password
     #You can set a global password if need be. Basically a backup.
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux

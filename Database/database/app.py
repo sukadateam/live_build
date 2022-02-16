@@ -312,7 +312,7 @@ class options:
     def signout_item_next():
         global other, other1
         list1=[other.get(), other1.get()]
-        if check.barcode(list1[0])==False and check.signed_out_item(list1[0])==False:
+        if check.barcode(str(list1[0]))==False and check.signed_out_item(str(list1[0]), hide=logic.gate.not_gate(debug))==False:
             if list1[1] in students or OnlyAllowKnownStudents==False:
                 data_base.edit.add_item(data_base='logs', item_to_add=list1)
                 clear()
@@ -322,7 +322,7 @@ class options:
             name_no=False
             if list1[1] not in students and OnlyAllowKnownStudents==True:
                 name_no=True
-            options.signout_item(no_name=name_no, no_barcode=check.barcode(list1[0]), already_signed=check.signed_out_item(list1[0]))
+            options.signout_item(no_name=name_no, no_barcode=check.barcode(str(list1[0])), already_signed=check.signed_out_item(str(list1[0])))
     def signin_item(doesNotExist=False):
         global other
         clear()
