@@ -46,10 +46,14 @@ def version_note():
     e90=Label(tk, text='Program Version: '+program_version)
     e90.pack(side=BOTTOM, anchor=W)
 class buttons:
+    def show_users(y=100):
+        e21 = Button(tk, text='Show Users', command=options.show_users, bg=button_color, foreground=text_color, font=text_font)
+        e21.config(height=button_height, width=button_width)
+        e21.place(x=((int(x))/2)-side_tilt, y=y)
     def center_buttons(y=100):
-        e20 = Button(tk, text='Center Buttons', command=options.center_buttons, bg=button_color, foreground=text_color, font=text_font)
-        e20.config(height=button_height, width=button_width)
-        e20.place(x=((int(x))/2)-side_tilt, y=y)
+        e21 = Button(tk, text='Center Buttons', command=options.center_buttons, bg=button_color, foreground=text_color, font=text_font)
+        e21.config(height=button_height, width=button_width)
+        e21.place(x=((int(x))/2)-side_tilt, y=y)
     def credit(y=200):
         e20 = Button(tk, text='Credits', command=options.credits, bg=button_color, foreground=text_color, font=text_font)
         e20.config(height=button_height, width=button_width)
@@ -132,6 +136,19 @@ class buttons:
         e17.config(height=button_height, width=button_width)
         e17.place(x=((int(x))/2)-side_tilt, y=y)
 class options:
+    def show_users():
+        clear()
+        e1 = Label(tk, text='Check Collections Folder For Info', bg=button_color, foreground=text_color)
+        e1.config(height=button_height, width=button_width+10)
+        e1.pack()
+        e2 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
+        e2.config(height=button_height, width=button_width)
+        e2.pack()
+        save_in_txtFile.users()
+        if systemDetectedOperatingSystem=="windows":
+            os.system('notepad.exe users.txt')
+        if systemDetectedOperatingSystem=="macos":
+            subprocess.call(['open', '-a', 'TextEdit', 'users.txt'])
     def center_buttons(notInteger=False):
         global other2
         clear()
@@ -704,9 +721,10 @@ def admin_page2():
     buttons.show_students(y=400)
     buttons.change_password(y1=500)
     buttons.center_buttons(y=600)
+    buttons.show_users(y=700)
     e25=Button(tk, text='Back', command=admin_screen, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=700)
+    e25.place(x=((int(x))/2)-side_tilt, y=800)
 #Ask the database if the entered credentials are correct.
 def ask(command=send):
     global name, password, startup

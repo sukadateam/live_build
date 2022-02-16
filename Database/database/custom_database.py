@@ -244,15 +244,21 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             os.chdir(path)
         def users():
             os.chdir('collections')
-            if len(known_users)>0:
-                #Save all users in a text file. Do not write passwords.
+            if OnlyAllowKnownStudents==False:
                 file=open('users.txt','w')
-                for i in range(len(known_users)):
-                    file.write(known_users[i]+': '+permissions[i]+'\n')
+                file.write("OnlyAllowKnownStudents is set to False.")
                 file.close()
-            else:
-                print('There are no users.')
-            os.chdir(path)
+            if OnlyAllowKnownStudents==True:
+                os.chdir('collections')
+                if len(known_users)>0:
+                    #Save all users in a text file. Do not write passwords.
+                    file=open('users.txt','w')
+                    for i in range(len(known_users)):
+                        file.write(known_users[i]+': '+permissions[i]+'\n')
+                    file.close()
+                else:
+                    print('There are no users.')
+                os.chdir(path)
         def tools():
             try:
                 os.chdir('collections')
