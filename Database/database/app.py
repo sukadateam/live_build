@@ -441,13 +441,13 @@ class options:
         loandedTo=other6.get()
         toolType=other7.get()
         if modelNumber in [None, '', ' ', '  ']:
-            modelNumber="N/A"
+            modelNumber=""
         if purchaseDate in [None, '', ' ', '  ']:
-            purchaseDate='N/A'
+            purchaseDate=''
         if loandedTo in [None, '', ' ', '  ']:
-            loandedTo='N/A'
+            loandedTo=''
         if toolType in [None, '', ' ', '  ']:
-            toolType='N/A'
+            toolType=''
         if check.barcode(id)==True:
             if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
                 data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)

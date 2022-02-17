@@ -108,7 +108,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 list3=[toolType[i], toolName[i], serialNumber[i], modelNumber[i], purchaseDate[i], loanedTo[i]]
                 for x in range(len(list3)):
                     if type(list3[x]) == float:
-                        list3[x]="N/A"
+                        list3[x]=""
                         print(list3[x])
                 data_base.edit.add_row(data_base='tools', new_row=[str(list3[0]), str(list3[1]),str(list3[2]), str(list3[3]), str(list3[4]), str(list3[5])], split=False)
         def getAll():

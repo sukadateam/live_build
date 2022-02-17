@@ -1,4 +1,0 @@
-Item: Makita 1                            Serial: *0021864                            Student: Brandon                            
-
-
-#35 character max length.

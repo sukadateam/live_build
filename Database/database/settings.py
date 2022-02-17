@@ -3,7 +3,7 @@
 #Required python version to run program.
 required_version='3.10.2'
 #Application version. Just for show.
-program_version='0.5.0'
+program_version='0.5.1'
 #Drive letter to store hash.aes file on root directory. Letter must be Uppercase. Windows only.
 drive_letter='E'
 #Drive name to store hash.aes file on root directory. Linux only.
@@ -124,7 +124,7 @@ allowed_backupPermissions=['admin','teacher']
 #Setup backup response. Do not disable if using backup. Used for debugging.
 setup_backup_response=True
 #If custom_database.py is not started from an import. Do not close it.
-dontCloseAfterEmptyStart=True
+dontCloseAfterEmptyStart=False
 
 #Settings coming soon. Do not change unless your a dare devil.
 #No settings are pending. Send a request on GitHub for ideas.
