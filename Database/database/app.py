@@ -432,7 +432,7 @@ class options:
             e6=Label(tk, text='Barcode/Serial Exists', bg=button_color, foreground=text_color)
             e6.pack()
         Tk.update_idletasks(tk)
-    def add_tool_next():
+    def add_tool_next(replace=''):
         global other, other1, other4, other5, other6, other7
         name = other.get()
         id = other1.get()
@@ -441,13 +441,13 @@ class options:
         loandedTo=other6.get()
         toolType=other7.get()
         if modelNumber in [None, '', ' ', '  ']:
-            modelNumber=""
+            modelNumber=replace
         if purchaseDate in [None, '', ' ', '  ']:
-            purchaseDate=''
+            purchaseDate=replace
         if loandedTo in [None, '', ' ', '  ']:
-            loandedTo=''
+            loandedTo=replace
         if toolType in [None, '', ' ', '  ']:
-            toolType=''
+            toolType=replace
         if check.barcode(id)==True:
             if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
                 data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)

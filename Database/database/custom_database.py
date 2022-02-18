@@ -1134,13 +1134,13 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 pyAesCrypt.decryptFile('history.aes','history.txt',password)
                 os.remove('history.aes')
             except:
-                pass
+                return 0
         def data(password):
             try:
                 pyAesCrypt.decryptFile('data_save.aes','data_save.py',password)
                 os.remove('data_save.aes')
             except:
-                pass
+                return 0
         def cache(password):
             pyAesCrypt.decryptFile('cache.aes','cache.py',password)
             os.remove('cache.aes')
@@ -1148,20 +1148,18 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             pyAesCrypt.decryptFile('opt.aes','opt.py',password)
             os.remove('opt.aes')
         def history_desc(password):
-            pyAesCrypt.decryptFile('history_desc.py','history_desc.aes',password)
-            os.remove('history_desc.aes')
+            try:
+                pyAesCrypt.decryptFile('history_desc.py','history_desc.aes',password)
+                os.remove('history_desc.aes')
+            except:
+                return 0
         def all(password):
             #decrypt.custom_database(password, True) Do not encrypt main file. This file is needed to decrypt!
-            try:
-                open('history.aes','r')
-                open('data_save.aes','r')
-                try:
+            if os.path.exists('history.aes')==True or os.path.exists('data_save.aes')==True:
+                if decrypt.hash(password) != False:
                     d_password=decrypt.hash(password)
-                    decrypt.data(d_password)
-                    decrypt.history(d_password)
-                    decrypt.history_desc(d_password)
-                except ValueError:
-                    return 1
+                    if decrypt.history_desc(d_password) == 0 and decrypt.history(d_password) == 0 and decrypt.data(d_password) == 0:
+                        return 1
                 try:
                     global drive_letter
                     if system=="windows": os.remove(drive_letter+':/hash.txt')
@@ -1173,7 +1171,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     else: os.remove('hash_other.txt')
                 except:
                     pass
-            except:
+            else:
                 print('Cannot decrypt. Encrypted files do not exist.')
     class encrypt:
         def history(password):

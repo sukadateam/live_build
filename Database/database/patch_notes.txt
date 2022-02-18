@@ -1,7 +1,1 @@
-1. Fixed Remove Tool which broke with last version.
-2. Make Sure to install pandas if not already installed. pip install pandas
-3. Added setting dontCloseAfterEmptyStart.
-4. Fixed signout item which broke with last version.
-5. Fixed show logged items which broke with last version.
-6. Fixed center buttons and credits buttons causing issues when used together.
-7. Added button show users on admin page.
+1. Fixed Decrypt Function.
