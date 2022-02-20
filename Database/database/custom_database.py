@@ -29,6 +29,7 @@ try:
     from multiprocessing import Process
 except:
     pass
+from settings import quiteStartup
 if quiteStartup == False:
     for i in range(100):
         print('')
