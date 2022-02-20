@@ -80,7 +80,7 @@ auto_history_record=True
 dont_load_save=False
 #Automatically optimize on start up. USE AT YOUR OWN RISK. Currently in development phase.
 optimize_on_startup=False
-#If a record prior what's asked is a duplicate, system will then ignore the task given.
+#If a prior task is equal to the current task, system will then ignore the task given.
 skip_history_copy=True
 #Enable automated history_file for functions. 
 auto_error_record=True
