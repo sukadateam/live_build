@@ -3,7 +3,7 @@
 #Required python version to run program.
 required_version='3.10.2'
 #Application version. Just for show.
-program_version='0.5.1'
+program_version='0.5.2'
 #Drive letter to store hash.aes file on root directory. Letter must be Uppercase. Windows only.
 drive_letter='E'
 #Drive name to store hash.aes file on root directory. Linux only.
@@ -99,13 +99,13 @@ assign_digit_forHistory=True
 #How many digits are allowed to be used to store history. Max 30.
 allowed_digists_forHistory=8
 #Will still check for incorrect settings if quit_ifIncorrect is True, but won't display anything.
-show_incorrect_settings=True
+show_incorrect_settings=False
 #Will deny the program from saving. No matter what. Will cause problems for long term.
 disable_save=False
 #Passwords have to meet the requirments set above.
 strict_password=True
 #If True system will not remove files after encrypt and decrypt. Will remove files if set to False.
-do_not_remove=False
+do_not_remove=True
 #Do not disable failsafe unless needed! Trust me. Don't disable it.
 fail_safe=True
 #Disable profanity filter for admin.
@@ -125,10 +125,13 @@ allowed_backupPermissions=['admin','teacher']
 setup_backup_response=True
 #If custom_database.py is not started from an import. Do not close it.
 dontCloseAfterEmptyStart=False
+#If True, Encrypt Important files with given password. Else: Backup with no password.
+encryptBackups=False
+#Keep the terminal hush hush on startup. Only major errors will show.
+quiteStartup=False
 
 #Settings coming soon. Do not change unless your a dare devil.
 #No settings are pending. Send a request on GitHub for ideas.
-
 
 #Remove if you aren't using my custom application.
 #Settings for application.

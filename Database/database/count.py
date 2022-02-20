@@ -1,1 +1,1 @@
-backup_count=3
+backup_count=11

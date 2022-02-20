@@ -33,8 +33,9 @@ try:
     from multiprocessing import Process
 except:
     pass
-for i in range(100):
-    print('')
+if quiteStartup == False:
+    for i in range(100):
+        print('')
 try:
     from pyAesCrypt import decryptFile, encryptFile
 except:
@@ -48,9 +49,11 @@ list1=[]
 try:
     from history_desc import *
 except:
-    print('Could not find the required file: history_desc.py You may experience problems.')
-print('This Project is hosted on github. github.com/sukadateam')
-print('If problems occur, try to check if a new version exists.\n\n')
+    if quiteStartup == False:
+        print('Could not find the required file: history_desc.py You may experience problems.')
+if quiteStartup == False:
+    print('This Project is hosted on github. github.com/sukadateam')
+    print('If problems occur, try to check if a new version exists.\n\n')
 if sys.version[0:len(required_version)] != required_version and "-skipPythonCheck" not in n and skip_pythonCheck==False:
     print('Required python version:', required_version)
     print('Current python version:', sys.version[0:len(required_version)])
@@ -70,19 +73,23 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     import random, shutil
     try:
         from directory import path
-        print('Set path:', path)
+        if quiteStartup == False:
+            print('Set path:', path)
         os.chdir(path)
     except ModuleNotFoundError:
-        print('custom_database is not setup. Please setup with .bat or .sh file to enable this program.')
+        if quiteStartup == False:
+            print('custom_database is not setup. Please setup with .bat or .sh file to enable this program.')
         exit()
     import_type='None'
     try:
         if dont_load_save==False:
-            print('Please wait. Importing save file...')
+            if quiteStartup == False:
+                print('Please wait. Importing save file...')
             from data_save import *
             import_type='data_save'
         if dont_load_save==True:
-            print('Please wait. Importing default file...')
+            if quiteStartup == False:
+                print('Please wait. Importing default file...')
             from data import *
             import_type='data'
     except:
@@ -90,17 +97,21 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             from data import *
             import_type='data'
         except:
-            print('Cannot Load Save File or Default file. This program cannot run without it.')
+            if quiteStartup == False:
+                print('Cannot Load Save File or Default file. This program cannot run without it.')
             exit()
     if import_type=="data":
-        print('Import type: Default')
+        if quiteStartup == False:
+            print('Import type: Default')
     if import_type=="data_save":
-        print('Import type: Save file')
+        if quiteStartup == False:
+            print('Import type: Save file')
     #On some devices this import line may say could not import, but it will if the package is installed on a compatible python version.
     try:
         import pyAesCrypt
     except:
-        print("Couldn't import pyAesCrypt")
+        if quiteStartup == False:
+            print("Couldn't import pyAesCrypt")
     class setupDatabaseWithSpreadSheet:
         def run():
             toolType, toolName, serialNumber, modelNumber, purchaseDate, loanedTo = setupDatabaseWithSpreadSheet.getAll()
@@ -379,7 +390,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             except: pass
             os.mkdir('backups')
             backup.reset_count()
-        def create(backup_name=None, random_name=False, password=None, hide=False):
+        def create(backup_name=None, random_name=False, password=None, hide=False, ForceEncryption=False):
             try:
                 password=password.get()
             except:
@@ -388,45 +399,66 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             backup_name=None
             random_name=None
             global backup_count
-            #Create new backup.
+            #Display new backup name.
             if hide==False:
                 print('Current #:', backup_count)
             #Get a name
             backup_name=str(backup_count)
             #Create the backup.
             save.all(hide=hide)
-            #Encrypt Files
-            try:
-                if encrypt.all(password) != 1:
-                    #Backup Certian Files
-                    list2=['custom_database.py','history_desc.py','vars_to_save','data_save.aes','history.aes', 'settings.py','paths.png','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
-                    try: os.chdir('backups')
-                    except: pass
-                    zipObject= ZipFile(backup_name+'.zip', 'w')
-                    try: os.chdir(path)
-                    except: pass
-                    for i in range(len(list2)):
-                        try:
-                            zipObject.write(list2[i])
-                        except:
-                            pass
-                    try: os.chdir('backups')
-                    except: pass
-                    zipObject.close()
-                    try: os.chdir(path)
-                    except: pass
-                    decrypt.all(password)
-                else:
-                    pass
-            except:
-                print('Wrong Password.')
-                return 'WrongPassword'
+            if encryptBackups==True or ForceEncryption==True:
+                #Encrypt Files
+                try:
+                    if encrypt.all(password) != 1:
+                        #Backup Certian Files
+                        list2=['custom_database.py','history_desc.py','vars_to_save.py','data_save.aes','history.aes', 'settings.py','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
+                        try: os.chdir('backups')
+                        except: pass
+                        zipObject= ZipFile(backup_name+'.zip', 'w')
+                        try: os.chdir(path)
+                        except: pass
+                        for i in range(len(list2)):
+                            try:
+                                zipObject.write(list2[i])
+                            except:
+                                pass
+                        try: os.chdir('backups')
+                        except: pass
+                        zipObject.close()
+                        try: os.chdir(path)
+                        except: pass
+                        decrypt.all(password)
+                    else:
+                        pass
+                except:
+                    print('Wrong Password.')
+                    return 'WrongPassword'
+            elif encryptBackups==False and ForceEncryption==False:
+                #Backup Certian Files
+                list2=['custom_database.py','history_desc.py','vars_to_save.py','data_save.py','history.py', 'settings.py','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
+                try: os.chdir('backups')
+                except: pass
+                zipObject= ZipFile(backup_name+'.zip', 'w')
+                try: os.chdir(path)
+                except: pass
+                for i in range(len(list2)):
+                    try:
+                        zipObject.write(list2[i])
+                    except:
+                        pass
+                try: os.chdir('backups')
+                except: pass
+                zipObject.close()
+                try: os.chdir(path)
+                except: pass
+            if os.path.exists('data_save.py')==True and os.path.exists('data_save.aes')==True:
+                os.remove('data_save.aes')
+            if os.path.exists('history.txt')==True and os.path.exists('history.aes')==True:
+                os.remove('history.aes')
             #Update count.py file.
             backup_count+=1
-            try:
-                os.remove('count.py')
-            except:
-                pass
+            try: os.remove('count.py')
+            except: pass
             file=open('count.py','w')
             file.write('backup_count='+str(backup_count))
             file.close()
@@ -491,7 +523,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                             #Encrypt certian files.
                             if encrypt.all(password) != 1:
                                 #Files to backup
-                                list2=['custom_database.py','history_desc.py','vars_to_save','data_save.aes','history.aes', 'settings.py','paths.png','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
+                                list2=['custom_database.py','history_desc.py','vars_to_save.py','data_save.aes','history.aes', 'settings.py','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
                                 try: os.chdir('backups')
                                 except: pass
                                 zipObject= ZipFile(backup_name.lower()+'.zip', 'w')
@@ -523,8 +555,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             except: pass
     def check_settingsImproved(hide=False):
         found=False
-        settings1=['resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
-        types=[bool, int, int, int, bool, list, bool, str, int, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, str, bool, bool, bool, bool, str, str, str, str, str, bool, bool, bool, bool, bool]
+        settings1=['encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
+        types=[bool, bool, int, int, int, bool, list, bool, str, int, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, str, bool, bool, bool, bool, str, str, str, str, str, bool, bool, bool, bool, bool]
         for i in range(len(settings1)):
             skip=False
             if skip_missing_settings==True:
@@ -2234,39 +2266,48 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             print('(Error) This program was setup on a different version.\nTo disable this prompt goto settings and set app_version_control to False.')
             exit()
     if system != 'windows' and system != "macos" and system != "linux":
-        print('Invalid setting. system=')
+        if quiteStartup == False:
+            print('Invalid setting. system=')
         history.create_history(usage='Invalid Setting', user='system=Error()', hide=debug)
     from sys import platform
     if platform == "linux" or platform == "linux2":
-        print('OS: Linux Distro.')
+        if quiteStartup == False:
+            print('OS: Linux Distro.')
         systemDetectedOperatingSystem='linux'
         #Linux
         if system != "linux" and set_operating_system==True:
-            print('Incorrect OS')
+            if quiteStartup == False:
+                print('Incorrect OS')
             history.create_history(usage='Operating System Exception', user='linux', hide=debug)
             exit()
     elif platform == "darwin":
-        print('OS: Mac OS')
+        if quiteStartup == False:
+            print('OS: Mac OS')
         systemDetectedOperatingSystem='macos'
         # OS X
         if system != "macos" and set_operating_system==True:
-            print('Incorrect OS')
+            if quiteStartup == False:
+                print('Incorrect OS')
             history.create_history(usage='Operating System Exception', user='macos')
             exit()
     elif platform == "win32":
-        print('OS: Windows')
+        if quiteStartup == False:
+            print('OS: Windows')
         systemDetectedOperatingSystem='windows'
         # Windows
         if system != "windows" and set_operating_system==True:
-            print('Incorrect OS')
+            if quiteStartup == False:
+                print('Incorrect OS')
             history.create_history(usage='Operating System Exception', user='windows', hide=debug)
-            exit() 
+            exit()
     if setup_backup_response==True:
         if os.path.exists('count.py')==False:
             file=open('count.py','w')
             file.write('backup_count='+str(backup_startNumber))
             file.close()
             backup_count=backup_startNumber
+    if quiteStartup == False:
+        print('Cleaning Up Junk Files...')
     if os.path.exists('backups')==False:
         os.mkdir('backups')
     try:
@@ -2302,13 +2343,20 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             os.remove('history.aes')
     except:
         pass
+    if quiteStartup==False:
+        print('Checking Settings...')
     check_settingsImproved(hide=logic.gate.not_gate(show_incorrect_settings))
+    if quiteStartup == False and profanity_filter==True:
+        print('Setting Up Profanity Filter...')
     profanityFilter.setup()
-    print('\nSystem Started Correctly!')
+    if quiteStartup == False:
+        print('\nSystem Started Correctly!')
     if time.time()-startupCount<.01:
-        print('Est Time:', str(round(time.time()-startupCount, 2))+'<')
+        if quiteStartup == False:
+            print('Est Time:', str(round(time.time()-startupCount, 2))+'<')
     else:
-        print('Est Time:', round(time.time()-startupCount, 2))
+        if quiteStartup == False:
+            print('Est Time:', round(time.time()-startupCount, 2))
     try:
         if "-release" in n:
             c=''
