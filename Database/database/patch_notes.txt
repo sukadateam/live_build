@@ -1,7 +1,1 @@
-1. Added setting(s) encryptBackups, quiteStartup
-2. Updated backup.create() to work with the newly added setting.
-3. Fixed backup.create() not backing up vars_to_save.py.
-4. Fixed backup_older.create() not backing up vars_to_save.py.
-5. backup.create() will no longer try to backup paths.png since the file does not exist anymore.
-6. backup_older.create() will no longer try to backup paths.png since the file does not exist anymore.
-7. Minor Bug Fixes.
+1. 
