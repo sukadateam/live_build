@@ -13,13 +13,9 @@ from xmlrpc.client import FastMarshaller
 import zipfile
 from pandas import *
 import time
-import math
 startupCount=time.time()
-ex=False
 memory_hash=''
 n = list(sys.argv)
-if ex==True:
-    sys.exit()
 from zipfile import ZipFile
 try:
     from count import backup_count
@@ -37,10 +33,23 @@ try:
     from pyAesCrypt import decryptFile, encryptFile
 except:
     print('Please manually install all required items in requirements.txt.')
+    sys.exit()
 password=None
-from settings import *
-import get_directory
-import version_config
+try:
+    from settings import *
+except:
+    print('Cannot Find settings.py File. File is required for startup.')
+    sys.exit()
+try:
+    import get_directory
+except:
+    print('Cannot Find get_directory.py File. File is required for startup.')
+    sys.exit()
+try:
+    import version_config
+except:
+    print('Cannot Find version_config.py File. File is required for startup.')
+    sys.exit()
 systemDetectedOperatingSystem=None
 list1=[]
 try:
@@ -58,6 +67,7 @@ if sys.version[0:len(required_version)] != required_version and "-skipPythonChec
 if skip_pythonCheck==True:
     n.append('-skipPythonCheck')
 if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck" in n:
+    from pyAesCrypt import decryptFile, encryptFile
     if "resetCollections" not in locals() or "resetCollections" not in globals():
         resetCollections=False
     #Used for history file.
