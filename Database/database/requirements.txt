@@ -2,3 +2,4 @@ pyAesCrypt
 pillow
 pynput
 pandas
+pybind11
