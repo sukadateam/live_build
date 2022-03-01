@@ -120,7 +120,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
     class setupDatabaseWithSpreadSheet:
-        def run():
+        def run(hide=False):
+            history.create_history('Run', 'setupDatabaseWithSpreadSheet.run()', hide=hide)
             toolType, toolName, serialNumber, modelNumber, purchaseDate, loanedTo = setupDatabaseWithSpreadSheet.getAll()
             for i in range(len(toolType)):
                 list3=[toolType[i], toolName[i], serialNumber[i], modelNumber[i], purchaseDate[i], loanedTo[i]]
@@ -129,7 +130,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         list3[x]=""
                         print(list3[x])
                 data_base.edit.add_row(data_base='tools', new_row=[str(list3[0]), str(list3[1]),str(list3[2]), str(list3[3]), str(list3[4]), str(list3[5])], split=False)
-        def getAll():
+        def getAll(hide=False):
+            history.create_history('Run', 'setupDatabaseWithSpreadSheet.getAll()', hide=hide)
             data=read_csv("tools.csv")
             toolType=data['Tool Type'].tolist()
             toolName=data['Tool Name'].tolist()
@@ -141,8 +143,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     class logic:
         class gate:
             def help():
+                history.create_history('Run', 'logic.gate.help()', hide=debug)
                 print('Branches:\n  logic.gate.not_gate()\n  logic.gate.and_gate()\n  logic.gate.or_gate()')
             def xor_gate(input1, input2):
+                history.create_history('Run', 'logic.gate.xor_gate()', hide=debug)
                 if input1 == 0 and input2 == 0:
                     return 0
                 elif input1 == 1 and input2 == 1:
@@ -162,6 +166,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 else:
                     return "None"
             def not_gate(input1):
+                history.create_history('Run', 'logic.gate.not_gate()', hide=debug)
                 if input1==1:
                     return 0
                 if input1==0:
@@ -171,6 +176,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if input1==False:
                     return True
             def and_gate(input1, input2):
+                history.create_history('Run', 'logic.gate.and_gate()', hide=debug)
                 if input1 == 0 and input2 == 0:
                     return 0
                 if input1 == 1 and input2 == 1:
@@ -188,6 +194,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if input1 == False and input2 == True:
                     return False
             def or_gate(input1, input2):
+                history.create_history('Run', 'logic.or_gate()', hide=debug)
                 if input1 == 0 and input2 == 0:
                     return 0
                 if input1 == 1 or input2 == 1:
@@ -198,6 +205,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     return True
     class safe_exit:
         def close(create_backup=True, encryption_passw=None, hide=False, random_name=False, backup_name=None):
+            history.create_history('Run', 'safe_exit.close()', hide=debug)
             print('Safe Exit Protocol In Action! DO NOT CLOSE APPLICATION!')
             safe_exit.RmExcessFiles()
             if create_backup==True:
@@ -209,6 +217,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     pass
             exit()
         def RmExcessFiles():
+            history.create_history('Run', 'safe_exit.RmExcessFiles()', hide=debug)
             #Clean files and folders.
             try: shutil.rmtree('collections')
             except: pass
@@ -218,6 +227,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             except: pass
     class save_in_txtFile:
         def remove_files(hide=False):
+            history.create_history('Run', 'save_in_txtFile.remove_files()', hide=debug)
             os.chdir(path)
             if os.path.exists('collections')==True:
                 os.chdir('collections')
@@ -235,9 +245,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print('Folder does not exist.')
         def itemsNotSignedOut():
+            history.create_history('Run', 'save_in_txtFile.itemsNotSignedOut()', hide=debug)
             notSignedOutItem=[]
             check.signed_out_item()
         def students():
+            history.create_history('Run', 'save_in_txtFile.students()', hide=debug)
             os.chdir('collections')
             file=open('student.txt','w')
             for i in range(len(students)):
@@ -245,6 +257,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file.close()
             os.chdir(path)
         def logs():
+            history.create_history('Run', 'save_in_txtFile.logs()', hide=debug)
             os.chdir('collections')
             #Save all logs of students that currently have items signed out.
             file=open('student_logs.txt','w')
@@ -261,6 +274,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file.close()
             os.chdir(path)
         def users():
+            history.create_history('Run', 'save_in_txtFile.users()', hide=debug)
             os.chdir('collections')
             if OnlyAllowKnownStudents==False:
                 file=open('users.txt','w')
@@ -278,6 +292,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     print('There are no users.')
                 os.chdir(path)
         def tools():
+            history.create_history('Run', 'save_in_txtFile.tools()', hide=debug)
             try:
                 os.chdir('collections')
             except:
@@ -304,6 +319,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             os.chdir(path)
     class display:
         def space(var, max_length=10, hide=False, return_ShortenNotice=False):
+            history.create_history('Run', 'display.space()', hide=debug)
             #Works with display.database to create a nice table to display.
             if isinstance(var, str)==True:
                 length=len(var)
@@ -328,6 +344,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             else:
                 if hide==False: print(errors.not_str())
         def database(data_base=None, database=None, hide=False):
+            history.create_history('Run', 'display.database()', hide=debug)
             #Only works for column_row
             #Prints a asked database to the screen in a nice format.
             if data_base==None:
@@ -357,8 +374,9 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                             list3+=(display.space(((row[i])[1])[x], hide=True))
                         print(list3)
         def settings():
+            history.create_history('Run', 'display.settings()', hide=debug)
             #Shows all settings on the screen.
-            settings1=['resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions','skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
+            settings1=['encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
             for i in range(len(settings1)):
                 try:
                     print(settings1[i]+'='+str(globals()[settings1[i]]))
@@ -366,6 +384,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     print(settings1[i]+'='+'N/A')
     class math1:
         def pi(accuracy=1000000):
+            history.create_history('Run', 'math1.pi()', hide=debug)
             # Initialize denominator
             k = 1
             # Initialize sum
@@ -381,23 +400,28 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 k += 2
             return s
         def distance(speed=None, time=None):
+            history.create_history('Run', 'math1.distance()', hide=debug)
             return speed/time
         def force(mass=None, acceleration=None):
+            history.create_history('Run', 'math1.force()', hide=debug)
             return mass*acceleration
     class backup:
         def reset_count():
+            history.create_history('Run', 'backup.reset_count()', hide=debug)
             try: os.remove('count.py')
             except: pass
             file=open('count.py','w')
             file.write('backup_count='+str(backup_startNumber))
             file.close()
         def clear_all():
+            history.create_history('Run', 'backup.clear_all()', hide=debug)
             #Clear all files
             try: shutil.rmtree('backups')
             except: pass
             os.mkdir('backups')
             backup.reset_count()
         def create(backup_name=None, random_name=False, password=None, hide=False, ForceEncryption=False):
+            history.create_history('Run', 'backup.create()', hide=debug)
             try:
                 password=password.get()
             except:
@@ -476,12 +500,14 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             except: pass
     class backup_older:
         def clear_all():
+            history.create_history('Run', 'backup_older.clear_all()', hide=debug)
             try:
                 shutil.rmtree('backups')
                 os.makedirs('backups')
             except:
                 pass
         def remove(backup_name=None, hide=False):
+            history.create_history('Run', 'backup_older.remove()', hide=debug)
             #Check if function is called without using backup_name
             if backup_name != None:
                 #Check to see if backup with the name ___ exists.
@@ -503,6 +529,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     if hide==False:
                         print(errors.NotSignedIn())
         def create(backup_name=None, password=None, random_name=False, hide=False):
+            history.create_history('Run', 'backup_older.create()', hide=debug)
             #Create random name if asked to
             if random_name==True:
                 backup_name=''
@@ -561,6 +588,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             try: os.remove('hash.txt')
             except: pass
     def check_settingsImproved(hide=False):
+        history.create_history('Run', 'check_settingsImproved()', hide=debug)
         found=False
         settings1=['encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
         types=[bool, bool, int, int, int, bool, list, bool, str, int, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, str, bool, bool, bool, bool, str, str, str, str, str, bool, bool, bool, bool, bool]
@@ -580,6 +608,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             exit()
         check_settings(hide=hide)
     def check_settings(hide=False):
+        history.create_history('Run', 'check_settings()', hide=debug)
         #Checks settings.py to make sure all settings are correct and will not cause a proplem.
         #If one or more items come back as a problem they will be listed,
         error_found1=False
@@ -636,20 +665,25 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 exit()
     class profanityFilter:
         def disable():
+            history.create_history('Run', 'profanityFilter.disable()', hide=debug)
             #Redirect
             profanityFilter.deactivate()
         def enable():
+            history.create_history('Run', 'profanityFilter.enable()', hide=debug)
             #Redirect
             profanityFilter.activate()
         def activate():
+            history.create_history('Run', 'profanityFilter.activate()', hide=debug)
             #Enables profanity filter
             global profanity_filter
             profanity_filter=True
         def deactivate():
+            history.create_history('Run', 'profanityFilter.deactivate()', hide=debug)
             #Disables profanity filter
             global profanity_filter
             profanity_filter=False
         def setup():
+            history.create_history('Run', 'profanityFilter.setup()', hide=debug)
             #Called on startup if enabled to setup the filter.
             global profanity_filter, auto_filter_profanity_speedBoost, list1
             #Check profanity.txt to see if input matches.
@@ -662,6 +696,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     for line in file_in:
                         list1.append(line.replace('\n',''))
         def filter(var, manual=False, hide=False, test=False, record=True):
+            history.create_history('Run', 'profanityFilter.filter()', hide=debug)
             #Give this function a string to check.
             #If a match is found 1 is returned. If none, 0 is returned.
             global auto_filter_profanity
@@ -688,6 +723,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         print('Profanity filter is off.')
                 return 0
     def encrypt_check():
+        history.create_history('Run', 'encrypt_check()', hide=debug)
         #Check to see if save file is encrypted.
         #Return 1 if encrypted, if not return 0.
         try:
@@ -699,6 +735,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         return 0
     class history:
         def get_description(code=None, hide=False):
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Print description of selected history item in terminal if message is found.
             if code!=None:
                 for i in range(len(history_id)):
@@ -707,6 +744,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                             print('Code: '+str(code))
                             print('Message: '+history_description[i])
         def add_description(code=None, description=None):
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Create a description for history if requested.
             #This is automatically called if used.
             if code != None and description != None:
@@ -714,8 +752,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     history_id.append(str(code))
                     history_description.append(str(description))
         def check_forDuplicate(user, usage, hide=False):
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Prevents duplicate items to be recorded.
-            global debug
             file=open('history.txt').read()
             a=len(file)
             a3=len(user)+len(usage)+2
@@ -735,6 +773,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         print('No match found. Writing to history file.')
                 return 0
         def assign_letter(count, hide=False):
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Not in use yet.
             global allowed_digists_forHistory
             count=int(count)
@@ -746,6 +785,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             save.all(hide=hide)
             return a
         def clear():
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Clears history file
             try:
                 os.chdir(path)
@@ -761,18 +801,21 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file.write('history_id=[]\nhistory_description=[]\ncount=1')
             file.close()
         def delete():
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Removes history file
             try:
                 os.remove('history.txt')
             except:
                 pass
         def create():
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Creates history file
             global d1
             ah=open('history.txt','w')
             ah.write('File created: '+d1)
             ah.close()
         def create_history(user, usage, manual_record=False, add_desc=False, desc=None, hide=False):
+            #DO NOT ADD history.create_history IN THIS FUNCTION. IT WILL CAUSE A LOOP.
             #Adds items to history file
             if auto_history_record==True or manual_record==True:
                 if user==None:
@@ -871,6 +914,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 count+=1
             return org
     def check_data(hide=False):
+        history.create_history('Run', 'check_data()', hide=debug)
         #Also remove data sets that are not apart of a database.
         print('\n')
         global import_type
@@ -908,12 +952,14 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             print('Database Check:',check[0])
             print('Rows Check:',check[1])
     def list_count(data_base=None, database=None):
+        history.create_history('Run', 'list_count()', hide=debug)
         if data_base == None:
             data_base=database
         for i in range(len(data_bases)):
             if (data_bases[i])[0]==data_base:
                 return len((data_bases[i])[4])
     def check_input(var):
+        history.create_history('Run', 'check_input()', hide=debug)
         global denied_inputs
         for i in range(len(denied_inputs)):
             if var==denied_inputs[i]:
@@ -921,10 +967,12 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         if var not in denied_inputs:
             return False
     def exit():
+        history.create_history('Run', 'exit()', hide=debug)
         print('Application Closed')
         sys.exit()
     class restore:
         def remove_old_backups(TempChange_retain_backup_time=None, hide=False):
+            history.create_history('Run', 'restore.remove_old_backups()', hide=debug)
             if TempChange_retain_backup_time != None:
                 if isinstance(TempChange_retain_backup_time, int)==True:
                     temp=retain_backup_time
@@ -967,6 +1015,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             except:
                 return False
         def all(beta=False, backup_name=None, password=None, hide=False, restoreFile=['app.py','history_desc.aes','settings.py','data_save.aes','history.aes'], removeFile=['app.py','history_desc.py', 'settings.py','data_save.py','history.txt']):
+            history.create_history('Run', 'restore.all()', hide=debug)
             #Restore everything from a backup.
             if beta == True:
                 if password==None:
@@ -1042,11 +1091,13 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             return program_version
     class get:
         def tool_name(serial):
+            #NO NOT ADD history.create_history() HERE. PERFORMANCE WILL DRAMATICALLY DECREASE!
             for i in range(len(row)):
                 if (row[i])[0]=="tools":
                     if ((row[i])[1])[2]==serial:
                         return ((row[i])[1])[1]
         def try_password(password):
+            history.create_history('Run', 'get.try_password()', hide=debug)
             if system=='windows':
                 global drive_letter
                 try:
@@ -1063,6 +1114,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 except:
                     return 0
         def get_other_hash(password):
+            history.create_history('Run', 'get.get_other_hash()', hide=debug)
             if system=="windows":
                 try:
                     decrypt.hash(password)
@@ -1080,6 +1132,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 except ValueError:
                     print('Incorrect Password')
         def get_hash():
+            history.create_history('Run', 'get.get_hash()', hide=debug)
             try:
                 password = get.password()
                 decrypt.hash(password)
@@ -1096,10 +1149,12 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if global_password==True:
                     get.get_other_hash(password)
         def new_hash(passw=None, normal=False, memory_float=False):
+            history.create_history('Run', 'get.new_hash()', hide=debug)
             get.random_hash(single=normal, memory_float=memory_float)
             get.encrypt_hash(passw)
             password=None
         def encrypt_hash(passw=None, other=False):
+            history.create_history('Run', 'get.encrypt_hash()', hide=debug)
             global drive_letter, global_password
             if passw != None:
                 password=passw
@@ -1120,9 +1175,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     else:
                         pyAesCrypt.encryptFile('hash_other.txt', 'hash_other.aes', password)
                         os.remove('hash_other.txt')
-        def password():
-            return input('Password: ')
         def random_hash(length=100, normal=True, single=False, memory_float=False):
+            history.create_history('Run', 'get.random_hash()', hide=debug)
             if isinstance(length, int) == False:
                 print(errors.not_int())
             if isinstance(length, int) == True:
@@ -1372,6 +1426,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     print(errors.cannot_call_func('check.data_base_exists()'))
     class users:
         def disable(user=None, hide=False):
+            history.create_history('Run', 'users.disable()', hide=debug)
             num=check_input(user)
             #Disables a user
             if num == False:
@@ -1389,6 +1444,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.disable()'))
         def enable(user=None, hide=False):
+            history.create_history('Run', 'users.enable()', hide=debug)
             num=check_input(user)
             #Enables a user
             if num == False:
@@ -1406,6 +1462,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.disable()'))
         def create(new_user=None, new_password=None, new_permission=None, hide=False):
+            history.create_history('Run', 'users.create()', hide=debug)
             global known_users, passwords, permissions
             num1=check_input(new_user)
             num2=check_input(new_password)
@@ -1460,6 +1517,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             if num1 == True or num2 == True:
                 print(errors.cannot_call_func('users.create()'))
         def remove(user=None, hide=False):
+            history.create_history('Run', 'users.remove()', hide=debug)
             print(type(user))
             print('User:'+user+':')
             num=check_input(user)
@@ -1484,11 +1542,13 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.remove()'))
         def show_all():
+            history.create_history('Run', 'users.show_all()', hide=debug)
             global known_users
             for i in range(len(known_users)):
                 print('User: '+known_users[i])
                 print('Permission: '+permissions[i])
         def change_permissions(user=None, new_permission=None, hide=False):
+            history.create_history('Run', 'users.change_permission()', hide=debug)
             num1=check_input(user)
             num2=check_input(new_permission)
             if num1 == False and num2 == False:
@@ -1500,6 +1560,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.change_permissions()'))
         def change_name(user=None, new_name=None, hide=False):
+            history.create_history('Run', 'users.change_name()', hide=debug)
             num1=check_input(user)
             num2=check_input(new_name)
             if profanityFilter.filter(new_name)==1:
@@ -1519,6 +1580,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.change_name()'))
         def change_password(user=None, new_password=None, hide=False):
+            history.create_history('Run', 'users.change_password()', hide=debug)
             global passwords
             num=check_input(user)
             if profanityFilter.filter(new_password)==1:
@@ -1538,9 +1600,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.change_password()'))
         def return_users():
+            #DO NOT ADD history.create_history() HERE. FOR SECURITY REASONS.
             global known_users
             return known_users
         def login_request(user=None, password=None, hide=False):
+            history.create_history('Run', 'users.login_request()', hide=debug)
             #Will return True if credentials are correct, if not will return False
             user=str(user)
             password=str(password)
@@ -1580,6 +1644,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if hide==False:
                     print(errors.cannot_call_func('users.login_request()'))
         def logout(hide=False):
+            history.create_history('Run', 'users.logout()', hide=debug)
             global user_logged, user_permission, profanity_filter, disable_filter_admin
             try:
                 if user_permission=="admin":
@@ -1591,6 +1656,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if debug==True and hide==False:
                     print("No user signed in.")
         def return_login_cred():
+            history.create_history('Run', 'users.return_login_cred()', hide=debug)
             try:
                 global user_logged, user_permission
                 if user_logged==None:
@@ -1685,7 +1751,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 else:
                     if hide==False:
                         print(errors.database_does_not_exist())
-            def remove_item(data_base=None, item_to_remove=None, database=None):
+            def remove_item(data_base=None, item_to_remove=None, database=None, hide=False):
                 if data_base == None:
                     data_base=database
                 history.create_history(item_to_remove, 'Remove item', hide=hide)

@@ -2,4 +2,5 @@ pyAesCrypt
 pillow
 pynput
 pandas
-pybind11
+pybind11 #Might remove
+cython
