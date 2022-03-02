@@ -21,7 +21,7 @@ set_operating_system=False
 #Allowed windows versions. You can choose 7, 8, 10, 11. Only works if system setting is set to windows.
 allow_windows_version='10'
 #min and max password lengths, and allowed characters
-min_length=5 #MCannot be smaller than 5
+min_length=5 #Cannot be smaller than 5
 max_length=15 #Cannot be bigger than 99
 allowedPassword_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890*()# '
 

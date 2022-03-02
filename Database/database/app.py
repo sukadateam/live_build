@@ -145,10 +145,12 @@ class options:
         e2.config(height=button_height, width=button_width)
         e2.pack()
         save_in_txtFile.users()
+        os.chdir('collections')
         if systemDetectedOperatingSystem=="windows":
             os.system('notepad.exe users.txt')
         if systemDetectedOperatingSystem=="macos":
             subprocess.call(['open', '-a', 'TextEdit', 'users.txt'])
+        os.chdir(path)
     def center_buttons(notInteger=False):
         global other2
         clear()
