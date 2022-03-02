@@ -4,6 +4,4 @@
 4. Added argument (hide) database.edit.remove_items().
 5. Updated display.settings() to show new settings.
 6. Removed get.password(). This function is not needed.
-
-
-history.create_history('Run', '', hide=debug)
+7. Fixed show users in app.py.
