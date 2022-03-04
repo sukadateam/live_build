@@ -453,6 +453,12 @@ class options:
         if check.barcode(id)==True:
             if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
                 data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)
+            if printer_debug==True:
+                print('Creating Barcode...')
+            print_instructions.createBarcode(id, qr_code=True)
+            if printer_debug==True:
+                print('Printing...')
+            print_instructions.print('barcode.png')
             clear()
             send()
         else:

@@ -133,6 +133,8 @@ quiteStartup=False
 #Settings coming soon. Do not change unless your a dare devil.
 #Print in the terminal if prints fail and what printer it is using.
 printer_debug=True
+#What is the name of your printer?
+printer_name='iDPRT_SP310'
 
 #Remove if you aren't using my custom application.
 #Settings for application.
@@ -157,5 +159,5 @@ side_tilt=200
 
 
 
-
+#Ignore this
 #No settings are pending. Send a request on GitHub for ideas.

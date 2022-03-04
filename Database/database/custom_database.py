@@ -138,18 +138,25 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                             ((row[i])[1])[2]=abc
                             a=False
     class print_instructions:
-        def print(file_name, rmFileAfterPrint=False, printer='iDPRT_SP310'):
+        def print(file_name, rmFileAfterPrint=False):
+            if printer_debug==True:
+                print('Sending Print Command...')
             print_cmd = 'lpr -P %s %s'
-            os.system(print_cmd % (printer, file_name))
+            os.system(print_cmd % (printer_name, file_name))
             if rmFileAfterPrint==True:
+                if printer_debug==True:
+                    print("Removing Old File...")
                 os.remove(file_name)
         def printAllToolsBarcodes():
             #This Process will only go as fast as the printer.
             pass
         def createBarcode(barcode1, file_name='barcode', qr_code=False, barcode=False):
             #File is saved at png.
+            if os.path.exists(file_name+'.png')==True:
+                os.remove(file_name+'.png')
             if qr_code==True and barcode==True:
-                print("Please only select EITHER qr_code or barcode.")
+                if printer_debug==True:
+                    print("Please only select EITHER qr_code or barcode.")
             else:
                 if qr_code==True:
                     qr = qrcode.QRCode(
@@ -159,7 +166,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     qr.add_data(str(barcode))
                     qr.make(fit=True)
                     img = qr.make_image(fill='black', back_color='white')
-                    img.save(str(file_name)+'png')
+                    img.save(str(file_name)+'.png')
                 elif barcode==True:
                     if isinstance(barcode1, int)==True:
                         from barcode import EAN13

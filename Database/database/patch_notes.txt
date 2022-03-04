@@ -1,6 +1,8 @@
-1. Added printing options.
+1. Added printing options:
     Sends a task to a printer.
-2. Added barcode making options.
+2. Added barcode making options:
     Given input will be turned into a qr code saved in a png file with the name being the assigned name.
-3. Added assignBarcodesToItemsWithout() function.
+3. Added assignBarcodesToItemsWithout() function:
     Used to assign serial/barcodes to tools without any serial/barcode.
+4. Added setting printer_name:
+    Used to tell the database what printer to use.
