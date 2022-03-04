@@ -145,16 +145,27 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def printAllToolsBarcodes():
             #This Process will only go as fast as the printer.
             pass
-        def createBarcode(barcode, file_name='barcode'):
-            #Creating an instance of qrcode
-            qr = qrcode.QRCode(
-                version=1,
-                box_size=10,
-                border=5)
-            qr.add_data(str(barcode))
-            qr.make(fit=True)
-            img = qr.make_image(fill='black', back_color='white')
-            img.save('qrcode001.png')
+        def createBarcode(barcode1, file_name='barcode', qr_code=False, barcode=False):
+            #File is saved at png.
+            if qr_code==True and barcode==True:
+                print("Please only select EITHER qr_code or barcode.")
+            else:
+                if qr_code==True:
+                    qr = qrcode.QRCode(
+                        version=1,
+                        box_size=10,
+                        border=5)
+                    qr.add_data(str(barcode))
+                    qr.make(fit=True)
+                    img = qr.make_image(fill='black', back_color='white')
+                    img.save(str(file_name)+'png')
+                elif barcode==True:
+                    if isinstance(barcode1, int)==True:
+                        from barcode import EAN13
+                        my_code = EAN13(barcode)
+                        my_code.save(str(file_name))
+                    else:
+                        print('Barcodes must be numbers.')
     class setupDatabaseWithSpreadSheet:
         def run(hide=False):
             history.create_history('Run', 'setupDatabaseWithSpreadSheet.run()', hide=hide)
