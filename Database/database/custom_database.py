@@ -1,8 +1,10 @@
 #Things to do next:
 #Nothin'!!!
+from ast import Bytes
 from dis import show_code
 from email.encoders import encode_7or8bit
 from ftplib import error_reply
+from io import BytesIO
 from json import tool
 from re import L
 import sys, os
@@ -12,7 +14,11 @@ from venv import create
 from xmlrpc.client import FastMarshaller
 import zipfile
 from pandas import *
+from barcode import EAN13
+from barcode.writer import ImageWriter
 import time
+import qrcode
+from io import BytesIO
 startupCount=time.time()
 memory_hash=''
 n = list(sys.argv)
@@ -119,6 +125,36 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     except:
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
+    def assignBarcodesToItemsWithout():
+        for i in range(len(row)):
+            if (row[i])[0] == "tools":
+                if ((row[i])[1])[2]==" ":
+                    while True:
+                        abc=''
+                        for i in range(8):
+                            abc+=random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')
+                        if check.barcode(abc)==True:
+                            ((row[i])[1])[2]=abc
+                            print(((row[i])[1])[2])
+    class print_instructions:
+        def print(file_name, rmFileAfterPrint=False):
+            print_cmd = 'lpr -P %s %s'
+            os.system(print_cmd % ('iDPRT_SP310', file_name))
+            if rmFileAfterPrint==True:
+                os.remove(file_name)
+        def printAllToolsBarcodes():
+            #This Process will only go as fast as the printer.
+            pass
+        def createBarcode(barcode, file_name='barcode'):
+            #Creating an instance of qrcode
+            qr = qrcode.QRCode(
+                version=1,
+                box_size=10,
+                border=5)
+            qr.add_data(str(barcode))
+            qr.make(fit=True)
+            img = qr.make_image(fill='black', back_color='white')
+            img.save('qrcode001.png')
     class setupDatabaseWithSpreadSheet:
         def run(hide=False):
             history.create_history('Run', 'setupDatabaseWithSpreadSheet.run()', hide=hide)
@@ -2491,3 +2527,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
+    assignBarcodesToItemsWithout()
