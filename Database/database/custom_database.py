@@ -128,18 +128,19 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     def assignBarcodesToItemsWithout():
         for i in range(len(row)):
             if (row[i])[0] == "tools":
-                if ((row[i])[1])[2]==" ":
-                    while True:
+                if ((row[i])[1])[2]=='':
+                    a=True
+                    while a==True:
                         abc=''
-                        for i in range(8):
+                        for x in range(8):
                             abc+=random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')
                         if check.barcode(abc)==True:
                             ((row[i])[1])[2]=abc
-                            print(((row[i])[1])[2])
+                            a=False
     class print_instructions:
-        def print(file_name, rmFileAfterPrint=False):
+        def print(file_name, rmFileAfterPrint=False, printer='iDPRT_SP310'):
             print_cmd = 'lpr -P %s %s'
-            os.system(print_cmd % ('iDPRT_SP310', file_name))
+            os.system(print_cmd % (printer, file_name))
             if rmFileAfterPrint==True:
                 os.remove(file_name)
         def printAllToolsBarcodes():
@@ -2538,4 +2539,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    assignBarcodesToItemsWithout()
+    save_in_txtFile.tools()
