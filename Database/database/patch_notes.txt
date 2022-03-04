@@ -1,7 +1,1 @@
-1. If system can't load pyAesCrypt, then the function sys.exit() will now be called.
-2. If system can't find settings file in the application root dir, then the function sys.exit() will now be called.
-3. If system can't find version_config in the application root dir, then the function sys.exit() will now be called.
-4. Added argument (hide) database.edit.remove_items().
-5. Updated display.settings() to show new settings.
-6. Removed get.password(). This function is not needed.
-7. Fixed show users in app.py.
+1. 

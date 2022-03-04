@@ -3,7 +3,7 @@
 #Required python version to run program.
 required_version='3.10.2'
 #Application version. Just for show.
-program_version='0.5.3'
+program_version='0.5.4'
 #Drive letter to store hash.aes file on root directory. Letter must be Uppercase. Windows only.
 drive_letter='E'
 #Drive name to store hash.aes file on root directory. Linux only.
@@ -131,7 +131,8 @@ encryptBackups=False
 quiteStartup=False
 
 #Settings coming soon. Do not change unless your a dare devil.
-#No settings are pending. Send a request on GitHub for ideas.
+#Print in the terminal if prints fail and what printer it is using.
+printer_debug=True
 
 #Remove if you aren't using my custom application.
 #Settings for application.
@@ -147,3 +148,14 @@ entry_text_color='Black'
 OnlyAllowKnownStudents=False
 secretsAllowed=False
 side_tilt=200
+
+
+
+
+
+
+
+
+
+
+#No settings are pending. Send a request on GitHub for ideas.
