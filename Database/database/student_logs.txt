@@ -1,0 +1,1 @@
+OnlyAllowKnownStudents is set to False.

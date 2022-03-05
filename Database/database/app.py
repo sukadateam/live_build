@@ -243,7 +243,8 @@ class options:
         if systemDetectedOperatingSystem=="windows":
             os.system('notepad.exe student_logs.txt')
         if systemDetectedOperatingSystem=="macos":
-            subprocess.call(['open', '-a', 'TextEdit', 'student_logs.txt'])
+            os.system('open -a TextEdit student_logs.txt')
+            #subprocess.call(['open', '-a', 'TextEdit', 'student_logs.txt'])
         os.chdir(path)
         Tk.update_idletasks(tk)
     def remove_student(notFound=False):

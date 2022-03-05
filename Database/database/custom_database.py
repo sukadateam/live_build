@@ -314,9 +314,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def logs():
             history.create_history('Run', 'save_in_txtFile.logs()', hide=debug)
             if OnlyAllowKnownStudents==False:
+                os.chdir('collections')
                 file=open('student_logs.txt','w')
                 file.write("OnlyAllowKnownStudents is set to False.")
                 file.close()
+                os.chdir(path)
             if OnlyAllowKnownStudents==True:
                 os.chdir('collections')
                 #Save all logs of students that currently have items signed out.

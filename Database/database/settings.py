@@ -3,7 +3,7 @@
 #Required python version to run program.
 required_version='3.10.2'
 #Application version. Just for show.
-program_version='0.5.5'
+program_version='0.5.6'
 #Drive letter to store hash.aes file on root directory. Letter must be Uppercase. Windows only.
 drive_letter='E'
 #Drive name to store hash.aes file on root directory. Linux only.
@@ -24,6 +24,8 @@ allow_windows_version='10'
 min_length=5 #Cannot be smaller than 5
 max_length=15 #Cannot be bigger than 99
 allowedPassword_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890*()# '
+#What is the name of your printer?
+printer_name='iDPRT_SP310'
 
 
 
@@ -129,12 +131,12 @@ dontCloseAfterEmptyStart=False
 encryptBackups=False
 #Keep the terminal hush hush on startup. Only major errors will show.
 quiteStartup=False
-
-#Settings coming soon. Do not change unless your a dare devil.
 #Print in the terminal if prints fail and what printer it is using.
 printer_debug=False
-#What is the name of your printer?
-printer_name='iDPRT_SP310'
+
+#Settings coming soon. Do not change unless your a dare devil.
+#No settings are pending. Send a request on GitHub for ideas.
+
 
 #Remove if you aren't using my custom application.
 #Settings for application.
@@ -150,14 +152,3 @@ entry_text_color='Black'
 OnlyAllowKnownStudents=False
 secretsAllowed=False
 side_tilt=200
-
-
-
-
-
-
-
-
-
-#Ignore this
-#No settings are pending. Send a request on GitHub for ideas.
