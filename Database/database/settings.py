@@ -132,7 +132,7 @@ quiteStartup=False
 
 #Settings coming soon. Do not change unless your a dare devil.
 #Print in the terminal if prints fail and what printer it is using.
-printer_debug=True
+printer_debug=False
 #What is the name of your printer?
 printer_name='iDPRT_SP310'
 
