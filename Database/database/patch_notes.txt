@@ -6,3 +6,5 @@
     Used to assign serial/barcodes to tools without any serial/barcode.
 4. Added setting printer_name:
     Used to tell the database what printer to use.
+5. Added button called Test Print:
+    Used to try to print an example Serial/Barcode. Can be used for just making one.

@@ -46,10 +46,14 @@ def version_note():
     e90=Label(tk, text='Program Version: '+program_version)
     e90.pack(side=BOTTOM, anchor=W)
 class buttons:
+    def test_print(y=100):
+        e22 = Button(tk, text='Test Print', command=options.test_print, bg=button_color, foreground=text_color, font=text_font)
+        e22.config(height=button_height, width=button_width)
+        e22.place(x=((int(x))/2)-side_tilt, y=y)
     def show_users(y=100):
-        e21 = Button(tk, text='Show Users', command=options.show_users, bg=button_color, foreground=text_color, font=text_font)
-        e21.config(height=button_height, width=button_width)
-        e21.place(x=((int(x))/2)-side_tilt, y=y)
+        e22 = Button(tk, text='Show Users', command=options.show_users, bg=button_color, foreground=text_color, font=text_font)
+        e22.config(height=button_height, width=button_width)
+        e22.place(x=((int(x))/2)-side_tilt, y=y)
     def center_buttons(y=100):
         e21 = Button(tk, text='Center Buttons', command=options.center_buttons, bg=button_color, foreground=text_color, font=text_font)
         e21.config(height=button_height, width=button_width)
@@ -136,6 +140,23 @@ class buttons:
         e17.config(height=button_height, width=button_width)
         e17.place(x=((int(x))/2)-side_tilt, y=y)
 class options:
+    def test_print():
+        clear()
+        global other2
+        e1 = Label(tk, text='Enter A Test Serial/Barcode To Print', bg=button_color, foreground=text_color, font=text_font)
+        e1.config(height=button_height, width=button_width+10)
+        e1.pack()
+        other2 = Entry(tk)
+        other2.pack()
+        Tk.update_idletasks(tk)
+        e3=Button(tk, text='Submit', command=options.test_print_next)
+        e3.pack()
+    def test_print_next():
+        global other2
+        print_instructions.createBarcode(input, qr_code=True)
+        print_instructions.print(file_name='barcode.png')
+        clear()
+        send()
     def show_users():
         clear()
         e1 = Label(tk, text='Check Collections Folder For Info', bg=button_color, foreground=text_color)
@@ -729,10 +750,19 @@ def admin_page2():
     buttons.show_students(y=400)
     buttons.change_password(y1=500)
     buttons.center_buttons(y=600)
-    buttons.show_users(y=700)
     e25=Button(tk, text='Back', command=admin_screen, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=800)
+    e25.place(x=((int(x))/2)-side_tilt, y=700)
+    e26=Button(tk, text='Next', command=admin_page3, bg=button_color, foreground=text_color, font=text_font)
+    e26.config(height=button_height, width=button_width)
+    e26.place(x=((int(x))/2)-side_tilt, y=800)
+def admin_page3():
+    clear()
+    buttons.show_users(y=0)
+    buttons.test_print(y=100)
+    e25=Button(tk, text='Back', command=admin_page2, bg=button_color, foreground=text_color, font=text_font)
+    e25.config(height=button_height, width=button_width)
+    e25.place(x=((int(x))/2)-side_tilt, y=700)
 #Ask the database if the entered credentials are correct.
 def ask(command=send):
     global name, password, startup
