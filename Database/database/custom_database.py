@@ -125,6 +125,12 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     except:
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
+    class installUpdate:
+        def run(terminalSet=False, visualSet=False):
+            if terminalSet==True:
+                pass
+            if visualSet==True:
+                pass
     def assignBarcodesToItemsWithout():
         for i in range(len(row)):
             if (row[i])[0] == "tools":
@@ -141,6 +147,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def print(file_name, rmFileAfterPrint=False):
             if printer_debug==True:
                 print('Sending Print Command...')
+            #os.system("Out-Printer -Name "+'"'+str(printer_name)+'"')
             print_cmd = 'lpr -P %s %s'
             os.system(print_cmd % (printer_name, file_name))
             if rmFileAfterPrint==True:
@@ -306,15 +313,29 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def students():
             history.create_history('Run', 'save_in_txtFile.students()', hide=debug)
             os.chdir('collections')
-            file=open('student.txt','w')
-            for i in range(len(students)):
-                file.write('Student: '+students[i])
-            file.close()
+            try:
+                os.remove('student.txt')
+            except:
+                pass
+            if OnlyAllowKnownStudents==False:
+                file=open('student.txt','w')
+                file.write("OnlyAllowKnownStudents is set to False.")
+                file.close()
+                os.chdir(path)
+            if OnlyAllowKnownStudents==True:
+                file=open('student.txt','w')
+                for i in range(len(students)):
+                    file.write('Student: '+students[i])
+                file.close()
             os.chdir(path)
         def logs():
             history.create_history('Run', 'save_in_txtFile.logs()', hide=debug)
             if OnlyAllowKnownStudents==False:
                 os.chdir('collections')
+                try:
+                    os.remove('student_logs.txt')
+                except:
+                    pass
                 file=open('student_logs.txt','w')
                 file.write("OnlyAllowKnownStudents is set to False.")
                 file.close()
@@ -338,6 +359,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def users():
             history.create_history('Run', 'save_in_txtFile.users()', hide=debug)
             os.chdir('collections')
+            try:
+                os.remove('users.txt')
+            except:
+                pass
             if len(known_users)>0:
                 #Save all users in a text file. Do not write passwords.
                 file=open('users.txt','w')
@@ -351,6 +376,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             history.create_history('Run', 'save_in_txtFile.tools()', hide=debug)
             try:
                 os.chdir('collections')
+            except:
+                pass
+            try:
+                os.remove('tools.txt')
             except:
                 pass
             #Save all tools in a text file.

@@ -1,10 +1,4 @@
-1. Added printing options:
-    Sends a task to a printer.
-2. Added barcode making options:
-    Given input will be turned into a qr code saved in a png file with the name being the assigned name.
-3. Added assignBarcodesToItemsWithout() function:
-    Used to assign serial/barcodes to tools without any serial/barcode.
-4. Added setting printer_name:
-    Used to tell the database what printer to use.
-5. Added button called Test Print:
-    Used to try to print an example Serial/Barcode. Can be used for just making one.
+1. Updated save_in_txtFile[students, logs, tools, users]:
+    Now Removes Old File Before Creating A New One. Fixes Problems With NotePad.exe.
+2. OnlyAllowKnownStudents Now Works With save_in_txtFile.students():
+    Works Relative to save_in_txtFile.logs()
