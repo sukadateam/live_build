@@ -18,6 +18,12 @@ from barcode import EAN13
 from barcode.writer import ImageWriter
 import time
 import qrcode
+try:
+    #Windows print
+    import win32api
+    import win32print
+except:
+    pass
 from io import BytesIO
 startupCount=time.time()
 memory_hash=''
@@ -144,12 +150,23 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                             ((row[i])[1])[2]=abc
                             a=False
     class print_instructions:
+        def help():
+            print('Branches:\n  print_instructions.print()\n  print_instructions.createBarcode()')
         def print(file_name, rmFileAfterPrint=False):
             if printer_debug==True:
                 print('Sending Print Command...')
-            #os.system("Out-Printer -Name "+'"'+str(printer_name)+'"')
-            print_cmd = 'lpr -P %s %s'
-            os.system(print_cmd % (printer_name, file_name))
+            if systemDetectedOperatingSystem !="windows":
+                print_cmd = 'lpr -P %s %s'
+                os.system(print_cmd % (printer_name, file_name))
+            if systemDetectedOperatingSystem == "windows":
+                win32api.ShellExecute(
+                    0,
+                    "print",
+                    file_name,
+                    '/d:"%s"' % win32print.GetDefaultPrinter(),
+                    ".",
+                    0
+                )
             if rmFileAfterPrint==True:
                 if printer_debug==True:
                     print("Removing Old File...")
@@ -170,7 +187,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         version=1,
                         box_size=10,
                         border=5)
-                    qr.add_data(str(barcode))
+                    qr.add_data(str(barcode1))
                     qr.make(fit=True)
                     img = qr.make_image(fill='black', back_color='white')
                     img.save(str(file_name)+'.png')
@@ -182,6 +199,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     else:
                         print('Barcodes must be numbers.')
     class setupDatabaseWithSpreadSheet:
+        def help():
+            print('Branches:\n  setupDatabaseWithSpreadSheet.run()\n  setupDatabaseWithSpreadSheet.getAll()')
         def run(hide=False):
             history.create_history('Run', 'setupDatabaseWithSpreadSheet.run()', hide=hide)
             toolType, toolName, serialNumber, modelNumber, purchaseDate, loanedTo = setupDatabaseWithSpreadSheet.getAll()
@@ -266,6 +285,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 if input1 == True or input2 == True:
                     return True
     class safe_exit:
+        def help():
+            print('Branches:\n  safe_exit.close()\n  safe_exit.RmExcessFiles()')
         def close(create_backup=True, encryption_passw=None, hide=False, random_name=False, backup_name=None):
             history.create_history('Run', 'safe_exit.close()', hide=debug)
             print('Safe Exit Protocol In Action! DO NOT CLOSE APPLICATION!')
@@ -288,6 +309,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             try: os.remove('hash_other.txt')
             except: pass
     class save_in_txtFile:
+        def help():
+            print('Branches:\n  save_in_txtFile.remove_files()\n  save_in_txtFile.itemsNotSignedOut()\n  save_in_txtFile.students()\n  save_in_txtFile.logs()\n  save_in_txtFile.students()\n  save_in_txtFile.tools()')
         def remove_files(hide=False):
             history.create_history('Run', 'save_in_txtFile.remove_files()', hide=debug)
             os.chdir(path)
@@ -403,6 +426,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file.close()
             os.chdir(path)
     class display:
+        def help():
+            print('Branches:\n  display.space()\n  display.database()\n  display.settings()')
         def space(var, max_length=10, hide=False, return_ShortenNotice=False):
             history.create_history('Run', 'display.space()', hide=debug)
             #Works with display.database to create a nice table to display.
@@ -491,6 +516,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             history.create_history('Run', 'math1.force()', hide=debug)
             return mass*acceleration
     class backup:
+        def help():
+            print('Branches:\n  backup.reset_count()\n  backup.clear_all()\n  backup.create()')
         def reset_count():
             history.create_history('Run', 'backup.reset_count()', hide=debug)
             try: os.remove('count.py')
@@ -2558,7 +2585,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             print('GitHub: github.com/sukadateam')
             ex=True
         if "-reset" in n:
-            list2=['version.pyc','directory.pyc','history_desc.pyc','users.txt','tools.txt','count.py','data_save.py','version.py', 'directory.py','history.txt','hash_other.aes','hash.aes','hash_other.txt','hash.txt','settings.pyc','app.pyc','data.pyc']
+            list2=['version.pyc','directory.pyc','history_desc.pyc','count.py','data_save.py','version.py', 'directory.py','history.txt','hash_other.aes','hash.aes','hash_other.txt','hash.txt','settings.pyc','app.pyc','data.pyc']
             for i in range(len(list2)):
                 try:
                     os.remove(list2[i])
@@ -2574,6 +2601,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             ex=True
     except:
         pass
+    if "-help" in n:
+        print('Current Arguments:\n  -skipVersionCheck (Bypasses Application Version Check)\n  -v (Prints Progam Version)\n  -info (Prints Import Info)\n  -reset (Resets Application)\n  -skipPythonCheck (Ignore Python Version)')
     if dontCloseAfterEmptyStart==True:
         input('Hit enter to Continue: ')
     #You must set a Normal level password
@@ -2581,4 +2610,3 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    save_in_txtFile.tools()

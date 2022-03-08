@@ -153,7 +153,7 @@ class options:
         e3.pack()
     def test_print_next():
         global other2
-        print_instructions.createBarcode(input, qr_code=True)
+        print_instructions.createBarcode(str(other2.get()), qr_code=True)
         print_instructions.print(file_name='barcode.png')
         clear()
         send()

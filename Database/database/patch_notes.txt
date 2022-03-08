@@ -1,4 +1,12 @@
-1. Updated save_in_txtFile[students, logs, tools, users]:
-    Now Removes Old File Before Creating A New One. Fixes Problems With NotePad.exe.
-2. OnlyAllowKnownStudents Now Works With save_in_txtFile.students():
-    Works Relative to save_in_txtFile.logs()
+1. Added Help Function To print_instructions:
+    To Help Developers see Branches.
+2. Added Help Function To setupDatabaseWithSpreadSheet:
+    To Help Developers see Branches.
+3. Added Help Function To safe_exut:
+    To Help Developers see Branches.
+4. Added Help Function To save_in_txtFile:
+    To Help Developers see Branches.
+5. Added Help Function To display:
+    To Help Developers see Branches.
+6. Added Help Function To backup:
+    To Help Developers see Branches.

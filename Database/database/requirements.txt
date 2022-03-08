@@ -5,3 +5,4 @@ pandas
 pybind11 #Might remove
 cython
 python-barcode
+pypiwin32
