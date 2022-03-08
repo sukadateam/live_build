@@ -353,30 +353,23 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             os.chdir(path)
         def logs():
             history.create_history('Run', 'save_in_txtFile.logs()', hide=debug)
-            if OnlyAllowKnownStudents==False:
-                os.chdir('collections')
-                try:
-                    os.remove('student_logs.txt')
-                except:
-                    pass
-                file=open('student_logs.txt','w')
-                file.write("OnlyAllowKnownStudents is set to False.")
-                file.close()
-                os.chdir(path)
-            if OnlyAllowKnownStudents==True:
-                os.chdir('collections')
-                #Save all logs of students that currently have items signed out.
-                file=open('student_logs.txt','w')
-                for i in range(len(lists)):
-                    if (lists[i])[0]=="logs":
-                        for x in range(len((lists[i])[1])):
-                            serial=(((lists[i])[1])[x])[0]
-                            student=(((lists[i])[1])[x])[1]
-                            tool_name=get.tool_name(serial)
-                            file.write('Item: '+display.space(str(tool_name), max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
-                    file.write('\n\n#'+str(35)+' character max length.')
-                        #Save Item name, Serial, And student name.
-                        #Search tools with serial to find item name.
+            os.chdir('collections')
+            try:
+                os.remove('student_logs.txt')
+            except:
+                pass
+            #Save all logs of students that currently have items signed out.
+            file=open('student_logs.txt','w')
+            for i in range(len(lists)):
+                if (lists[i])[0]=="logs":
+                    for x in range(len((lists[i])[1])):
+                        serial=(((lists[i])[1])[x])[0]
+                        student=(((lists[i])[1])[x])[1]
+                        tool_name=get.tool_name(serial)
+                        file.write('Item: '+display.space(str(tool_name), max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
+                file.write('\n\n#'+str(35)+' character max length.')
+                    #Save Item name, Serial, And student name.
+                    #Search tools with serial to find item name.
                 file.close()
                 os.chdir(path)
         def users():

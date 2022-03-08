@@ -239,7 +239,10 @@ class options:
         e2.config(height=button_height, width=button_width)
         e2.pack()
         save_in_txtFile.logs()
-        os.chdir('collections')
+        try:
+            os.chdir('collections')
+        except:
+            pass
         if systemDetectedOperatingSystem=="windows":
             os.system('notepad.exe student_logs.txt')
         if systemDetectedOperatingSystem=="macos":
@@ -816,7 +819,7 @@ def ask_encrypt_password(wrong=False):
         global other3
         clear()
         version_note()
-        e1=Label(tk, text='Enter Encrypt/Decrypt Password', width=23)
+        e1=Label(tk, text='Enter Encrypt/Decrypt Password')
         e1.pack()
         other3=Entry(tk, show='*')
         other3.config(background=entry_background_color, fg=entry_text_color)
@@ -930,7 +933,7 @@ def open_app_next():
 def create_encryption_password(InvalidPassword=False):
     version_note()
     global other3
-    e1=Label(tk, text='Enter new Encryption Password', width=22)
+    e1=Label(tk, text='Enter new Encryption Password')
     e1.pack()
     other3=Entry(tk)
     other3.config(background=entry_background_color, fg=entry_text_color)

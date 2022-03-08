@@ -24,7 +24,7 @@ allow_windows_version='10'
 min_length=5 #Cannot be smaller than 5
 max_length=15 #Cannot be bigger than 99
 allowedPassword_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890*()# '
-#What is the name of your printer?
+#What is the name of your printer? For macOS.
 printer_name='iDPRT_SP310'
 
 
