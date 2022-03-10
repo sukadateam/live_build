@@ -1,2 +1,6 @@
 1. Fixed A Directory Error on save_in_txtFile:
     Incorrect Indent Was Found.
+2. Fixed Signin Item Displaying A Message when Not supposed to:
+    'Item was not signed out\nAnd/Or Item does not exist'
+3. Tools.txt now shows if an item has been signed out:
+    Makes It Easier to Find out what tools are missing.

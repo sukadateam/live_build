@@ -1,5 +1,3 @@
-#Give a report of items not signed out, and items signed out. Not signed out on top. Signed out on bottom.
-#Will be used to help the teacher see what may be missing.
 from email.utils import parseaddr
 from operator import truediv
 from platform import python_version

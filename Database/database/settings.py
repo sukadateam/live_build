@@ -6,7 +6,7 @@ required_version='3.10.2'
 program_version='0.5.8'
 #Drive letter to store hash.aes file on root directory. Letter must be Uppercase. Windows only.
 drive_letter='E'
-#Drive name to store hash.aes file on root directory. Linux only.
+#Drive name to store hash.aes file on root directory. Linux only. Setting is not required to be changed.
 drive_name='Computer'
 #Operating System or OS. Can be macos, windows or linux. Must be lowercase.
 system='macos'
@@ -22,7 +22,7 @@ set_operating_system=False
 allow_windows_version='10'
 #min and max password lengths, and allowed characters
 min_length=5 #Cannot be smaller than 5
-max_length=15 #Cannot be bigger than 99
+max_length=25 #Cannot be bigger than 99
 allowedPassword_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890*()# '
 #What is the name of your printer? For macOS.
 printer_name='iDPRT_SP310'
