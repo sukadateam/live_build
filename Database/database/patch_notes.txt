@@ -10,3 +10,11 @@
     To Help Developers see Branches.
 6. Added Help Function To backup:
     To Help Developers see Branches.
+7. users.logout() will now return "UserNotSignedIn":
+    If no user is currently signed in.
+8. users.return_login_cred() will now return "UserNotSignedIn":
+    If no user is currently signed in instead of returning an error.
+9. Added Setting AskForEncryptionPassword:
+    Used To skip Encryption Password If Not Needed.
+10. Added Setting clearHistoryOnStartup:
+    Clears History File Each Time The System is Started.

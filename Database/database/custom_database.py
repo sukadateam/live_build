@@ -82,6 +82,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     from pyAesCrypt import decryptFile, encryptFile
     if "resetCollections" not in locals() or "resetCollections" not in globals():
         resetCollections=False
+    if "auto_filter_profanity_speedBoost" not in locals() or "auto_filter_profanity_speedBoost" not in globals():
+        auto_filter_profanity_speedBoost=False
     #Used for history file.
     from datetime import date
     today=date.today()
@@ -131,13 +133,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     except:
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
-    class installUpdate:
-        def run(terminalSet=False, visualSet=False):
-            if terminalSet==True:
-                pass
-            if visualSet==True:
-                pass
     def assignBarcodesToItemsWithout():
+        history.create_history('Run', 'assignBarcodesToItemsWithout()', hide=debug)
         for i in range(len(row)):
             if (row[i])[0] == "tools":
                 if ((row[i])[1])[2]=='':
@@ -153,6 +150,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def help():
             print('Branches:\n  print_instructions.print()\n  print_instructions.createBarcode()')
         def print(file_name, rmFileAfterPrint=False):
+            history.create_history('Run', 'print_instructions.print()', hide=debug)
             if printer_debug==True:
                 print('Sending Print Command...')
             if systemDetectedOperatingSystem !="windows":
@@ -175,6 +173,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             #This Process will only go as fast as the printer.
             pass
         def createBarcode(barcode1, file_name='barcode', qr_code=False, barcode=False):
+            history.create_history('Run', 'print_instructions.createBarcode()', hide=debug)
             #File is saved at png.
             if os.path.exists(file_name+'.png')==True:
                 os.remove(file_name+'.png')
@@ -479,7 +478,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         def settings():
             history.create_history('Run', 'display.settings()', hide=debug)
             #Shows all settings on the screen.
-            settings1=['printer_name', 'printer_debug','quiteStartup','encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
+            settings1=['clearHistoryOnStartup', 'AskForEncryptionPassword','printer_name', 'printer_debug','quiteStartup','encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
             for i in range(len(settings1)):
                 try:
                     print(settings1[i]+'='+str(globals()[settings1[i]]))
@@ -695,8 +694,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     def check_settingsImproved(hide=False):
         history.create_history('Run', 'check_settingsImproved()', hide=debug)
         found=False
-        settings1=['printer_name', 'printer_debug','quiteStartup','encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
-        types=[str, bool, bool, bool, bool, int, int, int, bool, list, bool, str, int, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, str, bool, bool, bool, bool, str, str, str, str, str, bool, bool, bool, bool, bool]
+        settings1=['clearHistoryOnStartup', 'AskForEncryptionPassword', 'printer_name', 'printer_debug','quiteStartup','encryptBackups','resetCollections','retain_backup_time','backup_startNumber','retain_backup_time','setup_backup_response','allowed_backupPermissions', 'skip_missing_settings','allowedPassword_chars', 'min_length', 'max_length','strict_password','auto_filter_profanity_speedBoost', 'quit_ifIncorrect', 'allowed_digists_forHistory', 'multi_process', 'auto_filter_profanity', 'skip_history_copy', 'auto_error_record', 'assign_digit_forHistory', 'app_version_control', 'set_operating_system', 'allow_windows_version', 'auto_history_record', 'show_incorrect_settings', 'do_not_remove', 'fail_safe', 'required_version', 'program_version', 'drive_letter', 'drive_name', 'system', 'profanity_filter', 'disable_filter_admin', 'global_password', 'dont_load_save', 'optimize_on_startup']
+        types=[bool, bool, str, bool, bool, bool, bool, int, int, int, bool, list, bool, str, int, int, bool, bool, bool, int, bool, bool, bool, bool, bool, bool, bool, str, bool, bool, bool, bool, str, str, str, str, str, bool, bool, bool, bool, bool]
         for i in range(len(settings1)):
             skip=False
             if skip_missing_settings==True:
@@ -705,6 +704,15 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             if skip==False:
                 if isinstance(globals()[settings1[i]], types[i]) == False:
                     found=True
+                    if fail_safe==True:
+                        if types[i]==str:
+                            globals()[settings1[i]]=''
+                        if types[i]==bool:
+                            globals()[settings1[i]]=False
+                        if types[i]==int:
+                            globals()[settings1[i]]=10
+                        if types[i]==list:
+                            globals()[settings1[i]]=[]
                     if hide==False:
                         print(str(settings1[i]))
         if found==True:
@@ -1752,24 +1760,27 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             history.create_history('Run', 'users.logout()', hide=debug)
             global user_logged, user_permission, profanity_filter, disable_filter_admin
             try:
+                #If no users is logged in, user_permission will cause an error.
                 if user_permission=="admin":
                     if disable_filter_admin==True:
                         profanity_filter=True
                 user_permission=None
                 user_logged=None
             except:
-                if debug==True and hide==False:
+                #Handles the error and prints a message and/or return(s) it
+                if debug==True or hide==False:
                     print("No user signed in.")
+                return "UserNotSignedIn"
         def return_login_cred():
             history.create_history('Run', 'users.return_login_cred()', hide=debug)
             try:
                 global user_logged, user_permission
                 if user_logged==None:
-                    return False
+                    return 'UserNotSignedIn', 'UserNotSignedIn'
                 else:
                     return user_logged, user_permission
             except:
-                return False
+                return 'UserNotSignedIn', 'UserNotSignedIn'
     class data_base:
         def help():
             print('Branches:\n  data_base.edit\n  data_base.empty\n  data_base.show\n  data_base.remove\n  data_base.create')
@@ -2376,7 +2387,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             print('(Error) A backup with the same name already exists.')
         def profanityDetected(var, user):
             try:
-                history.create_history(user, 'profanityDetected', manual_record=auto_error_record, add_desc=True, desc=user+' tried to use a curse word knwon as: '+var, hide=debug)
+                history.create_history(user, 'profanityDetected', manual_record=auto_error_record, add_desc=True, desc=user+' tried to use a curse word known as: '+var, hide=debug)
             except:
                 print(errors.cannot_call_func('<Null>'))
             print('Not Alllowed: ',var)
@@ -2426,7 +2437,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         profanityFilter.setup()
     if allow_windows_version == "11":
         allow_windows_version="10"
-        #Windows 11 still thinks it's windows 10. I know it's weird.
+        #Windows 11 still thinks it's windows 10. I know, it's weird.
     if optimize_on_startup==True:
         optimize.run(hide=debug)
         #Optmize on startup if setting is set to True.
@@ -2486,6 +2497,12 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             backup_count=backup_startNumber
     if quiteStartup == False:
         print('Cleaning Up Junk Files...')
+    if clearHistoryOnStartup == True:
+        try:
+            os.remove('history.txt()')
+            history.create()
+        except:
+            pass
     try:
         os.remove('barcode.png')
     except:

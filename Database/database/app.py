@@ -507,7 +507,7 @@ class options:
         get.new_hash(passw=passw, normal=True)
         send()
     def logout():
-        users.logout()
+        users.logout(hide=True)
         clear()
         login()
     def create_user(user_exists=False, unknownPermission=False, PasswordDoesNotMeetReq=False, NoUsernameEntered=False, InvalidPassword=False):
@@ -619,19 +619,12 @@ def clear():
 #Sends logged in users to correct area depending on permissions.
 def send():
     global force
-    try: os.remove('data_save.aes')
-    except: pass
-    try: os.remove('history.aes')
-    except: pass
     save.all(hide=logic.gate.not_gate(debug))
     try:
         os.remove('hash.txt')
     except:
         pass
-    try:
-        name, perm= users.return_login_cred()
-    except:
-        pass
+    name, perm= users.return_login_cred()
     if force!=None:
        perm=force
     if perm=="secret":
@@ -815,27 +808,30 @@ def ask(command=send):
             login(wrong=True)
 #Ask for the encyption password to allow for auto backups.
 def ask_encrypt_password(wrong=False): 
-    if os.path.exists('hash.aes')==1:
-        global other3
-        clear()
-        version_note()
-        e1=Label(tk, text='Enter Encrypt/Decrypt Password')
-        e1.pack()
-        other3=Entry(tk, show='*')
-        other3.config(background=entry_background_color, fg=entry_text_color)
-        other3.pack()
-        e3=Button(tk, text='Submit', command=ask_encrypt_password_next)
-        e3.pack()
-        e5=Button(tk, text='Back', command=options.logout)
-        e5.pack()
-        if wrong==True:
-            e4=Label(tk, text='Incorrect Password', width=20)
-            e4.pack()
-        Tk.update_idletasks(tk)
+    if AskForEncryptionPassword==True:
+        if os.path.exists('hash.aes')==1:
+            global other3
+            clear()
+            version_note()
+            e1=Label(tk, text='Enter Encrypt/Decrypt Password')
+            e1.pack()
+            other3=Entry(tk, show='*')
+            other3.config(background=entry_background_color, fg=entry_text_color)
+            other3.pack()
+            e3=Button(tk, text='Submit', command=ask_encrypt_password_next)
+            e3.pack()
+            e5=Button(tk, text='Back', command=options.logout)
+            e5.pack()
+            if wrong==True:
+                e4=Label(tk, text='Incorrect Password', width=20)
+                e4.pack()
+            Tk.update_idletasks(tk)
+        else:
+            print('Could not find hash. Asking user to create one.')
+            clear()
+            create_encryption_password()
     else:
-        print('Could not find hash. Asking user to create one.')
-        clear()
-        create_encryption_password()
+        send()
 def ask_encrypt_password_next():
     global other3, startup
     other3=other3.get()
@@ -879,7 +875,6 @@ def login(wrong=False, e1_button='Login', command=ask, show_student_button=True,
         e6=Label(tk, text='Incorrect Password', width=20)
         e6.pack()
     Tk.update_idletasks(tk)
-    Tk.update(tk)
 #Force the student page.
 def force_student():
     global user_permission, user_logged, force
@@ -970,3 +965,4 @@ if os.path.exists('history.aes')==True or os.path.exists('data_save.aes'):
 else:
     login()
 tk.mainloop()
+safe_exit.close()
