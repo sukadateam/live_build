@@ -370,7 +370,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     #Save Item name, Serial, And student name.
                     #Search tools with serial to find item name.
                 file.close()
-                os.chdir(path)
+            os.chdir(path)
         def users():
             history.create_history('Run', 'save_in_txtFile.users()', hide=debug)
             os.chdir('collections')

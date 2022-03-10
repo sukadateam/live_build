@@ -1,20 +1,2 @@
-1. Added Help Function To print_instructions:
-    To Help Developers see Branches.
-2. Added Help Function To setupDatabaseWithSpreadSheet:
-    To Help Developers see Branches.
-3. Added Help Function To safe_exut:
-    To Help Developers see Branches.
-4. Added Help Function To save_in_txtFile:
-    To Help Developers see Branches.
-5. Added Help Function To display:
-    To Help Developers see Branches.
-6. Added Help Function To backup:
-    To Help Developers see Branches.
-7. users.logout() will now return "UserNotSignedIn":
-    If no user is currently signed in.
-8. users.return_login_cred() will now return "UserNotSignedIn":
-    If no user is currently signed in instead of returning an error.
-9. Added Setting AskForEncryptionPassword:
-    Used To skip Encryption Password If Not Needed.
-10. Added Setting clearHistoryOnStartup:
-    Clears History File Each Time The System is Started.
+1. Fixed A Directory Error on save_in_txtFile:
+    Incorrect Indent Was Found.
