@@ -508,7 +508,7 @@ class options:
         users.logout(hide=True)
         clear()
         login()
-    def create_user(user_exists=False, unknownPermission=False, PasswordDoesNotMeetReq=False, NoUsernameEntered=False, InvalidPassword=False):
+    def create_user(profanityDetected=False, user_exists=False, unknownPermission=False, PasswordDoesNotMeetReq=False, NoUsernameEntered=False, InvalidPassword=False):
         clear()
         global other, other1, other2
         e1 = Label(tk, text='New user', bg=button_color, foreground=text_color)
@@ -545,6 +545,9 @@ class options:
         if InvalidPassword==True:
             e10=Label(tk, text='Invalid Password', bg=button_color, foreground=text_color)
             e10.pack()
+        if profanityDetected==True:
+            e11=Label(tk, text='Profanity Detected.', bg=button_color, foreground=text_color)
+            e11.pack()
         Tk.update_idletasks(tk)
     def create_user_next():
         global other, other1, other2
@@ -566,6 +569,8 @@ class options:
                 else:
                     other, other1, other2 = None, None, None
                     send()
+            else:
+                options.create_user(profanityDetected=True)
         Tk.update_idletasks(tk)
     def remove_user(UserNotFound=False, ThatsYou=False):
         clear()
