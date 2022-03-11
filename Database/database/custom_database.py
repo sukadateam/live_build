@@ -387,7 +387,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             else:
                 print('There are no users.')
             os.chdir(path)
-        def tools(max_length=10):
+        def tools(max_length=20, showIfShort=False):
             history.create_history('Run', 'save_in_txtFile.tools()', hide=debug)
             try:
                 os.chdir('collections')
@@ -414,8 +414,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     #Partn is just a placeholder and is not used. It handles the Return of return_ShortenNotice from display.space()
                     part12, partn=display.space(str(check.signed_out_item(str(((row[i])[1])[2]))), hide=True, max_length=max_length, return_ShortenNotice=True)
                     if part3==True or part5==True or part7==True or part9==True or part11==True:
-                        part1, part17=display.space(str(True), hide=True, max_length=max_length)
-                    file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'  Shortenend: '+str(part1)+'\n')
+                        part1, part17=display.space(str(True), hide=True, max_length=max_length, return_ShortenNotice=True)
+                    if showIfShort==False:
+                        file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'\n\n')
+                    if showIfShort==True:
+                        file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'  Shortenend: '+str(part1)+'\n\n')
             file.write('\n\n#'+str(max_length)+' character max length.')
             file.close()
             os.chdir(path)
@@ -444,7 +447,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     notice=True
                     if return_ShortenNotice==True:
                         return var, notice
-                return var
+                return var, False
             else:
                 if hide==False: print(errors.not_str())
         def database(data_base=None, database=None, hide=False):
