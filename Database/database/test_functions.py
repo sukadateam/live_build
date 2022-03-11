@@ -1,5 +1,5 @@
 #Testing purposes only.
-hide=True
+hide=False
 from custom_database import *
 import time
 while True:
