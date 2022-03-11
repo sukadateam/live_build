@@ -312,7 +312,7 @@ class options:
         e2 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
         e2.config(height=button_height, width=button_width)
         e2.pack()
-        save_in_txtFile.tools()
+        save_in_txtFile.tools(max_length=25)
         os.chdir('collections')
         if systemDetectedOperatingSystem=="windows":
             os.system('notepad.exe tools.txt')
@@ -531,7 +531,7 @@ class options:
         e5 = Button(tk, text='Back', command=send)
         e5.pack()
         if user_exists==True:
-            e6=Label(tk, text='User exists', bg=button_color, foreground=text_color)
+            e6=Label(tk, text='User Exists', bg=button_color, foreground=text_color)
             e6.pack()
         if unknownPermission==True:
             e7=Label(tk, text='Unknown Permission\nAllowed Permissions:\nAdmin, Teacher, Student', bg=button_color, foreground=text_color)
@@ -540,7 +540,7 @@ class options:
             e8=Label(tk, text='Password Does Not Meet Requirements\nMin Length:'+str(min_length)+'\nMax Length: '+str(max_length)+'\nAllowed Characters: '+allowedPassword_chars, bg=button_color, foreground=text_color)
             e8.pack()
         if NoUsernameEntered==True:
-            e9=Label(tk, text='Give the user a name', bg=button_color, foreground=text_color)
+            e9=Label(tk, text='Give The User A Name', bg=button_color, foreground=text_color)
             e9.pack()
         if InvalidPassword==True:
             e10=Label(tk, text='Invalid Password', bg=button_color, foreground=text_color)
