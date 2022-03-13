@@ -364,7 +364,7 @@ class options:
             name_no=False
             if list1[1] not in students and OnlyAllowKnownStudents==True:
                 name_no=True
-            options.signout_item(no_name=name_no, no_barcode=check.barcode(str(list1[0])), already_signed=check.signed_out_item(str(list1[0])))
+            options.signout_item(no_name=name_no, no_barcode=check.barcode(str(list1[0])), already_signed=check.signed_out_item(str(list1[0]), hide=logic.gate.not_gate(debug)))
     def signin_item(doesNotExist=False):
         global other
         clear()
