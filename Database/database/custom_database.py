@@ -1,5 +1,5 @@
 #Things to do next:
-#Nothin'!!!
+#Work On Encoding/Decoding Issues!
 from ast import Bytes
 from dis import show_code
 from email.encoders import encode_7or8bit
@@ -14,6 +14,7 @@ from typing import Set
 from venv import create
 from xmlrpc.client import FastMarshaller
 import zipfile
+from html5lib import serialize
 from pandas import *
 from barcode import EAN13
 from barcode.writer import ImageWriter
@@ -72,7 +73,8 @@ except:
         print('Could not find the required file: history_desc.py You may experience problems.')
 if quiteStartup == False:
     print('This Project is hosted on github. github.com/sukadateam')
-    print('If problems occur, try to check if a new version exists.\n\n')
+    print('If problems occur, try to check if a new version exists.')
+    print('-or- Create An Issue On GitHub!\n\n')
 if sys.version[0:len(required_version)] != required_version and "-skipPythonCheck" not in n and skip_pythonCheck==False:
     print('Required python version:', required_version)
     print('Current python version:', sys.version[0:len(required_version)])
@@ -364,9 +366,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             for i in range(len(lists)):
                 if (lists[i])[0]=="logs":
                     for x in range(len((lists[i])[1])):
-                        serial=(((lists[i])[1])[x])[0]
-                        student=(((lists[i])[1])[x])[1]
-                        tool_name=get.tool_name(serial)
+                        serial_Temp=serial= save_in_txtFile.decode((((lists[i])[1])[x])[0], displaySpace=False)
+                        serial = save_in_txtFile.decode((((lists[i])[1])[x])[0], displaySpace=False)
+                        student = save_in_txtFile.decode((((lists[i])[1])[x])[1], displaySpace=False)
+                        tool_name=get.tool_name(serial_Temp)
                         file.write('Item: '+display.space(str(tool_name), max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
                 file.write('\n\n#'+str(35)+' character max length.')
                     #Save Item name, Serial, And student name.
@@ -384,7 +387,9 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 #Save all users in a text file. Do not write passwords.
                 file=open('users.txt','w')
                 for i in range(len(known_users)):
-                    file.write(known_users[i]+': '+permissions[i]+'\n')
+                    a, b = save_in_txtFile.decode(known_users[i], max_length=25)
+                    c, d = save_in_txtFile.decode(permissions[i], max_length=25)
+                    file.write(str(a)+': '+str(c)+'\n')
                 file.close()
             else:
                 print('There are no users.')
@@ -439,12 +444,19 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file.write('\n\n#'+str(max_length)+' character max length.')
             file.close()
             os.chdir(path)
-        def decode(input, max_length=10):
-            if str(input)[0:2]=="b'":
-                part, part1 = display.space(str(input)[2:len(input)+2], hide=True, max_length=max_length, return_ShortenNotice=True)
+        def decode(input, max_length=10, displaySpace=True):
+            if displaySpace==True:
+                if str(input)[0:2]=="b'":
+                    part, part1 = display.space(str(input)[2:len(input)+2], hide=True, max_length=max_length, return_ShortenNotice=True)
+                else:
+                    part, part1 = display.space(str(input), hide=True, max_length=max_length, return_ShortenNotice=True)
+                return part, part1
             else:
-                part, part1 = display.space(str(input), hide=True, max_length=max_length, return_ShortenNotice=True)
-            return part, part1
+                if str(input)[0:2]=="b'":
+                    part = str(input)[2:len(input)+2]
+                else:
+                    part = str(input)
+                return part
     class display:
         def help():
             print('Branches:\n  display.space()\n  display.database()\n  display.settings()')
@@ -463,6 +475,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     if hide==False: print('Final Length:',len(var))
                     if return_ShortenNotice==True:
                         return var, notice
+                    else:
+                        var
                 if length>max_length:
                     #Shorten to fit
                     var=var[0:max_length]
@@ -470,7 +484,12 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     notice=True
                     if return_ShortenNotice==True:
                         return var, notice
-                return var, False
+                    else:
+                        return var
+                if return_ShortenNotice==True:
+                    return var, False
+                else:
+                    return var
             else:
                 if hide==False: print(errors.not_str())
         def database(data_base=None, database=None, hide=False):
@@ -1235,8 +1254,12 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             #NO NOT ADD history.create_history() HERE. PERFORMANCE WILL DRAMATICALLY DECREASE!
             for i in range(len(row)):
                 if (row[i])[0]=="tools":
-                    if ((row[i])[1])[2]==serial:
-                        return ((row[i])[1])[1]
+                    a = save_in_txtFile.decode(((row[i])[1])[2], displaySpace=False)
+                    c = save_in_txtFile.decode(serial, displaySpace=False)
+                    if a==c:
+                        a = save_in_txtFile.decode(((row[i])[1])[1], displaySpace=False)
+                        return a
+            return "CouldNotReturn"
         def try_password(password):
             history.create_history('Run', 'get.try_password()', hide=debug)
             if system=='windows':
@@ -2651,4 +2674,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    save_in_txtFile.tools()
+    save_in_txtFile.logs()

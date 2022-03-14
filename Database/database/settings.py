@@ -136,7 +136,7 @@ printer_debug=False
 
 #Settings coming soon. Do not change unless your a dare devil.
 #Clears history file after each startup.
-clearHistoryOnStartup=True
+clearHistoryOnStartup=False
 
 
 #Remove if you aren't using my custom application.
