@@ -157,9 +157,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             history.create_history('Run', 'print_instructions.print()', hide=debug)
             if printer_debug==True:
                 print('Sending Print Command...')
+            #For Linux and macOS
             if systemDetectedOperatingSystem !="windows":
                 print_cmd = 'lpr -P %s %s'
                 os.system(print_cmd % (printer_name, file_name))
+            #For Windows :)
             if systemDetectedOperatingSystem == "windows":
                 win32api.ShellExecute(
                     0,
@@ -169,13 +171,17 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     ".",
                     0
                 )
+            #Remove File So It doesn't mess things up when trying to create one.
             if rmFileAfterPrint==True:
                 if printer_debug==True:
                     print("Removing Old File...")
                 os.remove(file_name)
         def printAllToolsBarcodes():
             #This Process will only go as fast as the printer.
-            pass
+            for i in range(len(row)):
+                if (row[i])[0]=="tools":
+                    print_instructions.createBarcode(str(((row[i])[1])[2]), qr_code=True)
+                    print_instructions.print(file_name="barcode.png")
         def createBarcode(barcode1, file_name='barcode', qr_code=False, barcode=False):
             history.create_history('Run', 'print_instructions.createBarcode()', hide=debug)
             #File is saved at png.
@@ -2674,4 +2680,3 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    save_in_txtFile.logs()

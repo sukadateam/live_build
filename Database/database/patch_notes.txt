@@ -1,10 +1,1 @@
-1. Added Function save_in_txtFile.decode():
-    Is used for all the other functions in save_in_txtFile.
-2. Updated save_in_txtFile.tools() to work with decoding:
-    Added Features.
-3. Updated save_in_txtFile.users() to work with decoding:
-    Added Features.
-4. Fixed Display.space() arguemnt return_ShortenNotice:
-    Didn't return correct values if set to False.
-5. Updated save_in_txtFile.logs() to work with decoding:
-    Added Features.
+1. 
