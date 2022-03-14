@@ -401,10 +401,24 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 pass
             #Save all tools in a text file.
             file=open('tools.txt','w')
-            testing=False
-            if testing==True:
-                pass
-            if testing==False:
+            DecodeMethod=True #Default is True
+            if DecodeMethod==True:
+                for i in range(len(row)):
+                    if (row[i])[0]=="tools":
+                        part, part1 = save_in_txtFile.decode(((row[i])[1])[2], max_length=20)
+                        part2, part3 = save_in_txtFile.decode(((row[i])[1])[1], max_length=20)
+                        part4, part5 = save_in_txtFile.decode(((row[i])[1])[3], max_length=20)
+                        part6, part7 = save_in_txtFile.decode(((row[i])[1])[4], max_length=20)
+                        part8, part9 = save_in_txtFile.decode(((row[i])[1])[5], max_length=20)
+                        part10, part11 = save_in_txtFile.decode(((row[i])[1])[0], max_length=20)
+                        part12, partn=display.space(str(check.signed_out_item(str(((row[i])[1])[2]))), hide=True, max_length=max_length, return_ShortenNotice=True)
+                        if part3==True or part5==True or part7==True or part9==True or part11==True:
+                            part1, part17=display.space(str(True), hide=True, max_length=max_length, return_ShortenNotice=True)
+                        if showIfShort==False:
+                            file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'\n\n')
+                        if showIfShort==True:
+                            file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'  Shortenend: '+str(part1)+'\n\n')
+            if DecodeMethod==False:
                 for i in range(len(row)):
                     if (row[i])[0]=="tools":
                         #Item Returned, True/False
@@ -425,9 +439,9 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             file.write('\n\n#'+str(max_length)+' character max length.')
             file.close()
             os.chdir(path)
-        def decode(input):
+        def decode(input, max_length=10):
             if str(input)[0:2]=="b'":
-                part, part1 = display.space(str(input)[2:len(input)-1], hide=True, max_length=max_length, return_ShortenNotice=True)
+                part, part1 = display.space(str(input)[2:len(input)+2], hide=True, max_length=max_length, return_ShortenNotice=True)
             else:
                 part, part1 = display.space(str(input), hide=True, max_length=max_length, return_ShortenNotice=True)
             return part, part1
@@ -2637,3 +2651,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
+    save_in_txtFile.tools()

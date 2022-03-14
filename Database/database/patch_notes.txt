@@ -1,2 +1,4 @@
 1. Added Function save_in_txtFile.decode():
     Is used for all the other functions in save_in_txtFile. #Not at the moment though
+2. Updated save_in_txtFile.tools() to work with decoding:
+    Adding Features.
