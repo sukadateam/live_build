@@ -44,10 +44,14 @@ def version_note():
     e90=Label(tk, text='Program Version: '+program_version)
     e90.pack(side=BOTTOM, anchor=W)
 class buttons:
+    def print_allBarcodes(y=100):
+        e24 = Button(tk, text='Print All Barcode(s)', command=options.print_allBarcodes)
+        e24.config(height=button_height, width=button_width)
+        e24.place(x=((int(x))/2)-side_tilt, y=y)
     def test_print(y=100):
-        e22 = Button(tk, text='Test Print', command=options.test_print, bg=button_color, foreground=text_color, font=text_font)
-        e22.config(height=button_height, width=button_width)
-        e22.place(x=((int(x))/2)-side_tilt, y=y)
+        e23 = Button(tk, text='Test Print', command=options.test_print, bg=button_color, foreground=text_color, font=text_font)
+        e23.config(height=button_height, width=button_width)
+        e23.place(x=((int(x))/2)-side_tilt, y=y)
     def show_users(y=100):
         e22 = Button(tk, text='Show Users', command=options.show_users, bg=button_color, foreground=text_color, font=text_font)
         e22.config(height=button_height, width=button_width)
@@ -138,6 +142,9 @@ class buttons:
         e17.config(height=button_height, width=button_width)
         e17.place(x=((int(x))/2)-side_tilt, y=y)
 class options:
+    def print_allBarcodes():
+        print_instructions.printAllToolsBarcodes()
+        send()
     def test_print():
         clear()
         global other2
@@ -760,6 +767,7 @@ def admin_page3():
     clear()
     buttons.show_users(y=0)
     buttons.test_print(y=100)
+    buttons.print_allBarcodes(y=200)
     e25=Button(tk, text='Back', command=admin_page2, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
     e25.place(x=((int(x))/2)-side_tilt, y=700)
