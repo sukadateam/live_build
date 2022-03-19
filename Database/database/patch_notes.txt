@@ -1,1 +1,6 @@
-1. 
+1. print_instructions.printAllToolsBarcodes() has been finished:
+    Function now works.
+2. Added Button (Print All Barcode(s)):
+    DO NOT PRESS UNLESS YOU UNDERSTAND THE RISK(s)
+3. Updated setupDatabaseWithSpreadSheet:
+    Now automatically runs assignBarcodesToItemsWithout().

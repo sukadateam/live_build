@@ -150,6 +150,15 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         if check.barcode(abc)==True:
                             ((row[i])[1])[2]=abc
                             a=False
+    def BrokenTool(input):
+        for i in range(len(row)):
+            if (row[i])[0]=="tools":
+                if save_in_txtFile.decode(((row[i])[1])[6], displaySpace=False)==input:
+                    try:
+                        ((row[i])[1])[6]=True
+                    except Exception as ErrorHandle:
+                        if debug==True:
+                            print(ErrorHandle)
     class print_instructions:
         def help():
             print('Branches:\n  print_instructions.print()\n  print_instructions.createBarcode()')
@@ -219,7 +228,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     if type(list3[x]) == float:
                         list3[x]=" "
                         print(list3[x])
-                data_base.edit.add_row(data_base='tools', new_row=[str(list3[0]).encode(encoding='UTF-8',errors='strict'), str(list3[1]).encode(encoding='UTF-8',errors='strict'),str(list3[2]).encode(encoding='UTF-8',errors='strict'), str(list3[3]).encode(encoding='UTF-8',errors='strict'), str(list3[4]).encode(encoding='UTF-8',errors='strict'), str(list3[5]).encode(encoding='UTF-8',errors='strict')], split=False)
+                data_base.edit.add_row(data_base='tools', new_row=[str(list3[0]).encode(encoding='UTF-8',errors='strict'), str(list3[1]).encode(encoding='UTF-8',errors='strict'),str(list3[2]).encode(encoding='UTF-8',errors='strict'), str(list3[3]).encode(encoding='UTF-8',errors='strict'), str(list3[4]).encode(encoding='UTF-8',errors='strict'), str(list3[5]).encode(encoding='UTF-8',errors='strict'), False], split=False)
+            assignBarcodesToItemsWithout()
         def getAll(hide=False):
             history.create_history('Run', 'setupDatabaseWithSpreadSheet.getAll()', hide=hide)
             data=read_csv("tools.csv")

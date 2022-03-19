@@ -44,6 +44,10 @@ def version_note():
     e90=Label(tk, text='Program Version: '+program_version)
     e90.pack(side=BOTTOM, anchor=W)
 class buttons:
+    def edit_data(y=100):
+        e25 = Button(tk, text='Edit Inventory', command=options.edit_data)
+        e25.config(height=button_height, width=button_width)
+        e25.place(x=((int(x))/2)-side_tilt, y=y)
     def print_allBarcodes(y=100):
         e24 = Button(tk, text='Print All Barcode(s)', command=options.print_allBarcodes)
         e24.config(height=button_height, width=button_width)
@@ -142,6 +146,32 @@ class buttons:
         e17.config(height=button_height, width=button_width)
         e17.place(x=((int(x))/2)-side_tilt, y=y)
 class options:
+    def edit_data():
+        clear()
+        la=Label(tk, text='Select One')
+        la.pack()
+        e1 = Button(tk, text='Broken Tool', command=options.broken_tool)
+        e1.config(height=button_height, width=button_width)
+        e1.pack()
+        e2 = Button(tk, text='Update Tool Info')
+        e2.config(height=button_height, width=button_width)
+        e2.pack()
+        Tk.update_idletasks(tk)
+    def broken_tool():
+        clear()
+        global other1
+        e1=Label(tk, text='Serial/Barcode')
+        e1.pack()
+        other1 = Entry(tk)
+        other1.pack()
+        e3=Button(tk, text='Submit', command=options.broken_tool_next)
+        e3.pack()
+        Tk.update_idletasks(tk)
+    def broken_tool_next():
+        global other1
+        serial=other1.get()
+        BrokenTool(serial)
+        send()
     def print_allBarcodes():
         print_instructions.printAllToolsBarcodes()
         send()
@@ -153,9 +183,9 @@ class options:
         e1.pack()
         other2 = Entry(tk)
         other2.pack()
-        Tk.update_idletasks(tk)
         e3=Button(tk, text='Submit', command=options.test_print_next)
         e3.pack()
+        Tk.update_idletasks(tk)
     def test_print_next():
         global other2
         print_instructions.createBarcode(str(other2.get()), qr_code=True)
@@ -768,6 +798,7 @@ def admin_page3():
     buttons.show_users(y=0)
     buttons.test_print(y=100)
     buttons.print_allBarcodes(y=200)
+    buttons.edit_data(y=300)
     e25=Button(tk, text='Back', command=admin_page2, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
     e25.place(x=((int(x))/2)-side_tilt, y=700)
