@@ -4,3 +4,5 @@
     DO NOT PRESS UNLESS YOU UNDERSTAND THE RISK(s)
 3. Updated setupDatabaseWithSpreadSheet:
     Now automatically runs assignBarcodesToItemsWithout().
+4. Added function BrokenTool():
+    Used to call an item as broken.

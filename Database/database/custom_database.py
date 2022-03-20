@@ -153,7 +153,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     def BrokenTool(input):
         for i in range(len(row)):
             if (row[i])[0]=="tools":
-                if save_in_txtFile.decode(((row[i])[1])[6], displaySpace=False)==input:
+                if save_in_txtFile.decode(((row[i])[1])[2], displaySpace=False)==input:
                     try:
                         ((row[i])[1])[6]=True
                     except Exception as ErrorHandle:
@@ -433,12 +433,14 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         part8, part9 = save_in_txtFile.decode(((row[i])[1])[5], max_length=20)
                         part10, part11 = save_in_txtFile.decode(((row[i])[1])[0], max_length=20)
                         part12, partn=display.space(str(check.signed_out_item(str(((row[i])[1])[2]))), hide=True, max_length=max_length, return_ShortenNotice=True)
+                        part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
                         if part3==True or part5==True or part7==True or part9==True or part11==True:
                             part1, part17=display.space(str(True), hide=True, max_length=max_length, return_ShortenNotice=True)
                         if showIfShort==False:
-                            file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'\n\n')
+                            file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'Broken: '+str(part13)+'\n\n')
                         if showIfShort==True:
-                            file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'  Shortenend: '+str(part1)+'\n\n')
+                            file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'Broken: '+str(part13)+'  Shortenend: '+str(part1)+'\n\n')
+            #Depreciated
             if DecodeMethod==False:
                 for i in range(len(row)):
                     if (row[i])[0]=="tools":
@@ -2690,3 +2692,5 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
+    BrokenTool("*0017792")
+    save.all()
