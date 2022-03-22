@@ -6,3 +6,5 @@
     Now automatically runs assignBarcodesToItemsWithout().
 4. Added function BrokenTool():
     Used to call an item as broken.
+5. Updated check.barcode():
+    Now uses save_in_txtFile.barcode()

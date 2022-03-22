@@ -1,7 +1,9 @@
 from email.utils import parseaddr
 from operator import truediv
+from pickle import EXT4
 from platform import python_version
 from tkinter import *
+from types import NoneType
 from xml.etree.ElementTree import TreeBuilder
 from custom_database import *
 import subprocess
@@ -20,6 +22,7 @@ other4=None
 other5=None
 other6=None
 other7=None
+other8=None
 other=None
 other1=None
 other2=None
@@ -148,14 +151,17 @@ class buttons:
 class options:
     def edit_data():
         clear()
-        la=Label(tk, text='Select One')
+        la=Label(tk, text='Select One\n(THIS PAGE IS EXPERIMENTAL)')
         la.pack()
         e1 = Button(tk, text='Broken Tool', command=options.broken_tool)
         e1.config(height=button_height, width=button_width)
         e1.pack()
-        e2 = Button(tk, text='Update Tool Info')
+        e2 = Button(tk, text='Update Tool Info', command=options.UpdateToolInfo)
         e2.config(height=button_height, width=button_width)
         e2.pack()
+        e4 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
+        e4.config(height=button_height, width=button_width)
+        e4.pack()
         Tk.update_idletasks(tk)
     def broken_tool():
         clear()
@@ -166,12 +172,97 @@ class options:
         other1.pack()
         e3=Button(tk, text='Submit', command=options.broken_tool_next)
         e3.pack()
+        e4 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
+        e4.pack()
         Tk.update_idletasks(tk)
     def broken_tool_next():
         global other1
         serial=other1.get()
         BrokenTool(serial)
         send()
+    def UpdateToolInfo(NoBarcodeGiven=False, IncorrectBarcode=False, BarcodeExists=False):
+        history.create_history('Run', 'UpdateToolInfo()', hide=debug)
+        clear()
+        global other, other1, other4, other5, other6, other7, other8
+        e20=Label(tk, text='Leave field empty if you wish to not change it.\nBarcode/Serial field is required.')
+        e20.pack()
+        e10 = Label(tk, text='Tool Type', bg=button_color, foreground=text_color)
+        e10.pack()
+        other7 = Entry(tk)
+        other7.config(background=entry_background_color, fg=entry_text_color)
+        other7.pack()
+        e1 = Label(tk, text='Tool Name', bg=button_color, foreground=text_color)
+        e1.pack()
+        other = Entry(tk)
+        other.config(background=entry_background_color, fg=entry_text_color)
+        other.pack()
+        e2 = Label(tk, text='Barcode/Serial', bg=button_color, foreground=text_color)
+        e2.pack()
+        other1 = Entry(tk)
+        other1.config(background=entry_background_color, fg=entry_text_color)
+        other1.pack()
+        e2 = Label(tk, text='New Barcode/Serial', bg=button_color, foreground=text_color)
+        e2.pack()
+        other8 = Entry(tk)
+        other8.config(background=entry_background_color, fg=entry_text_color)
+        other8.pack()
+        e7 = Label(tk, text='Model Number', bg=button_color, foreground=text_color)
+        e7.pack()
+        other4 = Entry(tk)
+        other4.config(background=entry_background_color, fg=entry_text_color)
+        other4.pack()
+        e8 = Label(tk, text='Purchase Date', bg=button_color, foreground=text_color)
+        e8.pack()
+        other5 = Entry(tk)
+        other5.config(background=entry_background_color, fg=entry_text_color)
+        other5.pack()
+        e9 = Label(tk, text='Loaned To', bg=button_color, foreground=text_color)
+        e9.pack()
+        other6 = Entry(tk)
+        other6.config(background=entry_background_color, fg=entry_text_color)
+        other6.pack()
+        e3 = Button(tk, text='Submit', command=options.UpdateToolInfoNext)
+        e3.pack()
+        e5 = Button(tk, text='Back', command=send)
+        e5.pack()
+        if NoBarcodeGiven==True:
+            e25=Label(tk, text='I need a Barcode Or Serial to know what tool\n I\'m going to edit.')
+            e25.pack()
+        if IncorrectBarcode==True:
+            e25=Label(tk, text='The Barcode Or Serial Does not seem right. Try again.')
+            e25.pack()
+        if BarcodeExists==True:
+            e25=Label(tk, text='Another tool with the same Barcode/Serial already exists.')
+        Tk.update_idletasks(tk)
+    def UpdateToolInfoNext():
+        history.create_history('Run', 'UpdateToolInfoNext()', hide=debug)
+        global other7, other, other4, other5, other6, other8, other1
+        serial=other1.get()
+        print(':'+serial+':')
+        if other1.get() == None or other1.get() == "":
+            print('Looping Detected!')
+            options.UpdateToolInfo(NoBarcodeGiven=True)
+        else:
+            for i in range(len(row)):
+                if (row[i])[0]=="tools":
+                    if save_in_txtFile.decode(((row[i])[1])[2], displaySpace=False)==str(serial):
+                        if other8.get()!=None:
+                            if check.barcode(other8.get()) == True:
+                                ((row[i])[1])[2]=other8.get()
+                            else:
+                                options.UpdateToolInfo(BarcodeExists=True)
+                        if other7.get()!=None:
+                            ((row[i])[1])[0]=other7.get()
+                        if other.get()!=None:
+                            ((row[i])[1])[1]=other.get()
+                        if other4.get()!=None:
+                            ((row[i])[1])[3]=other4.get()
+                        if other5.get()!=None:
+                            ((row[i])[1])[4]=other5.get()
+                        if other6.get()!=None:
+                            ((row[i])[1])[5]=other6.get()
+                        send()
+            options.UpdateToolInfo(IncorrectBarcode=True)
     def print_allBarcodes():
         print_instructions.printAllToolsBarcodes()
         send()

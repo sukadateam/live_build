@@ -469,12 +469,15 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 else:
                     part, part1 = display.space(str(input), hide=True, max_length=max_length, return_ShortenNotice=True)
                 return part, part1
-            else:
+            elif displaySpace==False:
                 if str(input)[0:2]=="b'":
                     part = str(input)[2:len(input)+2]
                 else:
                     part = str(input)
                 return part
+            else:
+                if debug==True:
+                    print('displaySpace is a bool. It can only be assined True or False.')
     class display:
         def help():
             print('Branches:\n  display.space()\n  display.database()\n  display.settings()')
@@ -1569,7 +1572,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             for i in range(len(row)):
                 #Find the database tools
                 if (row[i])[0]=="tools":
-                    if ((row[i])[1])[2]==str(barcode).encode(encoding='UTF-8',errors='strict'):
+                    if save_in_txtFile.decode(((row[i])[1])[2], displaySpace=False)==barcode:
                         #If found
                         return False
             #If not found
@@ -2692,5 +2695,3 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    BrokenTool("*0017792")
-    save.all()
