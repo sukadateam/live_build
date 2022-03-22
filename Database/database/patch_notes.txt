@@ -1,10 +1,6 @@
-1. print_instructions.printAllToolsBarcodes() has been finished:
-    Function now works.
-2. Added Button (Print All Barcode(s)):
-    DO NOT PRESS UNLESS YOU UNDERSTAND THE RISK(s)
-3. Updated setupDatabaseWithSpreadSheet:
-    Now automatically runs assignBarcodesToItemsWithout().
-4. Added function BrokenTool():
-    Used to call an item as broken.
-5. Updated check.barcode():
-    Now uses save_in_txtFile.barcode()
+1. UpdateToolInfo() and UpdateToolInfoNext() now work:
+    Fixed issues with the function and causing data to break.
+2. Fixed Button sizing issue on 2 buttons:
+    Print All Barcode(s) and Edit Inventory.
+3. Changed text_color setting to black #000000 rgb value:
+    Makes it look better.

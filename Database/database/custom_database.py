@@ -1,5 +1,5 @@
 #Things to do next:
-#Work On Encoding/Decoding Issues!
+#Nothin'!!!
 from ast import Bytes
 from dis import show_code
 from email.encoders import encode_7or8bit
