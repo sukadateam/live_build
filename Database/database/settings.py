@@ -137,6 +137,8 @@ printer_debug=False
 #Settings coming soon. Do not change unless your a dare devil.
 #Clears history file after each startup.
 clearHistoryOnStartup=False
+#DarkMode For app.py.
+darkModeApp=False
 
 
 #Remove if you aren't using my custom application.
@@ -154,4 +156,6 @@ OnlyAllowKnownStudents=False
 secretsAllowed=False
 side_tilt=75
 AskForEncryptionPassword=False
-#No settings are pending. Send a request on GitHub for ideas.
+if darkModeApp==True:
+    bg_color='#231F20'
+    text_color='#000000'
