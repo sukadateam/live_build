@@ -2210,7 +2210,6 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     for x in range(len(row)):
                         if (row[x])[0]==data_base:
                             print((row[x])[1])
-                print('Complete')
                 if num == True:
                     print(errors.cannot_call_func('data_base.show.show_row()'))
             def show_lists(data_base=None, database=None):
