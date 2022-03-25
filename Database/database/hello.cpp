@@ -1,12 +1,28 @@
 #include <iostream>
-extern "C" void MyFunction(std::string input) {
-    std::cout << input << "Hello World!\n";
+using namespace std;
+//Translate inputs into an opposite value
+extern "C" int not_gateInt(int input) {
+    if ( input == 1 ) {
+        return 0;
+    }
+    else if ( input == 0 ) {
+        return 1;
+    }
+    else {
+        return 2;
+    }
 }
-extern "C" int main() {
-    MyFunction("Welcome to ");
-}
-extern "C" void InsertRow(std::string input) {
-    std::cout << input;
+//Method Failed as python uses True instead of true.
+extern "C" bool not_gateBool(bool input) {
+    if ( input == false ) {
+        return true;
+    }
+    else if ( input == false) {
+        return false;
+    }
+    else {
+        return false;
+    }
 }
 //Compile as a shared library: ----
 //g++ -c -o library.o hello.cpp

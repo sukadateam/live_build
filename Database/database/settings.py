@@ -139,6 +139,8 @@ printer_debug=False
 clearHistoryOnStartup=False
 #DarkMode For app.py.
 darkModeApp=False
+#
+UtilizeCPPCode=True
 
 
 #Remove if you aren't using my custom application.

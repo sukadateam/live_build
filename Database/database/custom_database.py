@@ -15,6 +15,7 @@ from venv import create
 from xmlrpc.client import FastMarshaller
 import zipfile
 from html5lib import serialize
+from numpy import True_
 from pandas import *
 from barcode import EAN13
 from barcode.writer import ImageWriter
@@ -268,15 +269,24 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 else:
                     return "None"
             def not_gate(input1):
-                history.create_history('Run', 'logic.gate.not_gate()', hide=debug)
-                if input1==1:
-                    return 0
-                if input1==0:
-                    return 1
-                if input1==True:
-                    return False
-                if input1==False:
-                    return True
+                if UtilizeCPPCode==True:
+                    if (type(input1)) == int:
+                        return ctypes.CDLL('libfoo.so').not_gateInt(input1)
+                    if (type(input1)) == bool:
+                        if input1==True:
+                            return False
+                        if input1==False:
+                            return True
+                if UtilizeCPPCode==False:
+                    history.create_history('Run', 'logic.gate.not_gate()', hide=debug)
+                    if input1==1:
+                        return 0
+                    if input1==0:
+                        return 1
+                    if input1==True:
+                        return False
+                    if input1==False:
+                        return True
             def and_gate(input1, input2):
                 history.create_history('Run', 'logic.gate.and_gate()', hide=debug)
                 if input1 == 0 and input2 == 0:
@@ -2696,3 +2706,4 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
+    print(logic.gate.not_gate(1))
