@@ -20,6 +20,8 @@ from barcode import EAN13
 from barcode.writer import ImageWriter
 import time
 import qrcode
+import ctypes #Expermintal
+#ctypes.CDLL('libfoo.so').your_function(arguemnts)
 try:
     #Windows print
     import win32api

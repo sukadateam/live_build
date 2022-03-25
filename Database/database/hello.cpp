@@ -1,13 +1,13 @@
-// g++ ./hello.cpp -o hello
-// ./hello
 #include <iostream>
-void MyFunction(std::string input) {
+extern "C" void MyFunction(std::string input) {
     std::cout << input << "Hello World!\n";
 }
-int main() {
+extern "C" int main() {
     MyFunction("Welcome to ");
-    return 0;
 }
-void InsertRow(std::string input) {
+extern "C" void InsertRow(std::string input) {
     std::cout << input;
 }
+//Compile as a shared library: ----
+//g++ -c -o library.o hello.cpp
+//g++ -shared -o libfoo.so library.o
