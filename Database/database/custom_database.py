@@ -272,6 +272,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     else:
                         return "None"
             def not_gate(input1):
+                history.create_history('Run', 'logic.gate.not_gate()', hide=debug)
                 if UtilizeCPPCode==True:
                     if (type(input1)) == int:
                         return ctypes.CDLL('libfoo.so').not_gate(input1)
@@ -281,7 +282,6 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         if input1==False:
                             return True
                 if UtilizeCPPCode==False:
-                    history.create_history('Run', 'logic.gate.not_gate()', hide=debug)
                     if input1==1:
                         return 0
                     if input1==0:
@@ -2723,4 +2723,3 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    print(logic.gate.and_gate(1, 1))
