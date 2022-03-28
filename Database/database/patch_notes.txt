@@ -1,6 +1,3 @@
-1. UpdateToolInfo() and UpdateToolInfoNext() now work:
-    Fixed issues with the function and causing data to break.
-2. Fixed Button sizing issue on 2 buttons:
-    Print All Barcode(s) and Edit Inventory.
-3. Changed text_color setting to black #000000 rgb value:
-    Makes it look better.
+1. Added many new settings.
+2. NOT Logic gate can now be used in c++.
+3. NOR Logic gate can now be used in c++.
