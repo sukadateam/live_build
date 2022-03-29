@@ -335,7 +335,7 @@ class options:
         global other2, side_tilt
         try:
             side_tilt=int(other2.get())
-            save.all(side_tiltForce=int(other2.get()))
+            save.all()
             send()
         except ValueError:
             options.center_buttons(notInteger=True)
