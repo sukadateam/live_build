@@ -77,7 +77,7 @@ except:
 if quiteStartup == False:
     print('This Project is hosted on github. github.com/sukadateam')
     print('If problems occur, try to check if a new version exists.')
-    print('-or- Create An Issue On GitHub!\n\n')
+    print('-or- Create/Mark An Issue On GitHub!\n\n')
 if sys.version[0:len(required_version)] != required_version and "-skipPythonCheck" not in n and skip_pythonCheck==False:
     print('Required python version:', required_version)
     print('Current python version:', sys.version[0:len(required_version)])
@@ -277,10 +277,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     if (type(input1)) == int:
                         return ctypes.CDLL('libfoo.so').not_gate(input1)
                     if (type(input1)) == bool:
-                        if input1==True:
-                            return False
-                        if input1==False:
-                            return True
+                        return ctypes.CDLL('libfoo.so').not_gateBool(str(input1))
                 if UtilizeCPPCode==False:
                     if input1==1:
                         return 0
