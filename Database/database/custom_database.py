@@ -665,12 +665,14 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 except:
                     print('Wrong Password.')
                     return 'WrongPassword'
+            #Don't encrypt.
             elif encryptBackups==False and ForceEncryption==False:
                 #Backup Certian Files
                 list2=['custom_database.py','history_desc.py','vars_to_save.py','data_save.py','history.py', 'settings.py','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
                 try: os.chdir('backups')
                 except: pass
                 zipObject= ZipFile(backup_name+'.zip', 'w')
+                #Move to main folder to copy files
                 try: os.chdir(path)
                 except: pass
                 for i in range(len(list2)):
@@ -678,11 +680,15 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         zipObject.write(list2[i])
                     except:
                         pass
+                #Move to backup folder to zip the files
                 try: os.chdir('backups')
                 except: pass
+                #Put the zip in the folder
                 zipObject.close()
+                #Move back to main folder
                 try: os.chdir(path)
                 except: pass
+            #Remove encrypted files from main folder
             if os.path.exists('data_save.py')==True and os.path.exists('data_save.aes')==True:
                 os.remove('data_save.aes')
             if os.path.exists('history.txt')==True and os.path.exists('history.aes')==True:
