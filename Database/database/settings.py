@@ -10,7 +10,7 @@ drive_letter='E'
 drive_name='Computer'
 #Operating System or OS. Can be macos, windows or linux. Must be lowercase.
 system='macos'
-#Filters bad words that people should not be using. Not currently active.
+#Filters bad words that people should not be using.
 profanity_filter=True
 #A backup password in case the other is forgotten.
 global_password=True
@@ -24,7 +24,7 @@ allow_windows_version='10'
 min_length=5 #Cannot be smaller than 5
 max_length=25 #Cannot be bigger than 99
 allowedPassword_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890*()# '
-#What is the name of your printer? For macOS.
+#What is the name of your printer? For macOS. Windows uses default.
 printer_name='iDPRT_SP310'
 
 
@@ -139,7 +139,7 @@ printer_debug=False
 clearHistoryOnStartup=False
 #DarkMode For app.py.
 darkModeApp=False
-#
+#Speeds up computation.
 UtilizeCPPCode=True
 
 
