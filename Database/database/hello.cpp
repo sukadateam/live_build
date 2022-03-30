@@ -14,17 +14,19 @@ extern "C" int not_gate(int input) {
     }
 }
 //Method Failed as python uses True instead of true.
-extern "C" bool not_gateBool(bool input) {
-    if ( input == false ) {
-        return true;
+#ifdef __cplusplus
+extern "C" const char not_gateBool(string input) {
+    if ( input == "False" ) {
+        return "True";
     }
-    else if ( input == false) {
-        return false;
+    else if ( input == "True") {
+        return "False";
     }
     else {
-        return false;
+        return "False";
     }
 }
+#endif
 extern "C" int xor_gate(int input, int input1) {
     bool match;
     match = false;
