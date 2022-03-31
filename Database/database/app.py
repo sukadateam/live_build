@@ -148,9 +148,14 @@ class buttons:
         e17 = Button(tk, text='Show Students', command=options.show_students, bg=button_color, foreground=text_color, font=text_font)
         e17.config(height=button_height, width=button_width)
         e17.place(x=((int(x))/2)-side_tilt, y=y)
-    def print_Squidward(y=100):
-        print_instructions.print('')
+    def print_Squidward(y=0):
+        e12 = Button(tk, text='Print A Squidward', command=options.print_Squidward, bg=button_color, foreground=text_color, font=text_font)
+        e12.config(height=button_height, width=button_width)
+        e12.place(x=((int(x))/2)-side_tilt, y=y)
 class options:
+    def print_Squidward():
+        print_instructions.print('quid.jpeg')
+        send()
     def edit_data():
         clear()
         la=Label(tk, text='Select One\n(THIS PAGE IS EXPERIMENTAL)')
@@ -851,6 +856,7 @@ def student_screen():
     buttons.signin_item()
     buttons.credit()
     buttons.logout(y=300)
+    buttons.print_Squidward(y=400)
     secret.item1()
     version_note()
 #If permission is teacher. First page.
