@@ -148,6 +148,8 @@ class buttons:
         e17 = Button(tk, text='Show Students', command=options.show_students, bg=button_color, foreground=text_color, font=text_font)
         e17.config(height=button_height, width=button_width)
         e17.place(x=((int(x))/2)-side_tilt, y=y)
+    def print_Squidward(y=100):
+        print_instructions.print('')
 class options:
     def edit_data():
         clear()
@@ -560,7 +562,7 @@ class options:
                 send()
             else:
                 options.remove_tool(toolDoesNotExist=True)
-    def add_tool(id_exists=False):
+    def add_tool(id_exists=False, NoEntry=False):
         clear()
         global other, other1, other4, other5, other6, other7
         e10 = Label(tk, text='Tool Type', bg=button_color, foreground=text_color)
@@ -597,6 +599,9 @@ class options:
         e3.pack()
         e5 = Button(tk, text='Back', command=send)
         e5.pack()
+        if NoEntry==True:
+            e6=Label(tk, text='Please Give it a Barcode/Serial', bg=button_color, foreground=text_color)
+            e6.pack()
         if id_exists==True:
             e6=Label(tk, text='Barcode/Serial Exists', bg=button_color, foreground=text_color)
             e6.pack()
@@ -605,31 +610,42 @@ class options:
         global other, other1, other4, other5, other6, other7
         name = other.get()
         id = other1.get()
-        modelNumber=other4.get()
-        purchaseDate=other5.get()
-        loandedTo=other6.get()
-        toolType=other7.get()
-        if modelNumber in [None, '', ' ', '  ']:
-            modelNumber=replace
-        if purchaseDate in [None, '', ' ', '  ']:
-            purchaseDate=replace
-        if loandedTo in [None, '', ' ', '  ']:
-            loandedTo=replace
-        if toolType in [None, '', ' ', '  ']:
-            toolType=replace
-        if check.barcode(id)==True:
-            if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
-                data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)
-            if printer_debug==True:
-                print('Creating Barcode...')
-            print_instructions.createBarcode(id, qr_code=True)
-            if printer_debug==True:
-                print('Printing...')
-            print_instructions.print('barcode.png')
-            clear()
-            send()
+        if id in [None, '', ' ', '  ']:
+            options.add_tool(NoEntry=True)
         else:
-            options.add_tool(id_exists=True)
+            #Grabs value from tkinter.
+            modelNumber=other4.get()
+            purchaseDate=other5.get()
+            loandedTo=other6.get()
+            toolType=other7.get()
+            #Checks to see if fields are empty.
+            if modelNumber in [None, '', ' ', '  ']:
+                modelNumber=replace
+            if purchaseDate in [None, '', ' ', '  ']:
+                purchaseDate=replace
+            if loandedTo in [None, '', ' ', '  ']:
+                loandedTo=replace
+            if toolType in [None, '', ' ', '  ']:
+                toolType=replace
+            #Checks to see if Barcode/Serial already exists.
+            if check.barcode(id)==True:
+                #Checks for profanity.
+                if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
+                    #Adds the newly added data into the system.
+                    data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)
+                if printer_debug==True:
+                    print('Creating Barcode...') 
+                #Creates a image of the barcode
+                print_instructions.createBarcode(id, qr_code=True)
+                if printer_debug==True:
+                    print('Printing...')
+                #Prints the picture file.
+                print_instructions.print('barcode.png')
+                clear()
+                send()
+            else:
+                #Redirects back to the menu
+                options.add_tool(id_exists=True)
     def create_password():
         global other
         clear()
@@ -698,11 +714,13 @@ class options:
         name=other.get()
         password=other1.get()
         permission=other2.get()
+        #Checks for empty inputs. Redirects if needed.
         if name in [None, '', ' ', '  ']:
             options.create_user(NoUsernameEntered=True)
         elif password in [None, '', ' ', '  ']:
             options.create_user(InvalidPassword=True)
         else:
+            #Checks for profanity.
             if profanityFilter.filter(name)==0 and profanityFilter.filter(password)==0 and profanityFilter.filter(permission)==0:
                 if users.create(new_user=name.lower(), new_password=password, new_permission=permission.lower())==False:
                     options.create_user(user_exists=True)
@@ -744,7 +762,9 @@ class options:
         elif str(user.lower()) in [None, '', ' ', '  ']:
             options.remove_user(UserNotFound=True)
         else:
+            #Sets username to lowercase and checks for profanity.
             if user1.lower() != user.lower() and profanityFilter.filter(user.lower())==0:
+                #Calls users.remove() function from custom_database
                 if users.remove(user=str(user.lower()))=="UserNotFound":
                     options.remove_user(UserNotFound=True)
                 else:
