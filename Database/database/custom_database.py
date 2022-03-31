@@ -2681,7 +2681,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 backup_name=version_in+' '+c+' '+beta
             else:
                 backup_name=version_in+' '+c
-            list2=['app.py', 'count.py', 'custom_database.py','data.py','get_directory.py','files_to_backup.py','history_desc.py','patch_notes.txt','profanity.txt','requirements.txt','settings.py','shell.py','vars_to_save.py','version_config.py']
+            list2=['quid.jpeg','app.py', 'count.py', 'custom_database.py','data.py','get_directory.py','files_to_backup.py','history_desc.py','patch_notes.txt','profanity.txt','requirements.txt','settings.py','shell.py','vars_to_save.py','version_config.py']
             beta1=input('Would you like to compress the save file also: ')
             if beta1=="yes" or beta1=='y':
                 list2.append('data_save.py')
