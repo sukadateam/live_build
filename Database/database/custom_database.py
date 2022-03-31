@@ -141,6 +141,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
     def assignBarcodesToItemsWithout():
+        #Adds called function to history.
         history.create_history('Run', 'assignBarcodesToItemsWithout()', hide=debug)
         for i in range(len(row)):
             if (row[i])[0] == "tools":
@@ -148,16 +149,21 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     a=True
                     while a==True:
                         abc=''
+                        #Generates the new Barcode/Serial
                         for x in range(8):
                             abc+=random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')
+                        #Checks to see if new Barcode/Serial exists. If so repeat, if not assign it.
                         if check.barcode(abc)==True:
+                            #Assigns the new Barcode/Serial
                             ((row[i])[1])[2]=abc
                             a=False
     def BrokenTool(input):
+        #Marks a tool as broken.
         for i in range(len(row)):
             if (row[i])[0]=="tools":
                 if save_in_txtFile.decode(((row[i])[1])[2], displaySpace=False)==input:
                     try:
+                        #Changes a Value to True
                         ((row[i])[1])[6]=True
                     except Exception as ErrorHandle:
                         if debug==True:
@@ -218,11 +224,13 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         my_code = EAN13(barcode)
                         my_code.save(str(file_name))
                     else:
-                        print('Barcodes must be numbers.')
+                        if printer_debug==True:
+                            print('Barcodes must be numbers.')
     class setupDatabaseWithSpreadSheet:
         def help():
             print('Branches:\n  setupDatabaseWithSpreadSheet.run()\n  setupDatabaseWithSpreadSheet.getAll()')
         def run(hide=False):
+            #Imports a compatible spread sheet and imports it into the database.
             history.create_history('Run', 'setupDatabaseWithSpreadSheet.run()', hide=hide)
             toolType, toolName, serialNumber, modelNumber, purchaseDate, loanedTo = setupDatabaseWithSpreadSheet.getAll()
             for i in range(len(toolType)):
@@ -231,9 +239,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     if type(list3[x]) == float:
                         list3[x]=" "
                         print(list3[x])
+                #Adds the new data to the database.
                 data_base.edit.add_row(data_base='tools', new_row=[str(list3[0]).encode(encoding='UTF-8',errors='strict'), str(list3[1]).encode(encoding='UTF-8',errors='strict'),str(list3[2]).encode(encoding='UTF-8',errors='strict'), str(list3[3]).encode(encoding='UTF-8',errors='strict'), str(list3[4]).encode(encoding='UTF-8',errors='strict'), str(list3[5]).encode(encoding='UTF-8',errors='strict'), False], split=False)
             assignBarcodesToItemsWithout()
         def getAll(hide=False):
+            #Grabs all the data from the spread sheet.
             history.create_history('Run', 'setupDatabaseWithSpreadSheet.getAll()', hide=hide)
             data=read_csv("tools.csv")
             toolType=data['Tool Type'].tolist()
@@ -2656,10 +2666,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         print('\nSystem Started Correctly!')
     if time.time()-startupCount<.01:
         if quiteStartup == False:
-            print('Est Time:', str(round(time.time()-startupCount, 2))+'<')
+            print('Est StartUp Time:', str(round(time.time()-startupCount, 2))+'<')
     else:
         if quiteStartup == False:
-            print('Est Time:', round(time.time()-startupCount, 2))
+            print('Est StartUp Time:', round(time.time()-startupCount, 2))
     try:
         if "-release" in n:
             c=''
@@ -2722,7 +2732,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         print('Current Arguments:\n  -skipVersionCheck (Bypasses Application Version Check)\n  -v (Prints Progam Version)\n  -info (Prints Import Info)\n  -reset (Resets Application)\n  -skipPythonCheck (Ignore Python Version)')
     if dontCloseAfterEmptyStart==True:
         input('Hit enter to Continue: ')
-    #You must set a Normal level password
+    #You may set a Normal level password
     #You can set a global password if need be. Basically a backup.
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
