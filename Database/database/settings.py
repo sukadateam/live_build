@@ -132,7 +132,7 @@ encryptBackups=False
 #Keep the terminal hush hush on startup. Only major errors will show.
 quiteStartup=False
 #Print in the terminal if prints fail and what printer it is using.
-printer_debug=False
+printer_debug=True #Default True
 
 #Settings coming soon. Do not change unless your a dare devil.
 #Clears history file after each startup.
