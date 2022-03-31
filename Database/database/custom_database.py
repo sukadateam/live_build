@@ -459,7 +459,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         part8, part9 = save_in_txtFile.decode(((row[i])[1])[5], max_length=20)
                         part10, part11 = save_in_txtFile.decode(((row[i])[1])[0], max_length=20)
                         part12, partn=display.space(str(check.signed_out_item(str(((row[i])[1])[2]))), hide=True, max_length=max_length, return_ShortenNotice=True)
-                        part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
+                        try:
+                            part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
+                        except:
+                            part13 = False
                         if part3==True or part5==True or part7==True or part9==True or part11==True:
                             part1, part17=display.space(str(True), hide=True, max_length=max_length, return_ShortenNotice=True)
                         if showIfShort==False:
@@ -1696,8 +1699,6 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                     print(errors.profanityDetected(new_password, user=user_logged))
             if num1 == False and num2 == False and new_permission in allowed_users and profanityFilter.filter(new_user)==0 and profanityFilter.filter(new_password.lower())==0:
                 if password_restrictions.check_password(new_password) == 1 or strict_password==False:
-                    #Implement into c++
-                    ctypes.CDLL('libfoo.so').create_user(known_users=known_users)
                     skip=False
                     for i in range(len(known_users)):
                         if known_users[i]==new_user:
