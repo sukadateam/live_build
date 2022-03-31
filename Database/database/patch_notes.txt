@@ -1,3 +1,12 @@
 1. Added many new settings.
-2. NOT Logic gate can now be used in c++.
+2. NOT Logic gate can now be used in c++. 1 and 0 only! Not 
 3. NOR Logic gate can now be used in c++.
+4. If user creates a tool without Barcode/Serial it will now say "Please Give it a Barcode/Serial" imstead of "Barcode/Serial Exists".
+5. Fixed IndexError:
+    Calling from line save_in_txtFile.tools(max_length=25) 459 app.py
+    Problem Line part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
+
+
+#Notes For this Version :)
+-Logic gates are partially implemented in c++ for speeding up calculations.
+-
