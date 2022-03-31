@@ -5,8 +5,7 @@
 5. Fixed IndexError:
     Calling from line save_in_txtFile.tools(max_length=25) 459 app.py
     Problem Line part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
-
+6. Added a button on student page to print a squidward.
 
 #Notes For this Version :)
 -Logic gates are partially implemented in c++ for speeding up calculations.
--
