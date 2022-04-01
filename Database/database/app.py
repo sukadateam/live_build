@@ -182,7 +182,10 @@ class options:
         e3=Button(tk, text='Yes. I understand the risk.', command=options.rmBrokenToolsNext)
         e3.place(x=((int(x))/2)-(side_tilt+20), y=110)
     def rmBrokenToolsNext():
-        pass
+        if data_base.edit.app.rmBrokenTools()=="DONE":
+            if debug==True:
+                print("All Broken Tools have been removed.")
+        send()
     def broken_tool():
         clear()
         global other1
@@ -300,6 +303,14 @@ class options:
             if found==False:
                 options.UpdateToolInfo(IncorrectBarcode=True)
     def print_allBarcodes():
+        clear()
+        e1=Label(tk, text='Are you sure?\nThis will cause the system to crash.')
+        e1.pack()
+        e2=Button(tk, text='Yes I would like to Print All Barcodes', command=options.print_allBarcodesNext)
+        e2.pack()
+        e3=Button(tk, text='No. Please send me back!', command=send)
+        e3.pack()
+    def print_allBarcodesNext():
         print_instructions.printAllToolsBarcodes()
         send()
     def test_print():
@@ -650,7 +661,7 @@ class options:
                 #Checks for profanity.
                 if profanityFilter.filter(name)==0 and profanityFilter.filter(id)==0:
                     #Adds the newly added data into the system.
-                    data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo)], split=False)
+                    data_base.edit.add_row(data_base='tools', new_row=[str(toolType), str(name),str(id), str(modelNumber), str(purchaseDate), str(loandedTo), False], split=False)
                 if printer_debug==True:
                     print('Creating Barcode...') 
                 #Creates a image of the barcode
