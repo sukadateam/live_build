@@ -4,3 +4,7 @@
     Will remove all Tools marked as broken.
 3. Fixed (Add Tool) in app.py:
     Now assigns tools a broken status var.
+4. (Broken Tool) in app.py:
+    Will now let user know if tool does not exist.
+5. Added (Edit Inventory) button in teacher in app.py:
+    Teachers can now use this function.
