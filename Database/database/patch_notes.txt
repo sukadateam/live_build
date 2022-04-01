@@ -1,16 +1,6 @@
-1. Added many new settings.
-2. NOT Logic gate can now be used in c++. 1 and 0 only! Not 
-3. NOR Logic gate can now be used in c++.
-4. If user creates a tool without Barcode/Serial it will now say "Please Give it a Barcode/Serial" imstead of "Barcode/Serial Exists".
-5. Fixed IndexError:
-    Calling from line save_in_txtFile.tools(max_length=25) 459 app.py
-    Problem Line part13, partn = display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
-6. Added a button on student page to print a squidward.
-7. Added notes in function BrokenTool() custom_database.py
-8. Added notes in function assignBarcodesToItemsWithout() custom_database.py
-9. Added notes in class setupDatabaseWithSpreadSheet() custom_database.py
-10. Changed "Est Time:" to "Est StartUp Time:".
-
-#Notes For this Version :)
--Logic gates are partially implemented in c++ for speeding up calculations.
--Added Notes in source code. Makes it easier to knwon what's happenning.
+1. Added Function (Remove Broken Tools) in app.py:
+    Will remove all Tools marked as broken.
+2. Added Function data_base.edit.app.rmBrokenTools():
+    Will remove all Tools marked as broken.
+3. Fixed (Add Tool) in app.py:
+    Now assigns tools a broken status var.
