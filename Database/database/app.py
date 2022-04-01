@@ -158,7 +158,7 @@ class options:
         send()
     def edit_data():
         clear()
-        la=Label(tk, text='Select One\n(THIS PAGE IS EXPERIMENTAL)')
+        la=Label(tk, text='Select One')
         la.pack()
         e1 = Button(tk, text='Broken Tool', command=options.broken_tool)
         e1.config(height=button_height, width=button_width)
@@ -186,7 +186,7 @@ class options:
             if debug==True:
                 print("All Broken Tools have been removed.")
         send()
-    def broken_tool():
+    def broken_tool(NoInput=False):
         clear()
         global other1
         e1=Label(tk, text='Serial/Barcode')
@@ -197,12 +197,18 @@ class options:
         e3.pack()
         e4 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
         e4.pack()
+        if NoInput==True:
+            e5=Label(tk, text='Tool Does Not Exist')
+            e5.pack()
         Tk.update_idletasks(tk)
     def broken_tool_next():
         global other1
         serial=other1.get()
-        BrokenTool(serial)
-        send()
+        if check.barcode(serial)==False:
+            BrokenTool(serial)
+            send()
+        else:
+            options.broken_tool(NoInput=True)
     def UpdateToolInfo(NoBarcodeGiven=False, IncorrectBarcode=False, BarcodeExists=False, NoChanges=False):
         history.create_history('Run', 'UpdateToolInfo()', hide=debug)
         clear()
@@ -909,10 +915,11 @@ def teacher_page2():
     clear()
     version_note()
     buttons.show_logged_items(y=0)
-    buttons.logout(y=100)
+    buttons.edit_data(y=100)
+    buttons.logout(y=200)
     e25=Button(tk, text='Back', command=teacher_screen, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=200)
+    e25.place(x=((int(x))/2)-side_tilt, y=300)
 #If permission is admin. First page.
 def admin_screen():
     clear()
