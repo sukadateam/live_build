@@ -166,10 +166,23 @@ class options:
         e2 = Button(tk, text='Update Tool Info', command=options.UpdateToolInfo)
         e2.config(height=button_height, width=button_width)
         e2.pack()
+        e3 = Button(tk, text='Remove Broken Tools', command=options.rmBrokenTools)
+        e3.config(height=button_height, width=button_width)
+        e3.pack()
         e4 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
         e4.config(height=button_height, width=button_width)
         e4.pack()
         Tk.update_idletasks(tk)
+    def rmBrokenTools():
+        clear()
+        e1=Label(tk, text='This function will remove all tools that are marked as broken.\nAre you sure you would like to do this?')
+        e1.pack()
+        e2=Button(tk, text='I Changed My Mind.', command=send)
+        e2.place(x=((int(x))/2)-side_tilt, y=50)
+        e3=Button(tk, text='Yes. I understand the risk.', command=options.rmBrokenToolsNext)
+        e3.place(x=((int(x))/2)-(side_tilt+20), y=110)
+    def rmBrokenToolsNext():
+        pass
     def broken_tool():
         clear()
         global other1

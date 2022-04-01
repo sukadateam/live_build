@@ -156,7 +156,7 @@ entry_background_color='White'
 entry_text_color='Black'
 OnlyAllowKnownStudents=False
 secretsAllowed=False
-side_tilt=75
+side_tilt=200
 AskForEncryptionPassword=False
 if darkModeApp==True:
     bg_color='#231F20'
