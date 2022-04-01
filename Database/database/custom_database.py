@@ -2163,6 +2163,17 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 #Must be column_row
             #Used for my carpentry app.
             class app:
+                def rmBrokenTools():
+                    a=0
+                    for i in range(len(row)):
+                        if (row[i-a])[0]=="tools":
+                            try:
+                                if ((row[i-a])[1])[6]==True:
+                                    ((row[i-a])[1]).pop()
+                                    a+=1
+                            except:
+                                pass
+                    return "DONE"
                 def remove_row(data_base=None, name=None, database=None, hide=False):
                     if data_base == None:
                         data_base=database
