@@ -1,6 +1,5 @@
 #Things to do next:
-#If libfoo.so file is not found but hello.cpp file is found. Create a shared library with hello.cpp.
-#Add new files to backups. libfoo.so and hello.cpp.
+#Nothin'!!!
 from ast import Bytes
 from dis import show_code
 from email.encoders import encode_7or8bit
@@ -141,6 +140,8 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     except:
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
+    if os.path.exists('libfoo.so')==True:
+        print('\nTo compile a shared .so file from hello.cpp run:\ng++ -c -o library.o hello.cpp\ng++ -shared -o libfoo.so library.o\n')
     def assignBarcodesToItemsWithout():
         #Adds called function to history.
         history.create_history('Run', 'assignBarcodesToItemsWithout()', hide=debug)
