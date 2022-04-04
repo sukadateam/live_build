@@ -1,5 +1,6 @@
 #Things to do next:
-#Nothin'!!!
+#If libfoo.so file is not found but hello.cpp file is found. Create a shared library with hello.cpp.
+#Add new files to backups. libfoo.so and hello.cpp.
 from ast import Bytes
 from dis import show_code
 from email.encoders import encode_7or8bit
@@ -261,7 +262,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             def xor_gate(input1, input2):
                 history.create_history('Run', 'logic.gate.xor_gate()', hide=debug)
                 if UtilizeCPPCode==True:
-                    return ctypes.CDLL('libfoo.so').xor_gate(input1, input2)
+                    try:
+                        return ctypes.CDLL('libfoo.so').xor_gate(input1, input2)
+                    except:
+                        print(errors.MissingCPP())
                 else:
                     if input1 == 0 and input2 == 0:
                         return 0
@@ -285,9 +289,15 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 history.create_history('Run', 'logic.gate.not_gate()', hide=debug)
                 if UtilizeCPPCode==True:
                     if (type(input1)) == int:
-                        return ctypes.CDLL('libfoo.so').not_gate(input1)
+                        try:
+                            return ctypes.CDLL('libfoo.so').not_gate(input1)
+                        except:
+                            print(errors.MissingCPP())
                     if (type(input1)) == bool:
-                        return ctypes.CDLL('libfoo.so').not_gateBool(str(input1))
+                        try:
+                            return ctypes.CDLL('libfoo.so').not_gateBool(str(input1))
+                        except:
+                            print(errors.MissingCPP())
                 if UtilizeCPPCode==False:
                     if input1==1:
                         return 0
@@ -301,7 +311,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 history.create_history('Run', 'logic.gate.and_gate()', hide=debug)
                 if UtilizeCPPCode==True:
                     if type(input1) == int and type(input2) == int:
-                        return ctypes.CDLL('libfoo.so').and_gate(input1, input2)
+                        try:
+                            return ctypes.CDLL('libfoo.so').and_gate(input1, input2)
+                        except:
+                            print(errors.MissingCPP())
                     else:
                         #If input(s) are not integers :)
                         if input1 == False and input2 == False:
@@ -653,7 +666,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 try:
                     if encrypt.all(password) != 1:
                         #Backup Certian Files
-                        list2=['custom_database.py','history_desc.py','vars_to_save.py','data_save.aes','history.aes', 'settings.py','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
+                        list2=['hello.cpp','libfoo.so','custom_database.py','history_desc.py','vars_to_save.py','data_save.aes','history.aes', 'settings.py','app.py','hash.aes','profanity.txt','shorter_profanity.txt','hash_other.aes','get_directory.py','version_config.py','shell.py']
                         try: os.chdir('backups')
                         except: pass
                         zipObject= ZipFile(backup_name+'.zip', 'w')
@@ -1622,8 +1635,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             return True
         def encyption_password(password):
             if decrypt.hash(password=password)==False:
+                #Returns 1 if password does not match
                 return 1
             else:
+                #Returns 0 if password Matches
                 return 0
         def data_format(data_base=None):
             #Returns database type.
@@ -2500,7 +2515,11 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                 print(errors.cannot_call_func('password_restrictions.set_max_length()'))
     class errors:
         def help():
-            print('Branches:\n  errors.FileDoesNotExist()\n  errors.NotSignedIn()\n  errors.BackupNameExists()\n  errors.profanityDetected()\n  errors.doesNotObeyRestrictions()\n  errors.database_does_not_exist()\n  errors.cannot_call_func()\n  errors.incorrect_perm()\n  errors.user_exists()\n  errors.user_not_found()\n  errors.not_list()\n  errors.not_str()\n  errors.not_bool()\n  errors.not_int()')
+            print('Branches:\n  errors.MissingCPP()\n  errors.FileDoesNotExist()\n  errors.NotSignedIn()\n  errors.BackupNameExists()\n  errors.profanityDetected()\n  errors.doesNotObeyRestrictions()\n  errors.database_does_not_exist()\n  errors.cannot_call_func()\n  errors.incorrect_perm()\n  errors.user_exists()\n  errors.user_not_found()\n  errors.not_list()\n  errors.not_str()\n  errors.not_bool()\n  errors.not_int()')
+        def MissingCPP():
+            global UtilizeCPPCode
+            UtilizeCPPCode=False
+            return ("Missing CPP File. Compile the file 'hello.cpp' as a shared library or import the libfoo.so file to the app root folder.") 
         def FileDoesNotExist(var):
             history.create_history(var, 'FileDoesNotExist', manual_record=auto_error_record, hide=debug)
             print('(Error) File does not exist.')
@@ -2748,5 +2767,3 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     #To trick the system in thinking it's running on another os, systemDetectedOperatingSystem='your os'. windows, macos, linux
     #Test bench
     #<--Indent to here
-    #"I pledge allegiance to the Squidward of the United States of SquidWardopia and to the Squidward for which it stands, one nation, indisquadable, with liberty and squidwards for all."
-    

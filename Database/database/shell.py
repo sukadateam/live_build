@@ -37,7 +37,7 @@ while True:
         if choice=="12":
             users.logout()
             choice=''
-    if users.return_login_cred() == False:
+    if users.return_login_cred() == ['UserNotSignedIn', 'UserNotSignedIn']:
         if choice=="12":
             users.login_request(user=input('Username: '), password=input('Password: '))
     if choice == "1":

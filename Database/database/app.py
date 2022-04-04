@@ -178,9 +178,9 @@ class options:
         e1=Label(tk, text='This function will remove all tools that are marked as broken.\nAre you sure you would like to do this?')
         e1.pack()
         e2=Button(tk, text='I Changed My Mind.', command=send)
-        e2.place(x=((int(x))/2)-side_tilt, y=50)
+        e2.place(y=50)
         e3=Button(tk, text='Yes. I understand the risk.', command=options.rmBrokenToolsNext)
-        e3.place(x=((int(x))/2)-(side_tilt+20), y=110)
+        e3.place(y=110)
     def rmBrokenToolsNext():
         if data_base.edit.app.rmBrokenTools()=="DONE":
             if debug==True:
@@ -189,7 +189,7 @@ class options:
     def broken_tool(NoInput=False):
         clear()
         global other1
-        e1=Label(tk, text='Serial/Barcode')
+        e1=Label(tk, text='This function marks a tool as broken.\nEnter: Serial/Barcode')
         e1.pack()
         other1 = Entry(tk)
         other1.pack()

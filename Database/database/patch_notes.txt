@@ -8,3 +8,7 @@
     Will now let user know if tool does not exist.
 5. Added (Edit Inventory) button in teacher in app.py:
     Teachers can now use this function.
+6. backup.create() now backups up c++ file and .so file:
+    Might fix issues with backups.
+7. Added function errors.MissingCPP():
+    Used to fix any errors causes by the c++ files being missing.
