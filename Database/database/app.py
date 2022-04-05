@@ -10,11 +10,11 @@ import subprocess
 import webbrowser
 import count
 import time
-tk= Tk()
+tk=Tk()
 tk.title('Carpetentry Application')
-x='1080' #Used for calculations on the horizontal axis.
-y='720' #Used for calculations on the verticle axis.
-tk.geometry(x+"x"+y+"+10+20")
+x=GetScreenWidth() #Used for calculations on the horizontal axis.
+y=GetScreenHeight() #Used for calculations on the verticle axis.
+tk.geometry(str(x)+"x"+str(y)+"+10+20")
 name=None
 password=None
 startup=True
@@ -50,7 +50,7 @@ class buttons:
     def edit_data(y=100):
         e25 = Button(tk, text='Edit Inventory', command=options.edit_data, bg=button_color, foreground=text_color, font=text_font)
         e25.config(height=button_height, width=button_width)
-        e25.place(x=((int(x))/2)-(button_width*14), y=y)
+        e25.place(x=((int(x))/2)-(button_width*6), y=y)
     def print_allBarcodes(y=100):
         e24 = Button(tk, text='Print All Barcode(s)', command=options.print_allBarcodes, bg=button_color, foreground=text_color, font=text_font)
         e24.config(height=button_height, width=button_width)
