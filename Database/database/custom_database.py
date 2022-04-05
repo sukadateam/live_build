@@ -15,13 +15,14 @@ from venv import create
 from xmlrpc.client import FastMarshaller
 import zipfile
 from html5lib import serialize
-from numpy import True_
+from numpy import True_, int32
 from pandas import *
 from barcode import EAN13
 from barcode.writer import ImageWriter
 import time
 import qrcode
 import ctypes #Expermintal
+from screeninfo import get_monitors
 #ctypes.CDLL('libfoo.so').your_function(arguemnts)
 try:
     #Windows print
@@ -142,6 +143,14 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
             print("Couldn't import pyAesCrypt")
     if os.path.exists('libfoo.so')==False:
         print('\nTo compile a shared .so file from hello.cpp run:\ng++ -c -o library.o hello.cpp\ng++ -shared -o libfoo.so library.o\n')
+    def GetScreenHeight():
+        for m in get_monitors():
+            return int(m.height)
+            break
+    def GetScreenWidth():
+        for m in get_monitors():
+            return int(m.width)
+            break
     def assignBarcodesToItemsWithout():
         #Adds called function to history.
         history.create_history('Run', 'assignBarcodesToItemsWithout()', hide=debug)
