@@ -146,11 +146,15 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     def GetScreenHeight():
         for m in get_monitors():
             return int(m.height)
-            break
+        if debug==True:
+            print("Could not retrieve screen Height")
+        return False
     def GetScreenWidth():
         for m in get_monitors():
             return int(m.width)
-            break
+        if debug==True:
+            print("Could not retrieve screen Width")
+        return False
     def assignBarcodesToItemsWithout():
         #Adds called function to history.
         history.create_history('Run', 'assignBarcodesToItemsWithout()', hide=debug)

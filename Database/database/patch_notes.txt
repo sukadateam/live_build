@@ -14,3 +14,5 @@
     Used to fix any errors causes by the c++ files being missing.
 8. Added new item to requirements.txt:
     screeninfo (To retrieve screen info)
+9. Added Function GetScreenHeight() and GetScreenWidth():
+    Used to get screen resolution.
