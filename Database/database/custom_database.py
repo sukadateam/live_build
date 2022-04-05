@@ -140,7 +140,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
     except:
         if quiteStartup == False:
             print("Couldn't import pyAesCrypt")
-    if os.path.exists('libfoo.so')==True:
+    if os.path.exists('libfoo.so')==False:
         print('\nTo compile a shared .so file from hello.cpp run:\ng++ -c -o library.o hello.cpp\ng++ -shared -o libfoo.so library.o\n')
     def assignBarcodesToItemsWithout():
         #Adds called function to history.
@@ -169,6 +169,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         ((row[i])[1])[6]=True
                     except Exception as ErrorHandle:
                         if debug==True:
+                            #Prints the error if one occurs.
                             print(ErrorHandle)
     class print_instructions:
         def help():
