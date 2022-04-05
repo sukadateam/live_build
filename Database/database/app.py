@@ -54,72 +54,72 @@ class buttons:
     def print_allBarcodes(y=100):
         e24 = Button(tk, text='Print All Barcode(s)', command=options.print_allBarcodes, bg=button_color, foreground=text_color, font=text_font)
         e24.config(height=button_height, width=button_width)
-        e24.place(x=((int(x))/2)-side_tilt, y=y)
+        e24.place(x=((int(x))/2)-(button_width*6), y=y)
     def test_print(y=100):
         e23 = Button(tk, text='Test Print', command=options.test_print, bg=button_color, foreground=text_color, font=text_font)
         e23.config(height=button_height, width=button_width)
-        e23.place(x=((int(x))/2)-side_tilt, y=y)
+        e23.place(x=((int(x))/2)-(button_width*6), y=y)
     def show_users(y=100):
         e22 = Button(tk, text='Show Users', command=options.show_users, bg=button_color, foreground=text_color, font=text_font)
         e22.config(height=button_height, width=button_width)
-        e22.place(x=((int(x))/2)-side_tilt, y=y)
+        e22.place(x=((int(x))/2)-(button_width*6), y=y)
     def center_buttons(y=100):
         e21 = Button(tk, text='Center Buttons', command=options.center_buttons, bg=button_color, foreground=text_color, font=text_font)
         e21.config(height=button_height, width=button_width)
-        e21.place(x=((int(x))/2)-side_tilt, y=y)
+        e21.place(x=((int(x))/2)-(button_width*6), y=y)
     def credit(y=200):
         e20 = Button(tk, text='Credits', command=options.credits, bg=button_color, foreground=text_color, font=text_font)
         e20.config(height=button_height, width=button_width)
-        e20.place(x=((int(x))/2)-side_tilt, y=y)
+        e20.place(x=((int(x))/2)-(button_width*6), y=y)
     def enable_debug(y=700):
         e18 = Button(tk, text='Enable Debug', command=options.enable_debug, bg=button_color, foreground=text_color, font=text_font)
         e18.config(height=button_height, width=button_width)
-        e18.place(x=((int(x))/2)-side_tilt, y=y)
+        e18.place(x=((int(x))/2)-(button_width*6), y=y)
     def disable_debug(y=700):
         e19 = Button(tk, text='Disable Debug', command=options.disable_debug, bg=button_color, foreground=text_color, font=text_font)
         e19.config(height=button_height, width=button_width)
-        e19.place(x=((int(x))/2)-side_tilt, y=y)
+        e19.place(x=((int(x))/2)-(button_width*6), y=y)
     def create_user(anchor=None, side=None):
         e1 = Button(tk, text='Create User', command=options.create_user, bg=button_color, foreground=text_color, font=text_font)
         e1.config(height=button_height, width=button_width)
-        e1.place(x=((int(x))/2)-side_tilt, y=300)
+        e1.place(x=((int(x))/2)-(button_width*6), y=300)
     def remove_user(anchor=None, side=None):
         e2 = Button(tk, text='Remove User', command=options.remove_user, bg=button_color, foreground=text_color, font=text_font)
         e2.config(height=button_height, width=button_width)
-        e2.place(x=((int(x))/2)-side_tilt, y=400)
+        e2.place(x=((int(x))/2)-(button_width*6), y=400)
     def change_password(anchor=None, side=None, y1=800):
         global x, y
         e3 = Button(tk, text='Change Password', command=options.create_password, bg=button_color, foreground=text_color, font=text_font)
         e3.config(height=button_height, width=button_width)
-        e3.place(x=((int(x))/2)-side_tilt, y=y1)
+        e3.place(x=((int(x))/2)-(button_width*6), y=y1)
     def logout(anchor=None, side=None, y=700):
         e4 = Button(tk, text='Logout', command=options.logout, bg=button_color, foreground=text_color, font=text_font)
         e4.config(height=button_height, width=button_width)
-        e4.place(x=((int(x))/2)-side_tilt, y=y)
+        e4.place(x=((int(x))/2)-(button_width*6), y=y)
     def add_student(y=800):
         e14 = Button(tk, text='Add Student', command=options.add_student, bg=button_color, foreground=text_color, font=text_font)
         e14.config(height=button_height, width=button_width)
-        e14.place(x=((int(x))/2)-side_tilt, y=y)
+        e14.place(x=((int(x))/2)-(button_width*6), y=y)
     def save(anchor=None, side=None):
         e5 = Button(tk, text='Save', command=options.save, bg=button_color, foreground=text_color, font=text_font)
         e5.config(height=button_height, width=button_width)
-        e5.place(x=((int(x))/2)-side_tilt, y=500)
+        e5.place(x=((int(x))/2)-(button_width*6), y=500)
     def optimize(anchor=None, side=None):
         e6 = Button(tk, text='Optimize', command=options.optimize, bg=button_color, foreground=text_color, font=text_font)
         e6.config(height=button_height, width=button_width)
-        e6.place(x=((int(x))/2)-side_tilt, y=600)
+        e6.place(x=((int(x))/2)-(button_width*6), y=600)
     def add_tool(anchor=None, side=None):
         e7 = Button(tk, text="Add Tool",command=options.add_tool, bg=button_color, foreground=text_color, font=text_font)
         e7.config(height=button_height, width=button_width)
-        e7.place(x=((int(x))/2)-side_tilt, y=0)
+        e7.place(x=((int(x))/2)-(button_width*6), y=0)
     def remove_tool(anchor=None, side=None):
         e8 = Button(tk, text='Remove Tool', command=options.remove_tool, bg=button_color, foreground=text_color, font=text_font)
         e8.config(height=button_height, width=button_width)
-        e8.place(x=((int(x))/2)-side_tilt, y=100)
+        e8.place(x=((int(x))/2)-(button_width*6), y=100)
     def show_tools(anchor=None, side=None):
         e9 = Button(tk, text='Show tools', command=options.show_tools, bg=button_color, foreground=text_color, font=text_font)
         e9.config(height=button_height, width=button_width)
-        e9.place(x=((int(x))/2)-side_tilt, y=200)
+        e9.place(x=((int(x))/2)-(button_width*6), y=200)
     def clear_history(anchor=None, side=None):
         e10 = Button(tk, text='Clear History', command=options.clear_history, bg=button_color, foreground=text_color, font=text_font)
         e10.config(height=15, width=15)
@@ -127,11 +127,11 @@ class buttons:
     def signout_item(anchor=None, side=None, y=100):
         e11 = Button(tk, text='Signout item', command=options.signout_item, bg=button_color, foreground=text_color, font=text_font)
         e11.config(height=button_height, width=button_width)
-        e11.place(x=((int(x))/2)-side_tilt, y=y)
+        e11.place(x=((int(x))/2)-(button_width*6), y=y)
     def signin_item(anchor=None, side=None, y=0):
         e12 = Button(tk, text='Signin item', command=options.signin_item, bg=button_color, foreground=text_color, font=text_font)
         e12.config(height=button_height, width=button_width)
-        e12.place(x=((int(x))/2)-side_tilt, y=y)
+        e12.place(x=((int(x))/2)-(button_width*6), y=y)
     def backup():
         e13 = Button(tk, text='Backup', command=options.backup, bg=button_color, foreground=text_color, font=text_font)
         e13.config(height=15, width=15)
@@ -139,19 +139,19 @@ class buttons:
     def remove_student(y=900):
         e15 = Button(tk, text='Remove Student', command=options.remove_student, bg=button_color, foreground=text_color, font=text_font)
         e15.config(height=button_height, width=button_width)
-        e15.place(x=((int(x))/2)-side_tilt, y=y)
+        e15.place(x=((int(x))/2)-(button_width*6), y=y)
     def show_logged_items(y=900):
         e16 = Button(tk, text='Show logged items', command=options.show_logged_items, bg=button_color, foreground=text_color, font=text_font)
         e16.config(height=button_height, width=button_width)
-        e16.place(x=((int(x))/2)-side_tilt, y=y)
+        e16.place(x=((int(x))/2)-(button_width*6), y=y)
     def show_students(y=0):
         e17 = Button(tk, text='Show Students', command=options.show_students, bg=button_color, foreground=text_color, font=text_font)
         e17.config(height=button_height, width=button_width)
-        e17.place(x=((int(x))/2)-side_tilt, y=y)
+        e17.place(x=((int(x))/2)-(button_width*6), y=y)
     def print_Squidward(y=0):
         e12 = Button(tk, text='Print A Squidward', command=options.print_Squidward, bg=button_color, foreground=text_color, font=text_font)
         e12.config(height=button_height, width=button_width)
-        e12.place(x=((int(x))/2)-side_tilt, y=y)
+        e12.place(x=((int(x))/2)-(button_width*6), y=y)
 class options:
     def print_Squidward():
         print_instructions.print('quid.jpeg')
@@ -905,11 +905,11 @@ def teacher_screen():
         buttons.remove_student(y=700)
         e25=Button(tk, text='Next Screen', command=teacher_page2, bg=button_color, foreground=text_color, font=text_font)
         e25.config(height=button_height, width=button_width)
-        e25.place(x=((int(x))/2)-side_tilt, y=800)
+        e25.place(x=((int(x))/2)-(button_width*6), y=800)
     else:
         e25=Button(tk, text='Next Screen', command=teacher_page2, bg=button_color, foreground=text_color, font=text_font)
         e25.config(height=button_height, width=button_width)
-        e25.place(x=((int(x))/2)-side_tilt, y=500)
+        e25.place(x=((int(x))/2)-(button_width*6), y=500)
 #Teacher second page.
 def teacher_page2():
     clear()
@@ -919,7 +919,7 @@ def teacher_page2():
     buttons.logout(y=200)
     e25=Button(tk, text='Back', command=teacher_screen, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=300)
+    e25.place(x=((int(x))/2)-(button_width*6), y=300)
 #If permission is admin. First page.
 def admin_screen():
     clear()
@@ -939,7 +939,7 @@ def admin_screen():
         buttons.enable_debug(y=700)
     e25=Button(tk, text='Next Screen', command=admin_page2, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=800)
+    e25.place(x=((int(x))/2)-(button_width*6), y=800)
 #Admin second page
 def admin_page2():
     clear()
@@ -953,10 +953,10 @@ def admin_page2():
     buttons.center_buttons(y=600)
     e25=Button(tk, text='Back', command=admin_screen, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=700)
+    e25.place(x=((int(x))/2)-(button_width*6), y=700)
     e26=Button(tk, text='Next', command=admin_page3, bg=button_color, foreground=text_color, font=text_font)
     e26.config(height=button_height, width=button_width)
-    e26.place(x=((int(x))/2)-side_tilt, y=800)
+    e26.place(x=((int(x))/2)-(button_width*6), y=800)
 def admin_page3():
     clear()
     buttons.show_users(y=0)
@@ -965,7 +965,7 @@ def admin_page3():
     buttons.edit_data(y=300)
     e25=Button(tk, text='Back', command=admin_page2, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
-    e25.place(x=((int(x))/2)-side_tilt, y=700)
+    e25.place(x=((int(x))/2)-(button_width*6), y=700)
 #Ask the database if the entered credentials are correct.
 def ask(command=send):
     global name, password, startup
