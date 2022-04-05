@@ -12,3 +12,5 @@
     Might fix issues with backups.
 7. Added function errors.MissingCPP():
     Used to fix any errors causes by the c++ files being missing.
+8. Added new item to requirements.txt:
+    screeninfo (To retrieve screen info)
