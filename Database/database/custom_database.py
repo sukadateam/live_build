@@ -184,6 +184,7 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
                         if debug==True:
                             #Prints the error if one occurs.
                             print(ErrorHandle)
+        return False
     class print_instructions:
         def help():
             print('Branches:\n  print_instructions.print()\n  print_instructions.createBarcode()')
