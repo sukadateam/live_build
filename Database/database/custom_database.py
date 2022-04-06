@@ -2675,6 +2675,10 @@ if sys.version[0:len(required_version)] == required_version or "-skipPythonCheck
         pass
     if os.path.exists('history_desc.py')==False:
         history.clear()
+    try:
+        from history_desc import history_id, history_description, count
+    except:
+        history.clear()
     if os.path.exists('data_save.py')==True:
         try:
             os.remove('data_save.aes')

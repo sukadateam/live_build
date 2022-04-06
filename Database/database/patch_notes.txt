@@ -1,0 +1,2 @@
+1. If history_desc.py is missing history_id, history_description or count vars:
+    The file will be deleted and fixed.
