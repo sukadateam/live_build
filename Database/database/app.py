@@ -331,6 +331,8 @@ class options:
         other2.pack()
         e3=Button(tk, text='Submit', command=options.test_print_next)
         e3.pack()
+        e4=Button(tk, text='Back', command=send)
+        e4.pack()
         Tk.update_idletasks(tk)
     def test_print_next():
         global other2
