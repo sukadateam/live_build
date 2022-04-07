@@ -7,7 +7,7 @@
 \margl1440\margr1440\vieww33400\viewh18200\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\tx14212\pardirnatural\qc\partightenfactor0
 
-\f0\fs48 \cf0 \cb2 Document V5\
+\f0\fs48 \cf0 \cb2 Document V6\
 
 \fs24 Please close the application if it is running before you try to do anything listed below.
 \fs48 \
@@ -35,6 +35,7 @@ pip install -r requirements.txt (Universal) or python3 -m pip install -r require
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \fs24 \cf3 \
+\
 1. Locate your application directory.\
 2. Ensure you have the newest version from GitHub and you have downloaded the zip file. Not source code.\
 3. In your application directory remove all the files except for: settings.py, data_save.py, hash.aes and hash_other.aes if it exists.\
@@ -50,6 +51,7 @@ pip install -r requirements.txt (Universal) or python3 -m pip install -r require
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \fs24 \cf3 \
+\
 1. Open Shell.py and create a user with the permission admin.\
 2. Use the save function in the shell.\
 3. Close the shell and open app.py.\
@@ -62,23 +64,14 @@ pip install -r requirements.txt (Universal) or python3 -m pip install -r require
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \fs24 \cf3 \
+\
 1. Locate Your Application Directory.\
 2. Backups will be located in the backups folder.\
 3. Find the zip file with the highest number and extract data_save.py or data_save.aes.\
 4. Remove data_save.py or data_save.aes from your application folder and overwrite it with the backup one.\
 5. You\'92re all set.\
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
-
-\fs48 \cf3 Creating Tools.\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-
-\fs24 \cf3 \
-1. Give it a name and a barcode. That\'92s it.\
-Somethings to note.\
-You can have infinite items with the same name.\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\tx20675\pardirnatural\partightenfactor0
-\cf3 Items cannot have conflicting barcodes. So Barcodes must be unique to each item.\
+\cf3 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf3 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
@@ -87,6 +80,7 @@ You can have infinite items with the same name.\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \fs24 \cf3 \
+\
 1. Ensure that pyAesCrypt is installed and up-to-date. \
 2. If that didn\'92t work delete hash.aes, and if it exists: hash_other.aes\
 3. Restart the app and create a new hash.\
@@ -97,6 +91,7 @@ You can have infinite items with the same name.\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \fs24 \cf3 \
+\
 A feature has been added to prevent unknown names from signing out items.\
 Only student names that are in the database will be allowed to sign out items.\
 To make this happen:\
@@ -107,38 +102,44 @@ To make this happen:\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 
-\fs48 \cf3 Using The Application On Python Versions.\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-
-\fs24 \cf3 I recommend using 3.10.2. Though previous ones do work. Listed below.\
-Tested Versions.\
-3.11.0a5 \'97 Some issues\
-3.11.0a4 - Some issues\
-3.10.2\
-3.10.1\
-3.10.0\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
-
 \fs48 \cf3 Creating a Backup Password\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\fs24 \cf3 1. Run shell.py.\
+\fs24 \cf3 \
+\
+1. Run shell.py. \
 2. Hit (1) and hit enter.\
 3. Enter the first password you will use and hit enter. Then enter a backup password and hit enter.\
 4. Now type (exit) and hit enter.\
 5. Try and use either password(s) in app.py.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
+
+\fs48 \cf3 Moving The app or Renaming it\'92s folder\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf3 \
+\
+1. Move the folder to it\'92s new spot and/or rename it.\
+2. Open the folder and delete directory.py\
+3. And it\'92s done! :)\
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \fs48 \cf3 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 \cf3 Devices Tested:\
-<macOS>\
-<Windows 10>
+macOS\
+Windows 10\
+Linux(Some Mods may be required)\
+\
+Supported Python Version:\
+3.10.0\
+3.10.1\
+3.10.2
 \fs24 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf3 \
-\
 \
 \
 \
@@ -148,9 +149,11 @@ Tested Versions.\
 \fs48 \cf3 Contact Information.\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\qc\partightenfactor0
 
-\fs36 \cf3 Phone: +1 207-402-5124\
-Email: Brobinson71204@gmail.com\
+\fs36 \cf3 Personal Phone: +1 207-402-5124\
+Personal Email: Brobinson71204@gmail.com\
 School Email(Temp): Brobinson@sad15.org\
 GitHub: {\field{\*\fldinst{HYPERLINK "http://github.com/sukadateam/database"}}{\fldrslt github.com/sukadateam/database}}\
 GitHub Live: {\field{\*\fldinst{HYPERLINK "http://github.com/sukadateam/live_build"}}{\fldrslt github.com/sukadateam/live_build}}\
-If you encounter any problems please create an issue request on GitHub.}
+If you encounter any problems please create an issue request on GitHub.\
+\'97OR\'97\
+Shoot me an Email or Text Message(Preffered)}
