@@ -2,3 +2,4 @@
     The file will be deleted and fixed.
 2. Fixed Remove Broken Tools:
     It no longer stays anchored to the left.
+3. Added a Back button on Test Print.
