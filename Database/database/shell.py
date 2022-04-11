@@ -6,7 +6,8 @@ profanityFilter.setup()
 while True:
     for i in range(10):
         print('')
-    if users.return_login_cred() == False:
+    var1, var2=users.return_login_cred()
+    if var1 == 'UserNotSignedIn':
         choice = input('(1)Create new hash\n(2)Encrypt database\n(3)Decrypt database\n(4)Backup\n(5)Create database\n(6)Save\n(7)Edit database\n(8)Optimize save file\n(9)Check profanity\n(10)Decrypt file\n(11)Encrypt file\n(12)Login\nYour choice: ')
     else:
         choice = input('(1)Create new hash\n(2)Encrypt database\n(3)Decrypt database\n(4)Backup\n(5)Create database\n(6)Save\n(7)Edit database\n(8)Optimize save file\n(9)Check profanity\n(10)Decrypt file\n(11)Encrypt file\n(12)Logout\nYour choice: ')
@@ -33,11 +34,11 @@ while True:
             print('Match Found')
         else:
             print('Match Not Found')
-    if users.return_login_cred() != False:
+    if var1 != 'UserNotSignedIn':
         if choice=="12":
             users.logout()
             choice=''
-    if users.return_login_cred() == ['UserNotSignedIn', 'UserNotSignedIn']:
+    if var1 == 'UserNotSignedIn':
         if choice=="12":
             users.login_request(user=input('Username: '), password=input('Password: '))
     if choice == "1":
