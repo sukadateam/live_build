@@ -1419,7 +1419,10 @@ if sys.version[0:len(required_version)] in required_version or "-skipPythonCheck
             if passw != None:
                 password=passw
             if passw == None:
-                password=get.password()
+                try:
+                    password=get.password()
+                except:
+                    pass
             if other == False:
                 if system=='windows':
                     pyAesCrypt.encryptFile(drive_letter+':/hash.txt', drive_letter+':/hash.aes', password)
