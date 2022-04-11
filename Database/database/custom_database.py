@@ -1408,10 +1408,10 @@ if sys.version[0:len(required_version)] in required_version or "-skipPythonCheck
                 global global_password
                 if global_password==True:
                     get.get_other_hash(password)
-        def new_hash(passw=None, normal=False, memory_float=False):
+        def new_hash(passw=None, normal=False, memory_float=False, other=False):
             history.create_history('Run', 'get.new_hash()', hide=debug)
             get.random_hash(single=normal, memory_float=memory_float)
-            get.encrypt_hash(passw)
+            get.encrypt_hash(passw, other=other)
             password=None
         def encrypt_hash(passw=None, other=False):
             history.create_history('Run', 'get.encrypt_hash()', hide=debug)
@@ -1422,7 +1422,7 @@ if sys.version[0:len(required_version)] in required_version or "-skipPythonCheck
                 try:
                     password=get.password()
                 except:
-                    pass
+                    password=passw
             if other == False:
                 if system=='windows':
                     pyAesCrypt.encryptFile(drive_letter+':/hash.txt', drive_letter+':/hash.aes', password)

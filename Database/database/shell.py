@@ -42,10 +42,14 @@ while True:
         if choice=="12":
             users.login_request(user=input('Username: '), password=input('Password: '))
     if choice == "1":
-        get.new_hash() #Makes a new hash
+        get.new_hash(other=False, passw=input('Primary Password: ')) #Makes a new hash
         get.encrypt_hash(other=True, passw=input('Backup Password: '))
     if choice == "2":
         encrypt.all(password=str(input('Password: ')))
+        try:
+            os.remove('data_save.py')
+        except:
+            pass
     if choice == "3":
         decrypt.all(password=str(input('Password: ')))
     if choice == "4":
