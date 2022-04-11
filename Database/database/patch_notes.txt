@@ -1,1 +1,4 @@
-1. 
+1. Fixed Compadability Issue on shell.py showing a logout option:
+    When you were not even logged in, you also could not logout.
+2. Fixed AttributeError: type object 'get' has no attribute 'password':
+    On line 1422 in custom_database.py
