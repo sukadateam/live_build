@@ -80,13 +80,13 @@ if quiteStartup == False:
     print('This Project is hosted on github. github.com/sukadateam')
     print('If problems occur, try to check if a new version exists.')
     print('-or- Create/Mark An Issue On GitHub!\n\n')
-if sys.version[0:len(required_version)] not in required_version and "-skipPythonCheck" not in n and skip_pythonCheck==False:
+if python_version() not in required_version and "-skipPythonCheck" not in n and skip_pythonCheck==False:
     print('Required python version:', required_version)
-    print('Current python version:', sys.version[0:len(required_version)])
+    print('Current python version:', python_version)
     sys.exit()
 if skip_pythonCheck==True:
     n.append('-skipPythonCheck')
-if sys.version[0:len(required_version)] in required_version or "-skipPythonCheck" in n:
+if python_version() in required_version or "-skipPythonCheck" in n:
     from pyAesCrypt import decryptFile, encryptFile
     if "resetCollections" not in locals() or "resetCollections" not in globals():
         resetCollections=False
