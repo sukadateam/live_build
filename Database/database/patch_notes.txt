@@ -1,1 +1,1 @@
-1. 
+1. clear.normal() function has been swapped to a cleaner usage type. custom_database.py
