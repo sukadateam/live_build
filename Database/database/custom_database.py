@@ -439,6 +439,7 @@ if python_version() in required_version or "-skipPythonCheck" in n:
                 file.close()
             os.chdir(path)
         def logs():
+            global path, Output_file_MaxLength
             history.create_history('Run', 'save_in_txtFile.logs()', hide=debug)
             os.chdir('collections')
             try:
@@ -447,6 +448,7 @@ if python_version() in required_version or "-skipPythonCheck" in n:
                 pass
             #Save all logs of students that currently have items signed out.
             file=open('student_logs.txt','w')
+            fileWrite=False #Used to determine if anything was exported to the text file.
             for i in range(len(lists)):
                 if (lists[i])[0]=="logs":
                     for x in range(len((lists[i])[1])):
@@ -454,11 +456,14 @@ if python_version() in required_version or "-skipPythonCheck" in n:
                         serial = save_in_txtFile.decode((((lists[i])[1])[x])[0], displaySpace=False)
                         student = save_in_txtFile.decode((((lists[i])[1])[x])[1], displaySpace=False)
                         tool_name=get.tool_name(serial_Temp)
-                        file.write('Item: '+display.space(str(tool_name), max_length=35, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
-                file.write('\n\n#'+str(35)+' character max length.')
-                    #Save Item name, Serial, And student name.
-                    #Search tools with serial to find item name.
-                file.close()
+                        file.write('Item: '+display.space(str(tool_name), max_length=Output_file_MaxLength, hide=True)+' Serial: '+display.space(serial, max_length=35, hide=True)+' Student: '+display.space(student, max_length=35, hide=True)+'\n')
+                        fileWrite=True
+            if fileWrite==False: #If nothing was writen to the log file. Make a not.
+                file.write('There doesn\'t seem to be anything here. If you feel that this is incorrect or data loss has occured. Please mark and issue on GitHub and attempt to do a restore from a backup file. Backups are stored in the backup folder: '+str(path))
+            file.write('\n\n#'+str(Output_file_MaxLength)+' character max length.')
+                #Save Item name, Serial, And student name.
+                #Search tools with serial to find item name.
+            file.close()
             os.chdir(path)
         def users():
             history.create_history('Run', 'save_in_txtFile.users()', hide=debug)

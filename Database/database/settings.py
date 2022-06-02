@@ -133,14 +133,16 @@ encryptBackups=False
 quiteStartup=False
 #Print in the terminal if prints fail and what printer it is using.
 printer_debug=True #Default True
-
-#Settings coming soon. Do not change unless your a dare devil.
 #Clears history file after each startup.
 clearHistoryOnStartup=False
+
+#Settings coming soon. Do not change unless your a dare devil.
 #DarkMode For app.py.
-darkModeApp=False
-#Speeds up computation.
+darkModeApp=True
+#Speeds up computation. May Not ever be fully functional :(
 UtilizeCPPCode=True
+#
+Output_file_MaxLength=35
 
 
 #Remove if you aren't using my custom application.
