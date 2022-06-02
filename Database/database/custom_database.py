@@ -553,6 +553,7 @@ if python_version() in required_version or "-skipPythonCheck" in n:
         def help():
             print('Branches:\n  display.space()\n  display.database()\n  display.settings()')
         def space(var, max_length=10, hide=False, return_ShortenNotice=False):
+            #return ctypes.CDLL('yes.so').xor_gate(input1, input2)
             history.create_history('Run', 'display.space()', hide=debug)
             #Works with display.database to create a nice table to display.
             if isinstance(var, str)==True:
@@ -1629,8 +1630,7 @@ if python_version() in required_version or "-skipPythonCheck" in n:
                 history.create_history(user='True', usage='Skip Save', manual_record=auto_error_record, hide=hide)
     class clear:
         def normal():
-            for i in range(100):
-                print('')
+            os.system('clear')
     class check:
         def signed_out_item(barcode, hide=False):
             #Check to see if item has been signed out already.
