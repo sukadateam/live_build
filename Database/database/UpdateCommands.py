@@ -1,4 +1,5 @@
+#Preset for this version
 UpdateRequirments=False
-UpdateDatabase=False
+UpdateDatabase=True
 UpdateSaveFile=False
-UpdateApplication=False
+UpdateApplication=True
