@@ -1,8 +1,8 @@
 1. clear.normal() function has been swapped to a cleaner usage type. custom_database.py
 2. Fixed an idendation error causing save_in_txtFile.logs() to not work as expected all the time.
 3. Added Feature to save_in_txtFile.logs():
-    If nothing is to be writen to the text file. The text file will now create a message with the following...
-        There doesn't seem to be anything here. If you feel that this is incorrect or data loss has occured.
+    If nothing is to be written to the text file. The text file will now create a message with the following...
+        There doesn't seem to be anything here. If you feel that this is incorrect or that data loss has occurred.
         Please mark and issue on GitHub and attempt to do a restore from a backup file. Backups are stored
         in the backup folder:
-4. max_length arguement is no longer in use. To use set DecodeMethod to False.
+4. max_length argument is no longer in use. To use set DecodeMethod to False.
