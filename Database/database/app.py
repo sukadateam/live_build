@@ -47,6 +47,10 @@ def version_note():
     e90=Label(tk, text='Program Version: '+program_version)
     e90.pack(side=BOTTOM, anchor=W)
 class buttons:
+    def update_now():
+        e25 = Button(tk, text='Update Now', command=options.update_now, bg=button_color, foreground=text_color, font=text_font)
+        e25.config(height=button_height, width=button_width)
+        e25.place(x=((int(x))/2)-(button_width*6), y=y)
     def edit_data(y=100):
         e25 = Button(tk, text='Edit Inventory', command=options.edit_data, bg=button_color, foreground=text_color, font=text_font)
         e25.config(height=button_height, width=button_width)
@@ -153,6 +157,10 @@ class buttons:
         e12.config(height=button_height, width=button_width)
         e12.place(x=((int(x))/2)-(button_width*6), y=y)
 class options:
+    def update_now():
+        clear()
+        e1=Label('!Function is still under development!')
+        e1.pack()
     def print_Squidward():
         print_instructions.print('quid.jpeg')
         send()
@@ -775,7 +783,7 @@ class options:
         Tk.update_idletasks(tk)
     def remove_user(UserNotFound=False, ThatsYou=False):
         clear()
-        e1 = Label(tk, text='User')
+        e1 = Label(tk, text='User', bg=button_color)
         e1.pack()
         global other
         other = Entry(tk)

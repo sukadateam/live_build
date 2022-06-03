@@ -138,7 +138,9 @@ clearHistoryOnStartup=False
 
 #Settings coming soon. Do not change unless your a dare devil.
 #DarkMode For app.py.
-darkModeApp=True
+darkModeApp=False
+#Gives the app some color. darkModeApp and colorMode cannot be set to True at the same time.
+colorMode=True
 #Speeds up computation. May Not ever be fully functional :(
 UtilizeCPPCode=True
 #Limits the amount of characters in a given string when writen to a text file.
@@ -149,6 +151,7 @@ Output_file_MaxLength=35
 #Settings for application.
 show_background=True
 button_color='white'
+option_color='white'
 bg_color='#80a8e8'
 text_color='#000000'
 button_height=2
@@ -160,6 +163,13 @@ OnlyAllowKnownStudents=False
 secretsAllowed=False
 side_tilt=200
 AskForEncryptionPassword=False
+if colorMode==True:
+    bg_color='red'
+    text_color='blue'
+    button_color="orange"
+    option_color='green'
 if darkModeApp==True:
     bg_color='#231F20'
     text_color='#000000'
+    button_color="grey"
+    option_color='white'

@@ -27,6 +27,7 @@ from screeninfo import get_monitors
 #ctypes.CDLL('libfoo.so').your_function(arguemnts)
 try:
     #Windows print
+    #Pylance may show this as a problem if your using mac. It's only for windows. Hence the try and except.
     import win32api
     import win32print
 except:
@@ -1232,7 +1233,7 @@ if python_version() in required_version or "-skipPythonCheck" in n:
             return False
     def exit():
         history.create_history('Run', 'exit()', hide=debug)
-        safe_exit.close()
+        safe_exit.RmExcessFiles()
         print('Application Closed')
         sys.exit()
     class restore:

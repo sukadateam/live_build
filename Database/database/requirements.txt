@@ -8,3 +8,4 @@ python-barcode
 pypiwin32
 screeninfo
 numby
+git #Temp
