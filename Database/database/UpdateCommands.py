@@ -1,0 +1,4 @@
+UpdateRequirments=False
+UpdateDatabase=False
+UpdateSaveFile=False
+UpdateApplication=False
