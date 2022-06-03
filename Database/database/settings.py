@@ -141,7 +141,7 @@ clearHistoryOnStartup=False
 darkModeApp=True
 #Speeds up computation. May Not ever be fully functional :(
 UtilizeCPPCode=True
-#
+#Limits the amount of characters in a given string when writen to a text file.
 Output_file_MaxLength=35
 
 

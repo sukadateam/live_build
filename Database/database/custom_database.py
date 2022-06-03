@@ -484,6 +484,8 @@ if python_version() in required_version or "-skipPythonCheck" in n:
                 print('There are no users.')
             os.chdir(path)
         def tools(max_length=20, showIfShort=False):
+            #max_length argument is now outdated. To use var, set DecodeMethod to False.
+            global Output_file_MaxLength
             history.create_history('Run', 'save_in_txtFile.tools()', hide=debug)
             try:
                 os.chdir('collections')
@@ -499,19 +501,19 @@ if python_version() in required_version or "-skipPythonCheck" in n:
             if DecodeMethod==True:
                 for i in range(len(row)):
                     if (row[i])[0]=="tools":
-                        part, part1 = save_in_txtFile.decode(((row[i])[1])[2], max_length=20)
-                        part2, part3 = save_in_txtFile.decode(((row[i])[1])[1], max_length=20)
-                        part4, part5 = save_in_txtFile.decode(((row[i])[1])[3], max_length=20)
-                        part6, part7 = save_in_txtFile.decode(((row[i])[1])[4], max_length=20)
-                        part8, part9 = save_in_txtFile.decode(((row[i])[1])[5], max_length=20)
-                        part10, part11 = save_in_txtFile.decode(((row[i])[1])[0], max_length=20)
-                        part12, partn=display.space(str(check.signed_out_item(str(((row[i])[1])[2]))), hide=True, max_length=max_length, return_ShortenNotice=True)
+                        part, part1 = save_in_txtFile.decode(((row[i])[1])[2], max_length=Output_file_MaxLength)
+                        part2, part3 = save_in_txtFile.decode(((row[i])[1])[1], max_length=Output_file_MaxLength)
+                        part4, part5 = save_in_txtFile.decode(((row[i])[1])[3], max_length=Output_file_MaxLength)
+                        part6, part7 = save_in_txtFile.decode(((row[i])[1])[4], max_length=Output_file_MaxLength)
+                        part8, part9 = save_in_txtFile.decode(((row[i])[1])[5], max_length=Output_file_MaxLength)
+                        part10, part11 = save_in_txtFile.decode(((row[i])[1])[0], max_length=Output_file_MaxLength)
+                        part12, partn=display.space(str(check.signed_out_item(str(((row[i])[1])[2]))), hide=True, max_length=Output_file_MaxLength, return_ShortenNotice=True)
                         try:
-                            part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=max_length, return_ShortenNotice=True)
+                            part13, partn =display.space(str(((row[i])[1])[6]), hide=True, max_length=Output_file_MaxLength, return_ShortenNotice=True)
                         except:
                             part13 = False
                         if part3==True or part5==True or part7==True or part9==True or part11==True:
-                            part1, part17=display.space(str(True), hide=True, max_length=max_length, return_ShortenNotice=True)
+                            part1, part17=display.space(str(True), hide=True, max_length=Output_file_MaxLength, return_ShortenNotice=True)
                         if showIfShort==False:
                             file.write('Tool Type: '+str(part10)+'  Item: '+str(part2)+'  Serial: '+str(part)+'  Model Number: '+str(part4)+'  Purchase Date: '+str(part6)+'  Loaned To: '+str(part8)+'  Signed Out: '+str(part12)+'Broken: '+str(part13)+'\n\n')
                         if showIfShort==True:
@@ -1230,6 +1232,7 @@ if python_version() in required_version or "-skipPythonCheck" in n:
             return False
     def exit():
         history.create_history('Run', 'exit()', hide=debug)
+        safe_exit.close()
         print('Application Closed')
         sys.exit()
     class restore:

@@ -5,3 +5,4 @@
         There doesn't seem to be anything here. If you feel that this is incorrect or data loss has occured.
         Please mark and issue on GitHub and attempt to do a restore from a backup file. Backups are stored
         in the backup folder:
+4. max_length arguement is no longer in use. To use set DecodeMethod to False.
