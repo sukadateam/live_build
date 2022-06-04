@@ -1,3 +1,5 @@
+#Terminal Version to download and install updates. A Visual version will release after this project is done.
+
 #This Program utilizes the system terminal to download, sync, and install updates.
 #If your terminal is blocked for security reasons. You may need to install updates manually.
 #Please make sure git is installed. This script won't work without it.
@@ -63,5 +65,11 @@ if allChecksPass==False:
     print("One or more tests have failed. Continue? ")
     UserInput=input('Yes or No: ').lower()
     if UserInput=="no" or UserInput=="n":
-        print("!Program will not terminate!")
+        UserInput=input('Remove the downloaded content: ')
+        if UserInput==True:
+            shutil.rmtree(
+                "UpdateFolder"
+            )
+        #Exits the program and terminates the proccess.
+        print("!Program will now terminate!")
         os._exit(1)

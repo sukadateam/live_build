@@ -47,7 +47,7 @@ def version_note():
     e90=Label(tk, text='Program Version: '+program_version)
     e90.pack(side=BOTTOM, anchor=W)
 class buttons:
-    def update_now():
+    def update_now(y=100):
         e25 = Button(tk, text='Update Now', command=options.update_now, bg=button_color, foreground=text_color, font=text_font)
         e25.config(height=button_height, width=button_width)
         e25.place(x=((int(x))/2)-(button_width*6), y=y)
@@ -159,8 +159,11 @@ class buttons:
 class options:
     def update_now():
         clear()
-        e1=Label('!Function is still under development!')
+        e1=Label(tk, text'!Function is still under development!')
         e1.pack()
+        e2 = Button(tk, text='Back', command=send, bg=button_color, foreground=text_color)
+        e2.config(height=button_height, width=button_width)
+        e2.pack()
     def print_Squidward():
         print_instructions.print('quid.jpeg')
         send()
@@ -969,12 +972,14 @@ def admin_page2():
     e26=Button(tk, text='Next', command=admin_page3, bg=button_color, foreground=text_color, font=text_font)
     e26.config(height=button_height, width=button_width)
     e26.place(x=((int(x))/2)-(button_width*6), y=800)
+#Admin 3rd page
 def admin_page3():
     clear()
     buttons.show_users(y=0)
     buttons.test_print(y=100)
     buttons.print_allBarcodes(y=200)
     buttons.edit_data(y=300)
+    buttons.update_now(y=400)
     e25=Button(tk, text='Back', command=admin_page2, bg=button_color, foreground=text_color, font=text_font)
     e25.config(height=button_height, width=button_width)
     e25.place(x=((int(x))/2)-(button_width*6), y=700)

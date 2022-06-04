@@ -13,5 +13,5 @@
 6. Added New files for new auto update feature:
     "UpdateComannds.py":
         Informs systenm on which components to update.
-    "update.py":
+    "UpdateProgram.py":
         Grabs the latest version from github and installs it to the application.
