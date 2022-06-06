@@ -14,7 +14,7 @@ cont=False
 try:
     import sys
     ah=list(sys.argv)
-    print(ah[1])
+    print('Pass through argument(s): ', ah[1])
     if ah[1]=="--test":
         pass
 except:
