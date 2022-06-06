@@ -32,7 +32,12 @@ output = sp.getoutput('cd UpdateFolder\ncd database\nls')
 print ('\n\nFiles Downloaded\n',output)
 
 #Search for command file. Used to determine what needs to be updated.
-from UpdateCommands import UpdateRequirments, UpdateDatabase, UpdateSaveFile, UpdateApplication, UpdateSettings
+try:
+    from UpdateCommands import UpdateRequirments, UpdateDatabase, UpdateSaveFile, UpdateApplication, UpdateSettings
+except:
+    clear()
+    print('UpdateCommands.py File seems to be missing or misplaced. Please check and try again.')
+    exit()
 print(
     "\n!Files downloaded!"
     "\nUpdate Settings:\n  UpdateRequirments: ",
