@@ -32,14 +32,16 @@ output = sp.getoutput('cd UpdateFolder\ncd database\nls')
 print ('\n\nFiles Downloaded\n',output)
 
 #Search for command file. Used to determine what needs to be updated.
-from UpdateCommands import UpdateRequirments, UpdateDatabase, UpdateSaveFile, UpdateApplication
+from UpdateCommands import UpdateRequirments, UpdateDatabase, UpdateSaveFile, UpdateApplication, UpdateSettings
 print(
     "\n!Files downloaded!"
     "\nUpdate Settings:\n  UpdateRequirments: ",
     UpdateRequirments,'\n  UpdateDatabase:    ',
     UpdateDatabase,'\n  UpdateSaveFile:    ',
     UpdateSaveFile,'\n  UpdateApplication: ',
-    UpdateApplication)
+    UpdateApplication,'\n  UpdateSettings: ',
+    UpdateSettings
+    )
 
 print("\nPre-install checks in progress...")
 #Check to ensure all file required are present.
@@ -62,6 +64,12 @@ if UpdateApplication==True:
     if os.path.exists('app.py') == False:
         print('  UpdateApplication Test: Failed')
         allChecksPass=False
+if UpdateSettings==True:
+    if os.path.exists('settings.py') == True:
+        print('  UpdateSettings Test: Passed')
+    if os.path.exists('settings.py') == False:
+        print('  UpdateSettings Test: Failed')
+        allChecksPass=False
 #Save file does not need to be checked. As it wasn't downloaded.
 if allChecksPass==False:
     print("One or more tests have failed. Continue? ")
@@ -77,58 +85,41 @@ if allChecksPass==False:
         os._exit(1)
     print("Problems May Occur!")
 
-#If all tests pass then let's install it! :)
-if UpdateDatabase==True:
-    #Saves the current version just incase if update fails as temp.py.
-    os.rename('custom_database.py', 'temp.py')
-    #Removed the current custom_database.py file.
-    try:
-        os.remove('custom_database.py')
-    except:
-        pass
-    #Copys the new custom_database.py file.
-    shutil.copyfile(
-        path+'/UpdateFolder/database/custom_database.py',
-        path+'/custom_database.py'
-        )
-    #If an error did occur revert back to old version.
-    try:
-        import custom_database
-    except Exception as error:
-        print('An Error Has Occured in the update proccess. Info is displayed below.')
-        print(error)
+#Update Given Prerequisites
+InputVars=[UpdateDatabase, UpdateApplication, UpdateSettings]
+InputFiles=['custom_database.py', 'app.py', 'settings.py']
+for i in range(len(InputVars)):
+    #If given var is equal to true then go ahead and apply the update to it's corresponding file.
+    if InputVars[i]==True:
+        #Saves the current version just incase if update fails as temp.py.
+        os.rename(InputFiles[i], 'temp.py')
+        #Removed the current app.py file.
         try:
-            os.remove('custom_database.py')
+            os.remove(InputFiles[i])
         except:
             pass
-        #Restores temp.py back to orginal name.
-        os.rename('temp.py', 'custom_database.py')
-    print("custom_database.py has been updated.")
-
-if UpdateApplication==True:
-    #Saves the current version just incase if update fails as temp.py.
-    os.rename('app.py', 'temp.py')
-    #Removed the current app.py file.
-    try:
-        os.remove('app.py')
-    except:
-        pass
-    #Copys the new app.py file.
-    shutil.copyfile(
-        path+'/UpdateFolder/database/app.py',
-        path+'/app.py'
+        #Copies the new *.py file.
+        shutil.copyfile(
+            path+'/UpdateFolder/database/'+InputFiles[i],
+            path+'/'+InputFiles[i]
         )
-    #If an error did occur revert back to old version.
-    try:
-        sys.argv.append('--test')
-        import app
-    except Exception as error:
-        print('An Error Has Occured in the update proccess. Info is displayed below.')
-        print(error)
+        #If an error did occur revert back to old version.
         try:
-            os.remove('app.py')
-        except:
-            pass
-        #Restores temp.py back to orginal name.
-        os.rename('temp.py', 'app.py')
-    print("app.py has been updated.")
+            if i==0:
+                import custom_database
+            elif i==1:
+                sys.argv.append('--test')
+                import app
+            elif i==2:
+                import settings
+        except Exception as error:
+            print('An Error Has Occured in the update proccess. Info is displayed below.')
+            print(error)
+            try:
+                os.remove(InputFiles[i])
+            except:
+                pass
+            #Restores temp.py back to orginal name.
+            os.rename('temp.py', InputFiles[i])
+        print(InputFiles[i]+" has been updated.")
+print('Application fully updated! Please close any tabs of this program and restart!')
