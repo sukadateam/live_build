@@ -1,5 +1,4 @@
-#Things to do next:
-#Nothin'!!!
+#0.6.7
 from platform import python_version
 from ast import Bytes
 from dis import show_code
