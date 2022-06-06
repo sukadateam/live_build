@@ -19,25 +19,25 @@ try:
         pass
 except:
     cont=True
-tk=Tk()
-tk.title('Carpetentry Application')
-x=GetScreenWidth() #Used for calculations on the horizontal axis.
-y=GetScreenHeight() #Used for calculations on the verticle axis.
-tk.geometry(str(x)+"x"+str(y)+"+10+20")
-name=None
-password=None
-startup=True
-other4=None
-other5=None
-other6=None
-other7=None
-other8=None
-other=None
-other1=None
-other2=None
-other3=None #Encrypt/Decrypt Password
-force=None
 if cont==True:
+    tk=Tk()
+    tk.title('Carpetentry Application')
+    x=GetScreenWidth() #Used for calculations on the horizontal axis.
+    y=GetScreenHeight() #Used for calculations on the verticle axis.
+    tk.geometry(str(x)+"x"+str(y)+"+10+20")
+    name=None
+    password=None
+    startup=True
+    other4=None
+    other5=None
+    other6=None
+    other7=None
+    other8=None
+    other=None
+    other1=None
+    other2=None
+    other3=None #Encrypt/Decrypt Password
+    force=None
     try:
         abdsdfugvyub=debug
     except:
