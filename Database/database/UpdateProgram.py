@@ -5,10 +5,12 @@
 #Please make sure git is installed. This script won't work without it.
 
 #Import required moduels
+from ast import arguments
 import os #For file editing
+import sys #Argmunent sending
 import shutil #For folder deleting
 import subprocess as sp
-from custom_database import exit, clear #Used to close the app.
+from custom_database import exit, clear, path #Used to close the app.
 
 #Clear the system afer imports are finished.
 clear()
@@ -73,3 +75,60 @@ if allChecksPass==False:
         #Exits the program and terminates the proccess.
         print("!Program will now terminate!")
         os._exit(1)
+    print("Problems May Occur!")
+
+#If all tests pass then let's install it! :)
+if UpdateDatabase==True:
+    #Saves the current version just incase if update fails as temp.py.
+    os.rename('custom_database.py', 'temp.py')
+    #Removed the current custom_database.py file.
+    try:
+        os.remove('custom_database.py')
+    except:
+        pass
+    #Copys the new custom_database.py file.
+    shutil.copyfile(
+        path+'/UpdateFolder/database/custom_database.py',
+        path+'/custom_database.py'
+        )
+    #If an error did occur revert back to old version.
+    try:
+        import custom_database
+    except Exception as error:
+        print('An Error Has Occured in the update proccess. Info is displayed below.')
+        print(error)
+        try:
+            os.remove('custom_database.py')
+        except:
+            pass
+        #Restores temp.py back to orginal name.
+        os.rename('temp.py', 'custom_database.py')
+    print("custom_database.py has been updated.")
+
+if UpdateApplication==True:
+    #Saves the current version just incase if update fails as temp.py.
+    os.rename('app.py', 'temp.py')
+    #Removed the current app.py file.
+    try:
+        os.remove('app.py')
+    except:
+        pass
+    #Copys the new app.py file.
+    shutil.copyfile(
+        path+'/UpdateFolder/database/app.py',
+        path+'/app.py'
+        )
+    #If an error did occur revert back to old version.
+    try:
+        sys.argv.append('--test')
+        import app
+    except Exception as error:
+        print('An Error Has Occured in the update proccess. Info is displayed below.')
+        print(error)
+        try:
+            os.remove('app.py')
+        except:
+            pass
+        #Restores temp.py back to orginal name.
+        os.rename('temp.py', 'app.py')
+    print("app.py has been updated.")
