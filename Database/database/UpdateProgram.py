@@ -91,8 +91,8 @@ if allChecksPass==False:
     print("Problems May Occur!")
 
 #Update Given Prerequisites
-InputVars=[UpdateDatabase, UpdateApplication, UpdateSettings]
-InputFiles=['custom_database.py', 'app.py', 'settings.py']
+InputVars=[UpdateDatabase, UpdateApplication, UpdateSettings, UpdateRequirments]
+InputFiles=['custom_database.py', 'app.py', 'settings.py', 'requirements.txt']
 for i in range(len(InputVars)):
     #If given var is equal to true then go ahead and apply the update to it's corresponding file.
     if InputVars[i]==True:
