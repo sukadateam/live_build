@@ -2285,6 +2285,9 @@ if python_version() in required_version or "-skipPythonCheck" in n:
                                 a+=1
                     if num1 == True:
                         print(errors.cannot_call_func('data_base.empty.one()'))
+        class retrieve:
+            def databases():
+                return data_bases
         class show:
             def help():
                 print('Branches:\n  data_base.show.show_column()\n  data_base.show.show_row()\n  data_base.show.show_lists()\n  data_base.show.all_in_database()\n  data_base.show.all_data_bases()\n  data_base.show.info()')
