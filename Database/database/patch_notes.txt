@@ -1,2 +1,4 @@
 1. Added function data_base.retrieve.databases():
 	Returns all known databases
+2. Added function returns.debug():
+	Allows for debug variable to operations out side of global decleration.
