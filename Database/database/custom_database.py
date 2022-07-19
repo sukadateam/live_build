@@ -273,6 +273,11 @@ if python_version() in required_version or "-skipPythonCheck" in n:
             purchaseDate=data['Purchase Date'].tolist()
             loandedTo=data['Loaned out to'].tolist()
             return toolType, toolName, serialNumber, modelNumber, purchaseDate, loandedTo
+    class returns:
+        def debug():
+            #Allows for debug variable to operations out side of global decleration.
+            global debug
+            return debug
     class logic:
         class gate:
             def help():
